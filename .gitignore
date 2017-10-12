@@ -12,12 +12,26 @@
 /db/*.sqlite3-journal
 
 # Ignore all logfiles and tempfiles.
-/log/*
-/tmp/*
-!/log/.keep
-!/tmp/.keep
+/log
+/log/*.log
+/tmp
 
-/node_modules
-/yarn-error.log
+.svn
+.env
+*.swp
+.DS_Store
+**/.DS_Store
+/vendor/bundler
+/vendor/bundle
+/vendor/cache
+*.bak
+/public/tmp
+/public/assets
+/public/sitemap*
+app/assets/images/*.png
+/db/schema.rb
+/coverage
+dump.rdb
 
-.byebug_history
+analytics-v3.cache
+analytics-v3-antenna-*.cache
