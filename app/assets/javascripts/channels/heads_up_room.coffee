@@ -7,11 +7,11 @@ App.heads_up_room = App.cable.subscriptions.create "HeadsUpRoomChannel",
     # Called when the subscription has been terminated by the server
 
   received: (data) ->
-    # Called when there's incoming data on the websocket for this channel
+    $('#users').append data['user']
+    #alert data['user']
 
   entered: ->
-    alert "entered"
-    #@perform 'entered'
+    @perform 'entered'
 
   finished: ->
     @perform 'finished'
