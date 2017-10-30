@@ -2,7 +2,7 @@ class UserBroadcastJob < ApplicationJob
   queue_as :default
 
   def perform(user)
-    ActionCable.server.broadcast 'heads_up_room_channel', user: render_user_id(user)
+    ActionCable.server.broadcast 'room_1', render_user_id(user)
   end
 
   private

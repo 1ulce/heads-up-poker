@@ -1,5 +1,5 @@
 class HeadsUpController < ApplicationController
   def show
-    @users = User.first.user_id
+    @users = User.all
   end
 end
