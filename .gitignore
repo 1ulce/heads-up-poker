@@ -32,6 +32,7 @@ app/assets/images/*.png
 /db/schema.rb
 /coverage
 dump.rdb
+vendor/bundle
 
 analytics-v3.cache
 analytics-v3-antenna-*.cache
