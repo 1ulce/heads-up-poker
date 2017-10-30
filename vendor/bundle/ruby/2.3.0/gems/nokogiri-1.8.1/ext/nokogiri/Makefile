@@ -12,12 +12,12 @@ NULLCMD = :
 #### Start of system configuration section. ####
 
 srcdir = .
-topdir = /Users/pp01/.rbenv/versions/2.3.1/include/ruby-2.3.0
+topdir = /usr/local/opt/rbenv/versions/2.3.1/include/ruby-2.3.0
 hdrdir = $(topdir)
-arch_hdrdir = /Users/pp01/.rbenv/versions/2.3.1/include/ruby-2.3.0/x86_64-darwin15
+arch_hdrdir = /usr/local/opt/rbenv/versions/2.3.1/include/ruby-2.3.0/x86_64-darwin16
 PATH_SEPARATOR = :
 VPATH = $(srcdir):$(arch_hdrdir)/ruby:$(hdrdir)/ruby
-prefix = $(DESTDIR)/Users/pp01/.rbenv/versions/2.3.1
+prefix = $(DESTDIR)/usr/local/opt/rbenv/versions/2.3.1
 rubysitearchprefix = $(rubylibprefix)/$(sitearch)
 rubyarchprefix = $(rubylibprefix)/$(arch)
 rubylibprefix = $(libdir)/$(RUBY_BASE_NAME)
@@ -31,8 +31,8 @@ rubyhdrdir = $(includedir)/$(RUBY_VERSION_NAME)
 vendorarchdir = $(vendorlibdir)/$(sitearch)
 vendorlibdir = $(vendordir)/$(ruby_version)
 vendordir = $(rubylibprefix)/vendor_ruby
-sitearchdir = $(DESTDIR)./.gem.20171012-4698-knmows
-sitelibdir = $(DESTDIR)./.gem.20171012-4698-knmows
+sitearchdir = $(DESTDIR)./.gem.20171030-73077-4me4xq
+sitelibdir = $(DESTDIR)./.gem.20171030-73077-4me4xq
 sitedir = $(rubylibprefix)/site_ruby
 rubyarchdir = $(rubylibdir)/$(arch)
 rubylibdir = $(rubylibprefix)/$(ruby_version)
@@ -80,12 +80,12 @@ optflags = -O3 -fno-fast-math
 debugflags = -ggdb3
 warnflags = -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wshorten-64-to-32 -Wimplicit-function-declaration -Wdivision-by-zero -Wdeprecated-declarations -Wextra-tokens
 CCDLFLAGS = -fno-common
-CFLAGS   = $(CCDLFLAGS)  -O3 -Wno-error=shorten-64-to-32  -pipe  -DNOKOGIRI_USE_PACKAGED_LIBRARIES $(ARCH_FLAG)
+CFLAGS   = $(CCDLFLAGS) $(cflags)  -pipe  -DNOKOGIRI_USE_PACKAGED_LIBRARIES $(ARCH_FLAG)
 INCFLAGS = -I. -I$(arch_hdrdir) -I$(hdrdir)/ruby/backward -I$(hdrdir) -I$(srcdir)
 DEFS     = 
-CPPFLAGS = -DHAVE_ICONV_H -DHAVE_XMLPARSEDOC -DHAVE_XSLTPARSESTYLESHEETDOC -DHAVE_EXSLTFUNCREGISTER -DHAVE_XMLHASFEATURE -DHAVE_XMLFIRSTELEMENTCHILD -DHAVE_XMLRELAXNGSETPARSERSTRUCTUREDERRORS -DHAVE_XMLRELAXNGSETPARSERSTRUCTUREDERRORS -DHAVE_XMLRELAXNGSETVALIDSTRUCTUREDERRORS -DHAVE_XMLSCHEMASETVALIDSTRUCTUREDERRORS -DHAVE_XMLSCHEMASETPARSERSTRUCTUREDERRORS -I/Users/pp01/works/Programming/heads-up-poker/vendor/bundle/ruby/2.3.0/gems/nokogiri-1.8.1/ports/x86_64-apple-darwin15.4.0/libxslt/1.1.30/include -I/Users/pp01/works/Programming/heads-up-poker/vendor/bundle/ruby/2.3.0/gems/nokogiri-1.8.1/ports/x86_64-apple-darwin15.4.0/libxml2/2.9.5/include/libxml2 -I/Users/pp01/works/Programming/heads-up-poker/vendor/bundle/ruby/2.3.0/gems/nokogiri-1.8.1/ports/x86_64-apple-darwin15.4.0/libxml2/2.9.5/include/libxml2 -I/Users/pp01/.rbenv/versions/2.3.1/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT $(DEFS) $(cppflags) "-DNOKOGIRI_LIBXML2_PATH=\"/Users/pp01/works/Programming/heads-up-poker/vendor/bundle/ruby/2.3.0/gems/nokogiri-1.8.1/ports/x86_64-apple-darwin15.4.0/libxml2/2.9.5\"" "-DNOKOGIRI_LIBXML2_PATCHES=\"\"" "-DNOKOGIRI_LIBXSLT_PATH=\"/Users/pp01/works/Programming/heads-up-poker/vendor/bundle/ruby/2.3.0/gems/nokogiri-1.8.1/ports/x86_64-apple-darwin15.4.0/libxslt/1.1.30\"" "-DNOKOGIRI_LIBXSLT_PATCHES=\"\""
+CPPFLAGS = -DHAVE_ICONV_H -DHAVE_XMLPARSEDOC -DHAVE_XSLTPARSESTYLESHEETDOC -DHAVE_EXSLTFUNCREGISTER -DHAVE_XMLHASFEATURE -DHAVE_XMLFIRSTELEMENTCHILD -DHAVE_XMLRELAXNGSETPARSERSTRUCTUREDERRORS -DHAVE_XMLRELAXNGSETPARSERSTRUCTUREDERRORS -DHAVE_XMLRELAXNGSETVALIDSTRUCTUREDERRORS -DHAVE_XMLSCHEMASETVALIDSTRUCTUREDERRORS -DHAVE_XMLSCHEMASETPARSERSTRUCTUREDERRORS -I/Users/ch0chip/code/web/heads-up-poker/vendor/bundle/ruby/2.3.0/gems/nokogiri-1.8.1/ports/x86_64-apple-darwin16.7.0/libxslt/1.1.30/include -I/Users/ch0chip/code/web/heads-up-poker/vendor/bundle/ruby/2.3.0/gems/nokogiri-1.8.1/ports/x86_64-apple-darwin16.7.0/libxml2/2.9.5/include/libxml2 -I/Users/ch0chip/code/web/heads-up-poker/vendor/bundle/ruby/2.3.0/gems/nokogiri-1.8.1/ports/x86_64-apple-darwin16.7.0/libxml2/2.9.5/include/libxml2 -I/usr/local/opt/rbenv/versions/2.3.1/include  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT $(DEFS) $(cppflags) "-DNOKOGIRI_LIBXML2_PATH=\"/Users/ch0chip/code/web/heads-up-poker/vendor/bundle/ruby/2.3.0/gems/nokogiri-1.8.1/ports/x86_64-apple-darwin16.7.0/libxml2/2.9.5\"" "-DNOKOGIRI_LIBXML2_PATCHES=\"\"" "-DNOKOGIRI_LIBXSLT_PATH=\"/Users/ch0chip/code/web/heads-up-poker/vendor/bundle/ruby/2.3.0/gems/nokogiri-1.8.1/ports/x86_64-apple-darwin16.7.0/libxslt/1.1.30\"" "-DNOKOGIRI_LIBXSLT_PATCHES=\"\""
 CXXFLAGS = $(CCDLFLAGS) $(cxxflags) $(ARCH_FLAG)
-ldflags  = -L. -L/Users/pp01/.rbenv/versions/2.3.1/lib  -fstack-protector -L/usr/local/lib
+ldflags  = -L. -L/usr/local/opt/rbenv/versions/2.3.1/lib  -fstack-protector -L/usr/local/lib
 dldflags = -Wl,-undefined,dynamic_lookup -Wl,-multiply_defined,suppress 
 ARCH_FLAG = 
 DLDFLAGS = $(ldflags) $(dldflags) $(ARCH_FLAG)
@@ -101,7 +101,7 @@ RUBY_VERSION_NAME = $(RUBY_BASE_NAME)-$(ruby_version)
 RUBYW_BASE_NAME = rubyw
 RUBY_BASE_NAME = ruby
 
-arch = x86_64-darwin15
+arch = x86_64-darwin16
 sitearch = $(arch)
 ruby_version = 2.3.0
 ruby = $(bindir)/$(RUBY_BASE_NAME)
@@ -111,7 +111,7 @@ ruby_headers = $(hdrdir)/ruby.h $(hdrdir)/ruby/ruby.h $(hdrdir)/ruby/defines.h $
 RM = rm -f
 RM_RF = $(RUBY) -run -e rm -- -rf
 RMDIRS = rmdir -p
-MAKEDIRS = /usr/local/bin/gmkdir -p
+MAKEDIRS = mkdir -p
 INSTALL = /usr/bin/install -c
 INSTALL_PROG = $(INSTALL) -m 0755
 INSTALL_DATA = $(INSTALL) -m 644
@@ -122,8 +122,8 @@ TOUCH = exit >
 
 preload = 
 
-libpath = . $(libdir) /Users/pp01/works/Programming/heads-up-poker/vendor/bundle/ruby/2.3.0/gems/nokogiri-1.8.1/ports/x86_64-apple-darwin15.4.0/libxml2/2.9.5/lib /Users/pp01/works/Programming/heads-up-poker/vendor/bundle/ruby/2.3.0/gems/nokogiri-1.8.1/ports/x86_64-apple-darwin15.4.0/libxslt/1.1.30/lib /usr/local/Cellar/xz/5.2.2/lib
-LIBPATH =  -L. -L$(libdir) -L/Users/pp01/works/Programming/heads-up-poker/vendor/bundle/ruby/2.3.0/gems/nokogiri-1.8.1/ports/x86_64-apple-darwin15.4.0/libxml2/2.9.5/lib -L/Users/pp01/works/Programming/heads-up-poker/vendor/bundle/ruby/2.3.0/gems/nokogiri-1.8.1/ports/x86_64-apple-darwin15.4.0/libxslt/1.1.30/lib -L/usr/local/Cellar/xz/5.2.2/lib
+libpath = . $(libdir) /Users/ch0chip/code/web/heads-up-poker/vendor/bundle/ruby/2.3.0/gems/nokogiri-1.8.1/ports/x86_64-apple-darwin16.7.0/libxml2/2.9.5/lib /Users/ch0chip/code/web/heads-up-poker/vendor/bundle/ruby/2.3.0/gems/nokogiri-1.8.1/ports/x86_64-apple-darwin16.7.0/libxslt/1.1.30/lib /usr/local/Cellar/xz/5.2.2/lib
+LIBPATH =  -L. -L$(libdir) -L/Users/ch0chip/code/web/heads-up-poker/vendor/bundle/ruby/2.3.0/gems/nokogiri-1.8.1/ports/x86_64-apple-darwin16.7.0/libxml2/2.9.5/lib -L/Users/ch0chip/code/web/heads-up-poker/vendor/bundle/ruby/2.3.0/gems/nokogiri-1.8.1/ports/x86_64-apple-darwin16.7.0/libxslt/1.1.30/lib -L/usr/local/Cellar/xz/5.2.2/lib
 DEFFILE = 
 
 CLEANFILES = mkmf.log
@@ -134,7 +134,7 @@ extout =
 extout_prefix = 
 target_prefix = /nokogiri
 LOCAL_LIBS = 
-LIBS =  /Users/pp01/works/Programming/heads-up-poker/vendor/bundle/ruby/2.3.0/gems/nokogiri-1.8.1/ports/x86_64-apple-darwin15.4.0/libxslt/1.1.30/lib/libexslt.a -lm -liconv -lpthread -llzma -lz /Users/pp01/works/Programming/heads-up-poker/vendor/bundle/ruby/2.3.0/gems/nokogiri-1.8.1/ports/x86_64-apple-darwin15.4.0/libxml2/2.9.5/lib/libxml2.a /Users/pp01/works/Programming/heads-up-poker/vendor/bundle/ruby/2.3.0/gems/nokogiri-1.8.1/ports/x86_64-apple-darwin15.4.0/libxslt/1.1.30/lib/libxslt.a -lm -liconv -lpthread -llzma -lz /Users/pp01/works/Programming/heads-up-poker/vendor/bundle/ruby/2.3.0/gems/nokogiri-1.8.1/ports/x86_64-apple-darwin15.4.0/libxml2/2.9.5/lib/libxml2.a -llzma -lpthread -ldl -lobjc  
+LIBS =  /Users/ch0chip/code/web/heads-up-poker/vendor/bundle/ruby/2.3.0/gems/nokogiri-1.8.1/ports/x86_64-apple-darwin16.7.0/libxslt/1.1.30/lib/libexslt.a -lm -liconv -lpthread -llzma -lz /Users/ch0chip/code/web/heads-up-poker/vendor/bundle/ruby/2.3.0/gems/nokogiri-1.8.1/ports/x86_64-apple-darwin16.7.0/libxml2/2.9.5/lib/libxml2.a /Users/ch0chip/code/web/heads-up-poker/vendor/bundle/ruby/2.3.0/gems/nokogiri-1.8.1/ports/x86_64-apple-darwin16.7.0/libxslt/1.1.30/lib/libxslt.a -lm -liconv -lpthread -llzma -lz /Users/ch0chip/code/web/heads-up-poker/vendor/bundle/ruby/2.3.0/gems/nokogiri-1.8.1/ports/x86_64-apple-darwin16.7.0/libxml2/2.9.5/lib/libxml2.a -llzma -lpthread -ldl -lobjc  
 ORIG_SRCS = html_document.c html_element_description.c html_entity_lookup.c html_sax_parser_context.c html_sax_push_parser.c nokogiri.c xml_attr.c xml_attribute_decl.c xml_cdata.c xml_comment.c xml_document.c xml_document_fragment.c xml_dtd.c xml_element_content.c xml_element_decl.c xml_encoding_handler.c xml_entity_decl.c xml_entity_reference.c xml_io.c xml_libxml2_hacks.c xml_namespace.c xml_node.c xml_node_set.c xml_processing_instruction.c xml_reader.c xml_relax_ng.c xml_sax_parser.c xml_sax_parser_context.c xml_sax_push_parser.c xml_schema.c xml_syntax_error.c xml_text.c xml_xpath_context.c xslt_stylesheet.c
 SRCS = $(ORIG_SRCS) 
 OBJS = html_document.o html_element_description.o html_entity_lookup.o html_sax_parser_context.o html_sax_push_parser.o nokogiri.o xml_attr.o xml_attribute_decl.o xml_cdata.o xml_comment.o xml_document.o xml_document_fragment.o xml_dtd.o xml_element_content.o xml_element_decl.o xml_encoding_handler.o xml_entity_decl.o xml_entity_reference.o xml_io.o xml_libxml2_hacks.o xml_namespace.o xml_node.o xml_node_set.o xml_processing_instruction.o xml_reader.o xml_relax_ng.o xml_sax_parser.o xml_sax_parser_context.o xml_sax_push_parser.o xml_schema.o xml_syntax_error.o xml_text.o xml_xpath_context.o xslt_stylesheet.o
