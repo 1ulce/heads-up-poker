@@ -7,7 +7,7 @@ App.heads_up_room = App.cable.subscriptions.create "HeadsUpRoomChannel",
     # Called when the subscription has been terminated by the server
 
   received: (data) ->
-    $('#users').append(data)
+    $('#users').html(data)
     #alert data['user']
     console.log(data)
     #App.heads_up_room.entered_room(data)

@@ -13,7 +13,15 @@ class HeadsUpRoomChannel < ApplicationCable::Channel
     user = User.new
     user.user_id = user_id
     puts user.user_id
-    user.save    
+    user.save   
+    Redis.current.rpush("user_id_list", user.user_id)
+    user_list = Redis.current.lrange("user_id_list",Redis.current.llen("user_id_list") -2 , Redis.current.llen("user_id_list"))
+    rendered_users = "" 
+    user_list.each do |user|
+      rendered_user = ApplicationController.renderer.render(partial: 'users/user', locals: { user: user })
+      rendered_users = rendered_users + rendered_user
+    end
+    ActionCable.server.broadcast 'room_1', rendered_users
   end
 
   def finished
