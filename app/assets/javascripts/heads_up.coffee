@@ -1,3 +1,12 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+# App.heads_up_room = App.cable.subscriptions.create "HeadsUpRoomChannel",
+
+#   entered_room: (data) ->
+#     alert "aiue"
+#     $('#users').append(data)
+$(document).on 'turbolinks:load', -> 
+  $('button.seat').click ()->
+    App.heads_up_room.entered()
+
+# testfunc = ->
+#   alert("here")
+#   App.heads_up_room.entered()

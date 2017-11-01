@@ -1,0 +1,208 @@
+#!/bin/bash
+set -ueo pipefail
+bin_dir="$(cd "$(dirname "$0")"; pwd)"
+base_dir="$bin_dir/.."
+
+path_normalize(){
+	if [[ -d "$1" ]] ; then
+		echo "$(cd "$1"; pwd)"
+		return 0
+	fi
+
+	local dir="$(cd "$(dirname "$1")"; pwd)"
+	local file="$(basename "$1")"
+
+	echo "$dir/$file"
+}
+
+path_is_equals(){
+	[[ "$(path_normalize "$1")" == "$(path_normalize "$2")" ]]
+}
+
+process_is_running(){
+	local keyword="$1"
+	local pid_file="$2"
+	if ! [[ -f "$pid_file" ]] ; then
+		return 1
+	fi
+	local pid="$(cat "$pid_file")"
+	ps -p "$pid" | sed 1d | grep "$keyword" > /dev/null
+}
+
+process_kill(){
+	local pid_file="$1"
+	if [[ -f "$pid_file" ]] ; then
+		local pid="$(cat "$pid_file")"
+		kill "$pid" > /dev/null 2>&1
+	fi
+}
+
+rails_is_running(){
+	process_is_running rails tmp/pids/server.pid
+}
+
+rails_start(){
+	if rails_is_running ; then
+		echo "railsはすでに起動していました。"
+	else
+		echo "railsを起動します。"
+		bin/rails server --bind=0.0.0.0 --daemon > /dev/null 
+		sleep 1
+		if ! rails_is_running ; then
+			echo "railsの起動に失敗しました！"
+			echo "下記コマンドにて起動を確認して下さい。"
+			echo ""
+			echo "bin/rails server"
+			return
+		else
+			echo "railsを起動しました。"
+		fi
+	fi
+	echo "railsのログは下記コマンドで見れます。"
+	echo ""
+	echo "tail -f \"log/development.log\""
+	echo ""
+}
+rails_stop(){
+	if process_is_running rails tmp/pids/server.pid ; then
+		process_kill tmp/pids/server.pid
+		echo "railsを終了しました。"
+	else
+		echo "railsは起動していませんでした。"
+	fi
+}
+
+mysql_start(){
+	if mysql.server status > /dev/null ; then
+		echo "mysqlはすでに起動していました。"
+	else
+		mysql.server start > /dev/null 2>&1
+		echo "mysqlを起動しました。"
+	fi
+}
+mysql_stop(){
+	if mysql.server status > /dev/null ; then
+		mysql.server stop > /dev/null 2>&1
+		echo "mysqlを終了しました。"
+	else
+		echo "mysqlは起動していませんでした。"
+	fi
+}
+
+
+redis_start(){
+	if process_is_running redis /usr/local/var/run/redis.pid ; then
+		echo "redisはすでに起動していました。"
+	else
+		redis-server /usr/local/etc/redis.conf > /dev/null 2>&1 &
+		echo "redisを起動しました。"
+	fi 
+}
+redis_stop(){
+	if process_is_running redis /usr/local/var/run/redis.pid ; then
+		process_kill /usr/local/var/run/redis.pid
+		echo "redisを終了しました。"
+	else
+		echo "redisは起動していませんでした。"
+	fi 
+}
+
+db_init(){
+	bin/rake db:migrate:reset
+	bin/rake db:seed_fu
+}
+
+all_start(){
+	mysql_start
+	redis_start
+	rails_start
+}
+
+all_stop(){
+	rails_stop
+	mysql_stop
+	redis_stop
+}
+
+show_help(){
+	cat << EOT
+help
+
+bin/startup start
+	サービスを開始します。
+
+bin/startup stop
+	サービスを停止します。
+
+bin/startup restart
+	サービスを再起動します。
+	
+bin/startup dbinit
+	データベース初期化。サービス開始中に実行してください。
+	
+bin/rails console
+	コンソールを起動します。
+	
+tail -f log/development.log
+	ログを表示します。
+
+bundle exec guard
+	テストコンソールを起動します。
+
+bundle install --path vendor/bundle
+	gemをインストールします。
+
+bin/rake db:migrate
+	データベースのマイグレーションをします。
+
+EOT
+
+}
+
+main(){
+	if ! path_is_equals "$(pwd)" "$base_dir" ; then
+		echo "ベースディレクトリから実行してください。"
+		echo "下記コマンドで移動できます。"
+		echo ""
+		echo "cd \"$(path_normalize "$base_dir")\""
+		echo ""
+		return 1
+	fi
+	cd "$base_dir"
+
+	local command="help"
+	if [[ $# -ge 1 ]] ; then
+		command="$1"
+	fi
+
+	case "$command" in
+		"start")
+			all_start
+			;;
+		"stop")
+			all_stop
+			;;
+		"restart")
+			all_stop
+			sleep 2
+			all_start
+			;;
+		"dbinit")
+			db_init
+			;;
+		"help")
+			show_help
+			;;
+		"restartweb")
+      rails_stop
+			sleep 2
+      rails_start
+			;;
+		*)
+			echo "サブコマンドの指定が間違っています。"
+			;;
+	esac
+}
+
+main "$@"
+exit "$?"
