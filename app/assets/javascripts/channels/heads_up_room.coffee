@@ -33,10 +33,13 @@ App.heads_up_room = App.cable.subscriptions.create "HeadsUpRoomChannel",
     alert 'game start'
     @perform 'start'
 
+  ready: () ->
+    @perform 'ready'
+
   actions['join'] = (data)->
     $('#users').html(data.users)
 
-  actions['ready'] = (data)->
+  actions['filled'] = (data)->
     $('#ready').html('<button class="ready"> ready </button>')
 
   actions['finished'] = (data)->

@@ -23,7 +23,7 @@ class HeadsUpRoomChannel < ApplicationCable::Channel
     end
     ActionCable.server.broadcast 'room_1', { action: "join", users: rendered_users }
     if user_list.count == 2
-      ActionCable.server.broadcast 'room_1', {action: "ready"}
+      ActionCable.server.broadcast 'room_1', {action: "filled"}
     end
   end
 
@@ -41,5 +41,13 @@ class HeadsUpRoomChannel < ApplicationCable::Channel
   def start
     sleep(1)
     ActionCable.server.broadcast 'room_1', { action: "finished" }
+  end
+
+  def ready
+    Redis.current.sadd("ready_user_id_list", user_id)
+    if Redis.current.scard("ready_user_id_list") == 2
+      start
+      Redis.current.del("ready_user_id_list")
+    end
   end
 end
