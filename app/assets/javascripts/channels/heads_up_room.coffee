@@ -37,8 +37,8 @@ App.heads_up_room = App.cable.subscriptions.create "HeadsUpRoomChannel",
     $('#users').html(data.users)
 
   actions['ready'] = (data)->
-    $('#ready').append('<button class="ready"> ready </button>')
+    $('#ready').html('<button class="ready"> ready </button>')
 
   actions['finished'] = (data)->
     $('#ready').remove()
-    $('#finish').txt("Game finished")
+    alert "game finished"

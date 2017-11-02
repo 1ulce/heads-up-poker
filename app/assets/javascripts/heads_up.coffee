@@ -8,7 +8,7 @@ $(document).on 'turbolinks:load', ->
     App.heads_up_room.entered()
 
 $(document).on 'turbolinks:load', -> 
-  $('button.ready').click ()->
+  $(document).on 'click', 'button.ready', ->
     console.log("st")
     App.heads_up_room.start()
 # testfunc = ->
