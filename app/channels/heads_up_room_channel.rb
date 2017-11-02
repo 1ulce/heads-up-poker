@@ -21,7 +21,10 @@ class HeadsUpRoomChannel < ApplicationCable::Channel
       rendered_user = ApplicationController.renderer.render(partial: 'users/user', locals: { user: user })
       rendered_users = rendered_users + rendered_user
     end
-    ActionCable.server.broadcast 'room_1', rendered_users
+    ActionCable.server.broadcast 'room_1', { action: "join", users: rendered_users }
+    if user_list.count == 2
+      ActionCable.server.broadcast 'room_1', {action: "ready"}
+    end
   end
 
   def finished
@@ -33,5 +36,10 @@ class HeadsUpRoomChannel < ApplicationCable::Channel
 
   def stop_stream
     stop_all_streams
+  end
+
+  def start
+    sleep(1)
+    ActionCable.server.broadcast 'room_1', { action: "finished" }
   end
 end
