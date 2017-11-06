@@ -79,24 +79,28 @@ class Poker
 
     def convert_num_to_handRankName(int) #例 8 返り値 "straight flush" 
       case int
-      when 0
-        "high card"
       when 1
-        "one pair"
+        "high card"
       when 2
-        "two pair"
+        "one pair"
       when 3
-        "three of a kind"
+        "two pair"
       when 4
-        "straight"
+        "three of a kind"
       when 5
-        "flush"
+        "straight"
       when 6
-        "fullhouse"
+        "flush"
       when 7
-        "four of a kind"
+        "fullhouse"
       when 8
+        "four of a kind"
+      when 9
         "straight flush"
+      when 0
+        "error hand"
+      else 
+        "what an error"
       end
     end
 
@@ -189,8 +193,8 @@ class Poker
         end
         winning_hand = strengh_results.max
         idx_of_wh = strengh_results.map.with_index { |strengh, i| strengh == winning_hand ? i : nil }.compact
-        p "someone win by #{convert_num_to_handRankName(winning_hand - 1)}"
-        p "#{idx_of_wh.count} people has #{convert_num_to_handRankName(winning_hand - 1)}"
+        p "someone win by #{convert_num_to_handRankName(winning_hand)}"
+        p "#{idx_of_wh.count} people has #{convert_num_to_handRankName(winning_hand)}"
         m = results[idx_of_wh[0]][2]
         m.count.times do |idx|
           # x回ハイカードを比べていく
@@ -214,9 +218,6 @@ class Poker
         end
         winner_hand = results[idx_of_wh[0]]
         p "player#{idx_of_wh[0]+1} win by #{winner_hand[1]}, #{winner_hand[2]}"
-        if winner_hand[0] == 8
-          gets
-        end
         return [[idx_of_wh[0]+1], winner_hand]
       end
     end
@@ -265,10 +266,41 @@ class Poker
       end
       winner_hand = results[idx_of_wh[0]]
       p "player#{idx_of_wh[0]+1} win by #{winner_hand[1]}, #{winner_hand[2]}"
-      if winner_hand[0] == 8
-        gets
-      end
       return [[idx_of_wh[0]+1], winner_hand]
+    end
+
+    def get_wh_at_showdown2(board, array_hands) #[[3, "two pair", [8, 5, 10], 1], [1, "high card", [13, 10, 9, 8, 6], 3], [1, "high card", [10, 9, 8, 7, 5], 2], [0, "folded", [], 4]] 
+      @bucket_0 = []
+      @bucket_1 = []
+      @bucket_2 = []
+      @bucket_3 = []
+      @bucket_4 = []
+      @bucket_5 = []
+      @bucket_6 = []
+      @bucket_7 = []
+      @bucket_8 = []
+      @bucket_9 = []
+
+      array_hands.each_with_index do |hand, idx|
+        if hand == []
+          p "player_#{idx+1} is folded"
+          @bucket_0 << [0, "folded", [], idx+1]
+        else
+          player_hand = hand
+          player_hand.concat(board)
+          result = get_handRank(player_hand) #[7, "fullhouse", [9, 14]]
+          p "player_#{idx+1} has #{result[1]}"
+          result << idx+1
+          eval("@bucket_#{result[0]} << result")
+        end
+      end
+      #強い順に並べる
+      results = []
+      10.times do |bucket_num|
+        eval("@bucket_#{9-bucket_num} = @bucket_#{9-bucket_num}.sort {|(k1, v1, w1), (k2, v2, w2)| w2 <=> w1 }")
+        results.concat(eval("@bucket_#{9-bucket_num}"))
+      end
+      return results
     end
 
     def get_random_result(int = 100)
@@ -278,16 +310,16 @@ class Poker
         deck = TRUMP
         deck.shuffle!
         cards = {
-          player_1: [deck[0], deck[1]],
-          player_2: [deck[2], deck[3]],
-          player_3: [deck[4], deck[5]],
-          player_4: [deck[6], deck[7]],
-          player_5: [deck[8], deck[9]],
-          player_6: [deck[10], deck[11]],
-          player_7: [deck[12], deck[13]],
-          player_8: [deck[14], deck[15]],
-          player_9: [deck[16], deck[17]],
-          player_10: [deck[18], deck[19]],
+          player_1: [deck[0],deck[1]],
+          player_2: [deck[2],deck[3]],
+          player_3: [deck[4],deck[5]],
+          player_4: [deck[6],deck[7]],
+          player_5: [deck[8],deck[9]],
+          player_6: [deck[10],deck[11]],
+          player_7: [deck[12],deck[13]],
+          player_8: [deck[14],deck[15]],
+          player_9: [deck[16],deck[17]],
+          player_10: [deck[18],deck[19]],
           board: [deck[20],deck[21],deck[22],deck[23],deck[24]],
           flop: [deck[20],deck[21],deck[22]],
           turn: [deck[23]],
@@ -414,10 +446,105 @@ class Poker
             break i if i >= min_raise
             puts "正しい額を入力してください"
           end
+          if bet_amount == street_stack
+            return [5, bet_amount, nofbet + 1]
+          end
           return [4, bet_amount, nofbet + 1]
         end
       else
         p "what an error!"
+      end
+    end
+
+    def player(int)
+      "player_#{int}".to_sym
+    end
+
+    def calc_pot_from_betting_status
+      # 前のストリートのpot処理
+      nof_alive = redis.hget(:game, :nofalive).to_i
+      nof_active = redis.hget(:game, :nofactive).to_i
+      nofside_pot = redis.hget(:game, :nofside_pot).to_i
+      if nof_alive == nof_active
+        pot = redis.hget(:game, "side_pot_#{nofside_pot}".to_sym).to_i + redis.hget(:street, :temp_pot).to_i
+        redis.hset(:game, "side_pot_#{nofside_pot}".to_sym, pot)
+        redis.hset(:street, :temp_pot, 0)
+      else #前のストリートで誰かがAI入れた時
+        #誰が入れたのか
+        alives = []
+        allin_men = {}
+        redis.hget(:game, :nofpeople).to_i.times do |n| # 全ての人に実行
+          if redis.hget(player(n+1), :alive) == "true" # foldしてない
+            if redis.hget(player(n+1), :active) == "false" # AI済み or 最後の1人でAIを受けた
+              betting = redis.hget(player(n+1), :betting).to_i
+              if betting > 0
+                allin_men[n+1] = redis.hget(player(n+1), :betting).to_i # AI勝負人に名と金額を連ねる
+              end
+            end
+            # サイドポット獲得権利が現在(前のストリート終了時)のサイドポット番号を上回っているなら
+            if redis.hget(player(n+1), :rights_of_side_pot).to_i > redis.hget(:game, :nofside_pot).to_i
+              alives << n+1 # 生存者として名を連ねる
+            end
+          end
+        end
+        #入れた人の額を小さい順に並べる
+        allin_men = allin_men.sort {|(k1, v1), (k2, v2)| v1 <=> v2 }
+        #それ毎にサイドポットを作成する
+        allin_men.each.with_index do |array, idx|
+          nofside_pot = redis.hget(:game, :nofside_pot).to_i
+          unless allin_men.count - (idx + 1) <= 0 #4人オールインならば、3人目まで
+            if allin_men[idx][1] == allin_men[idx+1][1] # n人目とn+1人目のオールイン額が一緒なら
+              redis.hset(player(allin_men[idx+1][0]), :rights_of_side_pot, nofside_pot) # n+1人目の権利を現在で確定
+              redis.hset(player(array[0]), :rights_of_side_pot, nofside_pot) # n人目の権利を現在で確定
+            else # n人目とn+1人目のオールイン額が一緒でないなら
+              redis.hset(player(array[0]), :rights_of_side_pot, nofside_pot) # n人目の権利を現在で確定
+              
+              side_pot = 0 # サイドポットの金額計算
+              allin_amount = 0
+              redis.hget(:game, :nofpeople).to_i.times do |n|
+                betting = redis.hget(player(n+1), :betting).to_i
+                if betting >= array[1]
+                  remain = betting - array[1]
+                  amount = redis.hget(player(n+1), :amount).to_i - array[1]
+                  redis.hset(player(n+1), :amount, amount)
+                  redis.hset(player(n+1), :betting, remain)
+                  side_pot += array[1]
+                else
+                  amount = redis.hget(player(n+1), :amount).to_i - redis.hget(player(n+1), :betting).to_i
+                  redis.hset(player(n+1), :amount, amount)
+                  redis.hset(player(n+1), :betting, 0)
+                  side_pot += betting
+                end
+                allin_amount = array[1]
+              end
+              allin_men.each do |array|
+                array[1] -= allin_amount
+              end
+              temp_pot = redis.hget(:street, :temp_pot).to_i - side_pot
+              redis.hset(:street, :temp_pot, temp_pot)
+
+              redis.hset(:game, "side_pot_#{nofside_pot}".to_sym, side_pot) # サイドポット金額確定
+              (idx+1).times do |n|
+                alives.delete(allin_men[n][0]) # 生存者から今回のAIをした人らを削除する
+              end
+              redis.hset(:game, :nofside_pot, nofside_pot + 1) # サイドポット番号を1進める
+            end
+          else #4人オールインならば、4人目
+            redis.hset(player(array[0]), :rights_of_side_pot, nofside_pot) # n人目の権利を現在で確定
+            side_pot = redis.hget(:street, :temp_pot) # 残りpot(ヤバイか？)
+            redis.hset(:street, :temp_pot, 0)
+            redis.hset(:game, "side_pot_#{nofside_pot}".to_sym, side_pot) # サイドポット金額確定
+            (idx+1).times do |n|
+              alives.delete(allin_men[n][0]) # 生存者から今回のAIをした人らを削除する
+            end
+            redis.hset(:game, :nofside_pot, nofside_pot + 1) # サイドポット番号を1進める
+          end
+        end
+      end
+      redis.hget(:game, :nofpeople).to_i.times do |n|
+        amount = redis.hget(player(n+1), :amount).to_i - redis.hget(player(n+1), :betting).to_i
+        redis.hset(player(n+1), :amount, amount)
+        redis.hset(player(n+1), :betting, 0)
       end
     end
 
@@ -477,37 +604,35 @@ class Poker
       when 5
         p get_action(false, 0, 2, 0, 0, 0, 200, 0)
       when 6 #ヘッズアップは未実装 
-        redis.set(:game, {})
-        status[:game][:number] = 1
-        until status[:game][:number] == 3
-      ####### 初回ゲーム時準備
-          if status[:game][:number] == 1
+        redis.hset(:game, :number, 1)
+        until redis.hget(:game, :number) == "10"
+          ####### 初回ゲーム時準備
+          if redis.hget(:game, :number) == "1"
             puts "how many people?"
-            status[:game][:nofpeople] = gets.chomp.to_i
-            
-            status[:game][:button] = 1
-            status[:game][:minimum_bet_amount] = 2
+            redis.hset(:game, :nofpeople, gets.chomp.to_i)
+            redis.hset(:game, :button, 1)
+            redis.hset(:game, :minimum_bet_amount, 2)
 
-            status[:game][:nofpeople].times do |n|
+            redis.hget(:game, :nofpeople).to_i.times do |n|
               puts "how much player_#{n+1} has?"
               amount = gets.chomp.to_i
-              status["player_#{n+1}".to_sym] = {name: "player_#{n+1}", amount: amount, street_stack: amount}
+              redis.hmset(player(n+1), :name, "player_#{n+1}", :amount, amount, :rights_of_side_pot, 10)
             end
           end
-      ####### 毎ゲームの開始準備
+          ####### 毎ゲームの開始準備
           deck = TRUMP
           deck.shuffle!
           cards = {
-            player_1: [deck[0], deck[1]],
-            player_2: [deck[2], deck[3]],
-            player_3: [deck[4], deck[5]],
-            player_4: [deck[6], deck[7]],
-            player_5: [deck[8], deck[9]],
-            player_6: [deck[10], deck[11]],
-            player_7: [deck[12], deck[13]],
-            player_8: [deck[14], deck[15]],
-            player_9: [deck[16], deck[17]],
-            player_10: [deck[18], deck[19]],
+            player_1: [deck[0],deck[1]],
+            player_2: [deck[2],deck[3]],
+            player_3: [deck[4],deck[5]],
+            player_4: [deck[6],deck[7]],
+            player_5: [deck[8],deck[9]],
+            player_6: [deck[10],deck[11]],
+            player_7: [deck[12],deck[13]],
+            player_8: [deck[14],deck[15]],
+            player_9: [deck[16],deck[17]],
+            player_10: [deck[18],deck[19]],
             board: [deck[20],deck[21],deck[22],deck[23],deck[24]],
             flop: [deck[20],deck[21],deck[22]],
             turn: [deck[23]],
@@ -517,208 +642,321 @@ class Poker
             rit_turn: [deck[28]],
             rit_river: [deck[29]],
           }
-          status[:street][:nofstreet] = 1
-          status[:game][:board] = []
-          status[:game][:nofalive] = status[:game][:nofpeople]
-          status[:game][:pot_1] = 0
+          redis.hset(:street, :nofstreet, 1)
+          redis.hset(:game, :board, "")
+          redis.hset(:game, :nofalive, redis.hget(:game, :nofpeople))
+          redis.hset(:game, :nofactive, redis.hget(:game, :nofpeople))
+          redis.hset(:game, :nofside_pot, 1)
+          redis.hset(:game, :side_pot_1, 0)
+          redis.hset(:game, :side_pot_2, 0)
+          redis.hset(:game, :side_pot_3, 0)
+          redis.hset(:game, :side_pot_4, 0)
+          redis.hset(:game, :side_pot_5, 0)
+          redis.hset(:game, :side_pot_6, 0)
+          redis.hset(:game, :side_pot_7, 0)
+          redis.hset(:game, :side_pot_8, 0)
+          redis.hset(:game, :side_pot_9, 0)
 
-      ####### ストリートループ開始  
-          until status[:street][:nofstreet] == 5
-            if status[:game][:nofalive] == 1
+          ####### ストリートループ開始  
+          until redis.hget(:street, :nofstreet).to_i == 5
+            if redis.hget(:game, :nofalive).to_i == 1
               puts "only one person is alive"
               break
             end
-            status[:street][:can_next_street] = false
-            status[:game][:prev_bet_amount] = 0
-      ####### pre flop 開始準備
-            if status[:street][:nofstreet] == 1
-              status[:game][:nofpeople].times do |n|
-                card = cards["player_#{n+1}".to_sym]
-                status["player_#{n+1}".to_sym][:hand] = card
-                status["player_#{n+1}".to_sym][:prev_nofbet] = nil
-                status["player_#{n+1}".to_sym][:betting] = 0
-                status["player_#{n+1}".to_sym][:alive] = true
+            redis.hset(:street, :can_next_street, false)
+            redis.hset(:game, :prev_bet_amount, 0)
+            ####### pre flop 開始準備
+            if redis.hget(:street, :nofstreet).to_i == 1
+              redis.hget(:game, :nofpeople).to_i.times do |n|
+                card = cards[player(n+1)]
+                redis.hset(player(n+1), :hand, card.join(","))
+                redis.hset(player(n+1), :prev_nofbet, nil)
+                redis.hset(player(n+1), :betting, 0)
+                redis.hset(player(n+1), :alive, true)
+                redis.hset(player(n+1), :active, true)
               end
-              if status[:game][:nofpeople] < status[:game][:button] + 1
-                status[:player_1][:betting] = 1
-                status[:player_2][:betting] = 2
-              elsif status[:game][:nofpeople] < status[:game][:button] + 2
-                status["player_#{status[:game][:button] + 1}".to_sym][:betting] = 1
-                status[:player_1][:betting] = 2
+              ####### sbとbbの支払い
+              #!!!ここでのAIに関して処理していない& 1Big等
+              button_num = redis.hget(:game, :button).to_i
+              if redis.hget(:game, :nofpeople).to_i < button_num + 1
+                redis.hset(:player_1, :betting, 1)
+                redis.hset(:player_2, :betting, 2)
+              elsif redis.hget(:game, :nofpeople).to_i < button_num + 2
+                redis.hset(player(button_num+1), :betting, 1)
+                redis.hset(:player_1, :betting, 2)
               else
-                status["player_#{status[:game][:button] + 1}".to_sym][:betting] = 1
-                status["player_#{status[:game][:button] + 2}".to_sym][:betting] = 2
+                redis.hset(player(button_num+1), :betting, 1)
+                redis.hset(player(button_num+2), :betting, 2)
               end
-              status[:street][:temp_pot] = 3 
-              player = status[:game][:button]
+              redis.hset(:street ,:temp_pot, 3)
+              current_player = button_num
+
               3.times do 
-                if status[:game][:nofpeople] == player
-                  player = 1
+                if redis.hget(:game, :nofpeople).to_i == current_player
+                  current_player = 1
                 else
-                  player += 1
+                  current_player += 1
                 end
               end
-              status[:street][:nofbet] = 1
-              status[:game][:current_bet_amount] = 2
-              status[:game][:facing_bet_amount] = status[:game][:current_bet_amount]
-      ####### post flop 開始準備
+              redis.hset(:street, :nofbet, 1)
+              redis.hset(:game, :current_bet_amount, 2)
+              redis.hset(:game, :facing_bet_amount, 2)
+            ####### post flop 開始準備
             else
-              case status[:street][:nofstreet]
+              case redis.hget(:street, :nofstreet).to_i
               when 2
-                status[:game][:board] = status[:game][:board].concat(cards[:flop])
+                redis.hset(:game, :board, cards[:flop].join(","))
               when 3
-                status[:game][:board] = status[:game][:board].concat(cards[:turn])
+                new_board = redis.hget(:game, :board) + "," + (cards[:turn][0])
+                redis.hset(:game, :board, new_board)
               when 4
-                status[:game][:board] = status[:game][:board].concat(cards[:river])
+                new_board = redis.hget(:game, :board) + "," + (cards[:river][0])
+                redis.hset(:game, :board, new_board)
               end
-              status[:game][:nofpeople].times do |n|
-                status["player_#{n+1}".to_sym][:amount] -= status["player_#{n+1}".to_sym][:betting]
-                status["player_#{n+1}".to_sym][:prev_nofbet] = nil
-                status["player_#{n+1}".to_sym][:betting] = 0
-                status["player_#{n+1}".to_sym][:street_stack] = status["player_#{n+1}".to_sym][:amount]
+              
+              calc_pot_from_betting_status
+
+              redis.hget(:game, :nofpeople).to_i.times do |n|
+                redis.hset(player(n+1), :prev_nofbet, nil)
               end
-              status[:game][:pot_1] += status[:street][:temp_pot]
-              status[:street][:temp_pot] = 0
-              player = status[:game][:button]
-              if status[:game][:nofpeople] == player
-                player = 1
+
+              #buttonとアクションプレイヤーの設定
+              current_player = redis.hget(:game, :button).to_i
+              if redis.hget(:game, :nofpeople).to_i == current_player
+                current_player = 1
               else
-                player += 1
+                current_player += 1
               end
-              status[:street][:nofbet] = 0
-              status[:game][:prev_bet_amount] = 0
-              status[:game][:current_bet_amount] = 0
-              status[:game][:facing_bet_amount] = 0
+              redis.hset(:street, :nofbet, 0)
+              redis.hmset(:game, :prev_bet_amount, 0, :current_bet_amount, 0, :facing_bet_amount, 0)
             end
-      ####### 各アクション開始
-            until status[:street][:can_next_street]
-              if status["player_#{player}".to_sym][:alive]
+            ####### 各アクション開始
+            until redis.hget(:street, :can_next_street) == "true"
+              if redis.hget(player(current_player), :alive) == "true" && redis.hget(player(current_player), :active) == "true"
                 puts "your_prev_bet_amount"
-                p your_prev_bet_amount = status["player_#{player}".to_sym][:betting]
+                p your_prev_bet_amount = redis.hget(player(current_player), :betting).to_i
                 puts "your_prev_nofbet"
-                p your_prev_nofbet = status["player_#{player}".to_sym][:prev_nofbet]
+                p your_prev_nofbet = redis.hget(player(current_player), :prev_nofbet).to_i
                 puts "facing_bet"
-                p facing_bet = status[:game][:facing_bet_amount] > your_prev_bet_amount || false
-                puts status
-                puts "It's now player_#{player}! you have #{status["player_#{player}".to_sym][:hand]} and board is #{status[:game][:board]}"
-            ######
-            ######
-                result = get_action(facing_bet, status[:street][:nofbet], status[:game][:minimum_bet_amount], status[:game][:prev_bet_amount], status[:game][:current_bet_amount], your_prev_bet_amount, status["player_#{player}".to_sym][:street_stack], your_prev_nofbet, status[:game][:facing_bet_amount])
-            ######
-            ######
-                # f→[0,0,nil], x→[1,0,nofbet], c→[2, current_bet_amount,nofbet], b→[3, bet_amount, nofbet + 1], r→[4, bet_amount, nofbet + 1], AI→[5, ~~, ~~]
+                p facing_bet = redis.hget(:game, :facing_bet_amount).to_i > your_prev_bet_amount || false
+                puts "!!!!!Game!!!!!"
+                puts redis.hscan("game",0)
+                puts "!!!!!Street!!!!!"
+                puts redis.hscan("street",0)
+                redis.hget(:game, :nofpeople).to_i.times do |n|
+                  puts "!!!!!Player_#{n+1}!!!!!"
+                  puts redis.hscan(player(n+1),0)
+                end
+                puts "It's now player_#{current_player}! you have #{redis.hget(player(current_player), :hand)} and board is #{redis.hget(:game, :board)}"
+                result = get_action(facing_bet, redis.hget(:street, :nofbet).to_i, redis.hget(:game, :minimum_bet_amount).to_i, redis.hget(:game, :prev_bet_amount).to_i, redis.hget(:game, :current_bet_amount).to_i, your_prev_bet_amount, redis.hget(player(current_player), :amount).to_i, your_prev_nofbet, redis.hget(:game, :facing_bet_amount).to_i)
+                # f→[0,0,nil], x→[1,0,nofbet], c→[2, current_bet_amount,nofbet], b→[3, bet_amount, nofbet + 1], r→[4, bet_amount, nofbet + 1], AI→[5, 条件次第, 条件次第]
                 if result[1] > 0
-                  status[:street][:temp_pot] += result[1] - status["player_#{player}".to_sym][:betting]
+                  pot = (result[1] - redis.hget(player(current_player), :betting).to_i) + redis.hget(:street, :temp_pot).to_i
+                  redis.hset(:street, :temp_pot, pot)
                 end
 
                 case result[0]
                 when 0
-                  status["player_#{player}".to_sym][:alive] = false
-                  status[:game][:nofalive] -= 1
-                  if status[:game][:nofalive] == 1
+                  redis.hset(player(current_player), :rights_of_side_pot, 0)
+                  redis.hset(player(current_player), :active, false)
+                  nofactive = redis.hget(:game, :nofactive).to_i - 1
+                  redis.hset(:game, :nofactive, nofactive)
+
+                  redis.hset(player(current_player), :alive, false)
+                  nofalive = redis.hget(:game, :nofalive).to_i - 1
+                  redis.hset(:game, :nofalive, nofalive)
+                  if nofalive == 1
                     puts "only one person is alive"
                     break
                   end
                 when 1
                   # status["player_#{player}".to_sym][:betting] はそのまま
                 when 2
-                  status["player_#{player}".to_sym][:betting] = result[1]
-                when 3
-                  status[:game][:prev_bet_amount] = status[:game][:current_bet_amount]
-                  status[:game][:current_bet_amount] = result[1]
-                  status[:game][:facing_bet_amount] = status[:game][:current_bet_amount]
-                  status[:street][:nofbet] += 1 
-                  status["player_#{player}".to_sym][:betting] = result[1]
-                when 4
-                  status[:game][:prev_bet_amount] = status[:game][:current_bet_amount]
-                  status[:game][:current_bet_amount] = result[1]
-                  status[:game][:facing_bet_amount] = status[:game][:current_bet_amount]
-                  status[:street][:nofbet] += 1 
-                  status["player_#{player}".to_sym][:betting] = result[1]
+                  redis.hset(player(current_player), :betting, result[1])
+                  
+                  nofactive = redis.hget(:game, :nofactive).to_i
+                  if nofactive == 1
+                    redis.hset(player(current_player), :active, false)
+                    redis.hset(:game, :nofactive, nofactive - 1)
+                  end
+                when 3..4
+                  redis.hset(:game, :prev_bet_amount, redis.hget(:game, :current_bet_amount))
+                  redis.hset(:game, :current_bet_amount, result[1])
+                  redis.hset(:game, :facing_bet_amount, result[1])
+                  nofbet = redis.hget(:street, :nofbet).to_i + 1
+                  redis.hset(:street, :nofbet, nofbet)
+                  redis.hset(player(current_player), :betting, result[1])
+
+                  nofactive = redis.hget(:game, :nofactive).to_i
+                  if nofactive == 1
+                    redis.hset(player(current_player), :active, false)
+                    redis.hset(:game, :nofactive, nofactive - 1)
+                  end
                 when 5
-                  if result[2] == status[:street][:nofbet]
+                  if result[2] == redis.hget(:street, :nofbet).to_i
                     # prev_bet_amountはこのまま
                     # current_bet_amountはこのまま
-                    p status[:game][:facing_bet_amount] = result[1] if status[:game][:facing_bet_amount] < result[1]
+                    if redis.hget(:game, :facing_bet_amount).to_i < result[1]
+                      redis.hset(:game, :facing_bet_amount, result[1])
+                    end
                     # nofbetはこのまま
-                    status["player_#{player}".to_sym][:betting] = result[1]
-                  else
-                    status[:game][:prev_bet_amount] = status[:game][:current_bet_amount]
-                    status[:game][:current_bet_amount] = result[1]
-                    status[:game][:facing_bet_amount] = status[:game][:current_bet_amount]
-                    status[:street][:nofbet] += 1 
-                    status["player_#{player}".to_sym][:betting] = result[1]
+                    redis.hset(player(current_player), :betting, result[1])
                   end
+                  redis.hset(player(current_player), :active, false)
+                  nofactive = redis.hget(:game, :nofactive).to_i - 1
+                  redis.hset(:game, :nofactive, nofactive)
+
+                  redis.hset(:game, :prev_bet_amount, redis.hget(:game, :current_bet_amount))
+                  redis.hset(:game, :current_bet_amount, result[1])
+                  redis.hset(:game, :facing_bet_amount, result[1])
+                  nofbet = redis.hget(:street, :nofbet).to_i + 1
+                  redis.hset(:street, :nofbet, nofbet)
+                  redis.hset(player(current_player), :betting, result[1])
                 end
-                status["player_#{player}".to_sym][:prev_nofbet] = result[2]
+                redis.hset(player(current_player), :prev_nofbet, result[2])
               end
-              if status[:game][:nofpeople] == player
-                player = 1
+              if redis.hget(:game, :nofpeople).to_i == current_player
+                current_player = 1
               else
-                player += 1
+                current_player += 1
               end
-              check_1, check_2, check_3 = false
+              check_1, check_2, check_3, check_4 = false, false, false, false
               puts "check_1"
-              p check_1 = true if status["player_#{player}".to_sym][:alive] == true
+              p check_1 = true if redis.hget(player(current_player), :active) == "true"
               puts "check_2"
-              p check_2 = true if status[:game][:facing_bet_amount] == status["player_#{player}".to_sym][:betting]
+              p check_2 = true if redis.hget(:game, :facing_bet_amount) == redis.hget(player(current_player), :betting)
               puts "check_3"
-              p check_3 = true if status[:street][:nofbet] == status["player_#{player}".to_sym][:prev_nofbet]
-              if check_1 && check_2 && check_3
-                status[:street][:can_next_street] = true
-                status[:street][:nofstreet] += 1
-                puts status
+              p check_3 = true if redis.hget(:street, :nofbet) == redis.hget(player(current_player), :prev_nofbet)
+              puts "check_4"
+              p check_4 = true if redis.hget(:game, :nofactive).to_i == 0
+              if check_4
+                redis.hset(:street, :can_next_street, true)
+                nofstreet = redis.hget(:street, :nofstreet).to_i + 1
+                redis.hset(:street, :nofstreet, nofstreet)
+                puts "!!!!!Game!!!!!"
+                puts redis.hscan("game",0)
+                puts "!!!!!Street!!!!!"
+                puts redis.hscan("street",0)
+                redis.hget(:game, :nofpeople).to_i.times do |n|
+                  puts "!!!!!Player_#{n+1}!!!!!"
+                  puts redis.hscan(player(n+1),0)
+                end
+                puts "ALLIN appears and nothing to change. go to next street"
+              elsif check_1 && check_2 && check_3
+                redis.hset(:street, :can_next_street, true)
+                nofstreet = redis.hget(:street, :nofstreet).to_i + 1
+                redis.hset(:street, :nofstreet, nofstreet)
                 puts "go to next street"
+                puts "!!!!!Game!!!!!"
+                puts redis.hscan("game",0)
+                puts "!!!!!Street!!!!!"
+                puts redis.hscan("street",0)
+                redis.hget(:game, :nofpeople).to_i.times do |n|
+                  puts "!!!!!Player_#{n+1}!!!!!"
+                  puts redis.hscan(player(n+1),0)
+                end
               end
             end
           end
-      ####### 結果
-          winner = []
-          if status[:street][:nofstreet] == 5
+
+          ####### 結果
+          sorted_winners = []
+          if redis.hget(:street, :nofstreet).to_i == 5
             array_hands = []
-            status[:game][:nofpeople].times do |n|
-              if status["player_#{n+1}".to_sym][:alive]
-                array_hands << status["player_#{n+1}".to_sym][:hand]
+            redis.hget(:game, :nofpeople).to_i.times do |n|
+              if redis.hget(player(n+1), :alive) == "true"
+                array_hands << redis.hget(player(n+1), :hand).split(",")
               else
                 array_hands << []
               end
             end
-            result = get_wh_at_showdown(status[:game][:board], array_hands)
-            puts "player_#{result[0][0]} win"
-            winner = result[0]
+            sorted_winners = get_wh_at_showdown2(redis.hget(:game, :board).split(","), array_hands)
+            puts "player_#{sorted_winners[0][3]} win"
           else
             alive = nil
-            status[:game][:nofpeople].times do |n|
-              if status["player_#{n+1}".to_sym][:alive]
-                alive = n
+            redis.hget(:game, :nofpeople).to_i.times do |n|
+              if redis.hget(player(n+1), :alive) == "true"
+                alive = n + 1
               end
             end
-            puts "player_#{alive+1} win"
-            winner = [alive+1]
+            sorted_winners = [[nil,nil,nil,alive]]
+            puts "player_#{sorted_winners[0][3]} win"
           end
-      ####### 次の準備
-          if winner.count == 1
-            status[:game][:pot_1] += status[:street][:temp_pot]
-            status["player_#{winner[0]}".to_sym][:amount] = status["player_#{winner[0]}".to_sym][:amount] + status[:game][:pot_1] - status["player_#{winner[0]}".to_sym][:betting]
-            status["player_#{winner[0]}".to_sym][:street_stack] = status["player_#{winner[0]}".to_sym][:amount]
-            status["player_#{winner[0]}".to_sym][:betting] = 0
-            status[:game][:nofpeople].times do |n|
-              status["player_#{n+1}".to_sym][:amount] -= status["player_#{n+1}".to_sym][:betting]
+
+          calc_pot_from_betting_status
+
+          rights = redis.hget(:game, :nofpeople).to_i.times.map do |n| # [1, 2, 2, 0]
+            redis.hget(player(n+1), :rights_of_side_pot).to_i
+          end
+
+          9.times do |n|
+            if redis.hget(:game, "side_pot_#{n+1}".to_sym).to_i > 0
+              rights_players = []
+              give = false
+              gifted_player = []
+              prev_result = [nil,nil,nil,nil]
+              rights.each.with_index do |int,idx| 
+                if int >= n+1 #pot獲得権があれば
+                  rights_players << idx+1 #[1,2,3]
+                end
+              end
+
+              sorted_winners.each do |result|
+                if result[0] == prev_result[0] && result[2] == prev_result[2] #前回のと役とキッカーが一緒ならば
+                else 
+                  if gifted_player.count > 0 #一緒でなく、potを上げる人がいるならば
+                    break
+                  end
+                end
+                prev_result = result
+
+                rights_players.each do |prayer|
+                  if result[3] == prayer
+                    give = true
+                    gifted_player << prayer
+                  end
+                end
+              end
+
+              if give == true
+                pot = redis.hget(:game, "side_pot_#{n+1}".to_sym).to_i / gifted_player.count 
+                remain = redis.hget(:game, "side_pot_#{n+1}".to_sym).to_i % gifted_player.count
+                button = redis.hget(:game, :button).to_i
+                position = gifted_player.map {|p| p + button}
+                bad_position = position.sort[0] - button
+                p "player#{gifted_player} win by side_pot_#{n+1}($#{pot})"
+                gifted_player.each do |got_player|
+                  amount = redis.hget(player(got_player), :amount).to_i
+                  if got_player == bad_position
+                    redis.hset(player(got_player), :amount, amount + pot + remain)
+                  else
+                    redis.hset(player(got_player), :amount, amount + pot)
+                  end
+                end
+              end
             end
-          else
-            p "未実装"
-            raise
           end
-          status[:game][:number] += 1
-          button_player = status[:game][:button]
-          if status[:game][:nofpeople] == button_player
+
+          number = redis.hget(:game, :number).to_i + 1
+          redis.hset(:game, :number, number)
+          button_player = redis.hget(:game, :button).to_i
+          if redis.hget(:game, :nofpeople).to_i == button_player
             button_player = 1
           else
             button_player += 1
           end
-          status[:game][:button] = button_player
+          redis.hset(:game, :button, button_player)
+          p "1 game finished. go to next game"
         end
-        p status
+        p "!!!!!!!!!!!!!!finished!!!!!!!!!!!!!!!!"
+        puts "!!!!!Game!!!!!"
+        puts redis.hscan("game",0)
+        puts "!!!!!Street!!!!!"
+        puts redis.hscan("street",0)
+        redis.hget(:game, :nofpeople).to_i.times do |n|
+          puts "!!!!!Player_#{n+1}!!!!!"
+          puts redis.hscan(player(n+1),0)
+        end
       end
     end
   end 
