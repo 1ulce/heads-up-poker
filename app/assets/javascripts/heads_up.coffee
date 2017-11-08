@@ -11,6 +11,11 @@ $(document).on 'turbolinks:load', ->
   $(document).on 'click', 'button.ready', ->
     console.log("st")
     App.heads_up_room.ready()
+
+$(document).on 'turbolinks:load', -> 
+  $(document).on 'click', 'button.clear', ->
+    console.log("clear")
+    App.heads_up_room.clear()
 # testfunc = ->
 #   alert("here")
 #   App.heads_up_room.entered()

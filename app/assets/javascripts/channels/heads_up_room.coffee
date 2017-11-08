@@ -7,6 +7,8 @@ App.heads_up_room = App.cable.subscriptions.create "HeadsUpRoomChannel",
 
   disconnected: ->
     # Called when the subscription has been terminated by the server
+    alert "someone(you) disconnected"
+    @perform 'stop_stream'
 
   received: (data) ->
     #$('#users').html(data)
@@ -31,10 +33,13 @@ App.heads_up_room = App.cable.subscriptions.create "HeadsUpRoomChannel",
 
   start: () ->
     alert 'game start'
-    @perform 'start'
+    @perform 'start2'
 
   ready: () ->
     @perform 'ready'
+
+  clear: ->
+    @perform 'clear'
 
   actions['join'] = (data)->
     $('#users').html(data.users)
@@ -45,3 +50,10 @@ App.heads_up_room = App.cable.subscriptions.create "HeadsUpRoomChannel",
   actions['finished'] = (data)->
     $('#ready').remove()
     alert "game finished"
+
+  actions['deal'] = (data) ->
+    console.log(data.cards)
+
+  actions['start'] = (data) ->
+    alert "let's start poker!"
+
