@@ -429,8 +429,8 @@ class Poker
     end
 
     def start
-      # redis.flushall
-      # initial_table_setting
+      redis.flushall
+      initial_table_setting
       initial_game_setting
       while redis.hget(:game, :nofalive).to_i > 1
         until redis.hget(:street, :nofstreet).to_i == 5

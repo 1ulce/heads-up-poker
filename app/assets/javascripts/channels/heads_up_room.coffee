@@ -53,7 +53,9 @@ App.heads_up_room = App.cable.subscriptions.create "HeadsUpRoomChannel",
 
   actions['deal'] = (data) ->
     console.log(data.cards)
+    result = data.cards.split(",")
+    $('#me .hand').html("<card>#{result[0]}</card><card>#{result[1]}</card>")
 
   actions['start'] = (data) ->
-    alert "let's start poker!"
+    alert "let's start"
 

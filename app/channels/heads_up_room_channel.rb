@@ -24,6 +24,7 @@ class HeadsUpRoomChannel < ApplicationCable::Channel
     user_list = redis.lrange("user_id_list",redis.llen("user_id_list") -2 , redis.llen("user_id_list"))
     rendered_users = "" 
     user_list.each do |u|
+      yourself = false
       yourself = true if u == user.user_id
       rendered_user = ApplicationController.renderer.render(partial: 'users/user', locals: { user: u, yourself: yourself })
       rendered_users = rendered_users + rendered_user
