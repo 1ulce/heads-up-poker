@@ -41,8 +41,11 @@ App.heads_up_room = App.cable.subscriptions.create "HeadsUpRoomChannel",
   clear: ->
     @perform 'clear'
 
-  actions['join'] = (data)->
-    $('#users').html(data.users)
+  actions['join_me'] = (data)->
+    $('#users #me').html(data.users)
+
+  actions['join_rival'] = (data)->
+    $('#users #rival').html(data.users)
 
   actions['filled'] = (data)->
     $('#ready').html('<button class="ready"> ready </button>')

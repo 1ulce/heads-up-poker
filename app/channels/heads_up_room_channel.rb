@@ -15,7 +15,7 @@ class HeadsUpRoomChannel < ApplicationCable::Channel
 
   def entered
     stream_from "room_1"
-    user = User.new
+    user = User.where(user_id: user_id).first || User.new
     user.user_id = user_id
     puts user.user_id
     user.save
@@ -24,12 +24,16 @@ class HeadsUpRoomChannel < ApplicationCable::Channel
     user_list = redis.lrange("user_id_list",redis.llen("user_id_list") -2 , redis.llen("user_id_list"))
     rendered_users = "" 
     user_list.each do |u|
-      yourself = false
-      yourself = true if u == user.user_id
-      rendered_user = ApplicationController.renderer.render(partial: 'users/user', locals: { user: u, yourself: yourself })
-      rendered_users = rendered_users + rendered_user
+      user_list.each do |uu|
+        rendered_user = ApplicationController.renderer.render(partial: 'users/user', locals: { user: uu})
+        if uu == u
+          ActionCable.server.broadcast "user_#{u}", { action: "join_me", users: rendered_user }
+        else 
+          ActionCable.server.broadcast "user_#{u}", { action: "join_rival", users: rendered_user }
+        end
+      end
     end
-    ActionCable.server.broadcast 'room_1', { action: "join", users: rendered_users }
+
     if user_list.count == 2
       ActionCable.server.broadcast 'room_1', {action: "filled"}
     end
