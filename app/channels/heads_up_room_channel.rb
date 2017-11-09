@@ -66,6 +66,7 @@ class HeadsUpRoomChannel < ApplicationCable::Channel
         ActionCable.server.broadcast "user_#{u_name}", {action: "start"}
       end
       Poker.initial_table_setting(2, "#{u_names[0]}", "#{u_names[1]}")
+      ActionCable.server.broadcast "room_1", {action: "set_id", players: u_names}
       redis.del("ready_user_id_list")
       start2
     end
@@ -77,14 +78,8 @@ class HeadsUpRoomChannel < ApplicationCable::Channel
 
   def start2
     p "GAME START!!!!!!!!!!!!!!!!!"
-    Poker.initial_game_setting
-    Poker.preflop_setting
-    cards = nil
-    2.times do |n|
-      u_name = redis.lindex("playing_user_id_list",n)
-      cards = Poker.deal_cards(Poker.get_player(u_name))
-      ActionCable.server.broadcast "user_#{u_name}", {action: "deal", cards: cards}
-    end
+    Poker.start
+    # ActionCable.server.broadcast "user_#{u_name}", {action: "delete_button", cards: cards}
     # Poker.start
   end
 

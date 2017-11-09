@@ -409,11 +409,17 @@ class Poker
       end
     end
 
+    def get_action_from_web(facing_bet = false, nofbet = 0, minimum_bet_amount, prev_bet_amount, current_bet_amount, your_prev_bet_amount, street_stack, your_prev_nofbet, facing_bet_amount)
+      u_name = get_player_name(redis.hget(:game, :current_player).to_i)
+      ActionCable.server.broadcast "user_#{u_name}", {action: "info", info:"yo"}
+      # ActionCable.server.broadcast "user_#{u_name}", {action: "urge_action", "plz action"}
+    end
+
     def player(int)
       "player_#{int}".to_sym
     end
 
-    def get_player(player_name)
+    def get_player_num(player_name)
       9.times do |n|
         u_name = redis.hget("player_#{n+1}".to_sym, :name)
         if player_name == u_name
@@ -424,13 +430,12 @@ class Poker
       raise
     end
 
-    def deal_cards(player_id)
-      redis.hget(player(player_id), :hand)
+    def get_player_name(int)
+      redis.hget(player(int), :name)
     end
 
     def start
-      redis.flushall
-      initial_table_setting
+      # initial_table_setting
       initial_game_setting
       while redis.hget(:game, :nofalive).to_i > 1
         until redis.hget(:street, :nofstreet).to_i == 5
@@ -454,17 +459,16 @@ class Poker
       next_table_setting
     end
 
-    def initial_table_setting(nofplayers = nil, user1_name = "player_1", user2_name = "player_2")
+    def initial_table_setting(nofplayers = nil, *user_names)
       redis.hset(:game, :number, 1)
       puts "how many people?"
       nofplayers = gets.chomp.to_i if nofplayers == nil
       redis.hmset(:game, :nofpeople, nofplayers, :button, 1, :minimum_bet_amount, 2, :nofalive, nofplayers)
-
       nofplayers.times do |n|
         # puts "how much player_#{n+1} has?"
         # amount = gets.chomp.to_i
         amount = 200
-        redis.hmset(player(n+1), :name, eval("user#{n+1}_name"), :amount, amount)
+        redis.hmset(player(n+1), :name, user_names[n], :amount, amount)
       end
     end
     def initial_game_setting
@@ -532,12 +536,14 @@ class Poker
       cards = JSON.parse(redis.hget(:game, :cards))
       if redis.hget(:street, :nofstreet).to_i == 1
         redis.hget(:game, :nofpeople).to_i.times do |n|
-          card = cards["player_#{n+1}"]
-          redis.hset(player(n+1), :hand, card.join(","))
+          card = cards["player_#{n+1}"].join(",")
+          redis.hset(player(n+1), :hand, card)
+          ActionCable.server.broadcast "user_#{get_player_name(n+1)}", {action: "deal_hand", cards: card}
         end
         ####### sbとbbの支払い
         #!!!ここでのAIに関して処理していない& 1Big等
         button_num = redis.hget(:game, :button).to_i
+        ActionCable.server.broadcast "room_1", {action: "deal_button", id: button_num}
         unless redis.hget(:game, :nofpeople).to_i == 2
           if redis.hget(:game, :nofpeople).to_i < button_num + 1
             redis.hset(:player_1, :betting, 1)
@@ -696,7 +702,7 @@ class Poker
     def treat_action
       current_player = redis.hget(:game, :current_player).to_i
       facing_bet = redis.hget(:game, :facing_bet_amount).to_i > redis.hget(player(current_player), :betting).to_i || false
-      result = get_action(facing_bet, redis.hget(:street, :nofbet).to_i, redis.hget(:game, :minimum_bet_amount).to_i, redis.hget(:game, :prev_bet_amount).to_i, redis.hget(:game, :current_bet_amount).to_i, redis.hget(player(current_player), :betting).to_i, redis.hget(player(current_player), :amount).to_i, redis.hget(player(current_player), :prev_nofbet).to_i, redis.hget(:game, :facing_bet_amount).to_i)
+      result = get_action_from_web(facing_bet, redis.hget(:street, :nofbet).to_i, redis.hget(:game, :minimum_bet_amount).to_i, redis.hget(:game, :prev_bet_amount).to_i, redis.hget(:game, :current_bet_amount).to_i, redis.hget(player(current_player), :betting).to_i, redis.hget(player(current_player), :amount).to_i, redis.hget(player(current_player), :prev_nofbet).to_i, redis.hget(:game, :facing_bet_amount).to_i)
       if result[1] > 0
         pot = (result[1] - redis.hget(player(current_player), :betting).to_i) + redis.hget(:street, :temp_pot).to_i
         redis.hset(:street, :temp_pot, pot)
