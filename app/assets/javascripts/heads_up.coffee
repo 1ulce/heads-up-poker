@@ -23,37 +23,29 @@ $(document).on 'turbolinks:load', ->
 
 $(document).on 'turbolinks:load', -> 
   $(document).on 'click', 'button.fold', ->
-    App.heads_up_room.action("fold")
+    App.heads_up_room.action("f")
 
 $(document).on 'turbolinks:load', -> 
   $(document).on 'click', 'button.check', ->
-    App.heads_up_room.action("check")
+    App.heads_up_room.action("x")
 
 $(document).on 'turbolinks:load', -> 
   $(document).on 'click', 'button.call', ->
-    App.heads_up_room.action("call")
-
-$(document).on 'turbolinks:load', -> 
-  $(document).on 'click', 'button.pre_bet', ->
-    $('.actions .amount').html("<div><h5>how much you bet?</h5><input name='_text' type='text' value='' /></div><button class=bet>bet!</button>")
-
-$(document).on 'turbolinks:load', -> 
-  $(document).on 'click', 'button.pre_raise', ->
-    $('.actions .amount').html("<div><h5>how much you raise?</h5><input name='_text' type='text' value='' /></div><button class=raise>raise!</button>")
+    App.heads_up_room.action("c")
 
 $(document).on 'turbolinks:load', -> 
   $(document).on 'click', 'button.bet', ->
-    amount = $(':text[name="_text"]').val()
-    App.heads_up_room.action("bet", amount)
+    amount = prompt("額を入力してください")
+    App.heads_up_room.action("b", amount)
 
 $(document).on 'turbolinks:load', -> 
   $(document).on 'click', 'button.raise', ->
-    amount = $(':text[name="_text"]').val()
-    App.heads_up_room.action("raise", amount)
+    amount = prompt("額を入力してください")
+    App.heads_up_room.action("r", amount)
 
-$(document).on 'turbolinks:load', -> 
-  $(document).on 'click', 'button.allin', ->
-    App.heads_up_room.action("allin")
+# $(document).on 'turbolinks:load', -> 
+#   $(document).on 'click', 'button.allin', ->
+#     App.heads_up_room.action("a")
 
 # testfunc = ->
 #   alert("here")

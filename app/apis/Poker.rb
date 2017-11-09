@@ -409,10 +409,88 @@ class Poker
       end
     end
 
-    def get_action_from_web(facing_bet = false, nofbet = 0, minimum_bet_amount, prev_bet_amount, current_bet_amount, your_prev_bet_amount, street_stack, your_prev_nofbet, facing_bet_amount)
+    def urge_action_to_web(facing_bet = false, nofbet = 0, current_bet_amount, street_stack, your_prev_nofbet)
+      p "urge_action_to_web"
+      current_player = redis.hget(:game, :current_player).to_i
+      facing_bet = redis.hget(:game, :facing_bet_amount).to_i > redis.hget(player(current_player), :betting).to_i || false
       u_name = get_player_name(redis.hget(:game, :current_player).to_i)
-      ActionCable.server.broadcast "user_#{u_name}", {action: "info", info:"yo"}
-      # ActionCable.server.broadcast "user_#{u_name}", {action: "urge_action", "plz action"}
+      street_stack = redis.hget(player(current_player), :amount).to_i
+      redis.hget(:game, :nofpeople).to_i.times do |n|
+        ActionCable.server.broadcast "room_1", {action: "show_betting", id: n+1, betting: redis.hget(player(n+1),:betting)}
+        ActionCable.server.broadcast "room_1", {action: "show_stack", id: n+1, stack: redis.hget(player(n+1),:amount)}
+      end
+      if facing_bet
+        if your_prev_nofbet == nofbet
+          ActionCable.server.broadcast "user_#{u_name}", {action: "info", info:"you can do \'f\' or \'c\'"}
+          ActionCable.server.broadcast "user_#{u_name}", {action: "urge_action", actions:["f","c"]}
+        else
+          if current_bet_amount >= street_stack
+            ActionCable.server.broadcast "user_#{u_name}", {action: "info", info:"you can do \'f\' or \'c\'"}
+            ActionCable.server.broadcast "user_#{u_name}", {action: "urge_action", actions:["f","c"]}
+          else
+            current_bet_amount = redis.hget(:game, :current_bet_amount).to_i
+            prev_bet_amount = redis.hget(:game, :prev_bet_amount).to_i
+            min_raise = current_bet_amount * 2 - prev_bet_amount
+            ActionCable.server.broadcast "user_#{u_name}", {action: "info", info:"you can do \'f\', \'c\' or \'r\'"}
+            ActionCable.server.broadcast "user_#{u_name}", {action: "urge_action", actions:["f","c","r"], raise_amounts: [min_raise,street_stack]}
+          end
+        end
+      else
+        minimum_bet_amount = redis.hget(:game, :minimum_bet_amount).to_i
+        if nofbet == 0
+          ActionCable.server.broadcast "user_#{u_name}", {action: "info", info:"you can do \'x\' or \'b\'"}
+          ActionCable.server.broadcast "user_#{u_name}", {action: "urge_action", actions:["x","b"], bet_amounts: [minimum_bet_amount,street_stack]}
+        elsif nofbet == 1
+          ActionCable.server.broadcast "user_#{u_name}", {action: "info", info:"you can do \'x\' or \'r\'"}
+          ActionCable.server.broadcast "user_#{u_name}", {action: "urge_action", actions:["x","r"], raise_amounts: [minimum_bet_amount * 2,street_stack]}
+        end
+      end
+    end
+
+    def process_action(action_name, bet_amount)
+      p "process_action"
+      current_player = redis.hget(:game, :current_player).to_i
+      nofbet = redis.hget(:street, :nofbet).to_i
+      street_stack = redis.hget(player(current_player), :amount).to_i
+      facing_bet_amount = redis.hget(:game, :facing_bet_amount).to_i
+      minimum_bet_amount = redis.hget(:game, :minimum_bet_amount).to_i
+      current_bet_amount = redis.hget(:game, :current_bet_amount).to_i
+      prev_bet_amount = redis.hget(:game, :prev_bet_amount).to_i
+      min_raise = current_bet_amount * 2 - prev_bet_amount
+      case action_name
+      when "f"
+        return [0, 0, nil]
+      when "x"
+        return [1, 0, nofbet]
+      when "c"
+        if street_stack <= facing_bet_amount
+          return [5, street_stack, nofbet]
+        else
+          return [2, facing_bet_amount, nofbet]
+        end
+      when "b"
+        if street_stack < minimum_bet_amount
+          return [5, street_stack, nofbet]
+        end
+        if bet_amount == street_stack
+          return [5, bet_amount, nofbet + 1]
+        end
+        return [3, bet_amount, nofbet + 1]
+      when "r"
+        min_raise = current_bet_amount * 2 - prev_bet_amount
+        if min_raise == street_stack
+          return [5, street_stack, nofbet + 1]
+        elsif min_raise > street_stack
+          return [5, street_stack, nofbet]
+        else
+          if bet_amount == street_stack
+            return [5, bet_amount, nofbet + 1]
+          end
+          return [4, bet_amount, nofbet + 1]
+        end
+      else
+        p "what an error!"
+      end
     end
 
     def player(int)
@@ -435,7 +513,7 @@ class Poker
     end
 
     def start
-      # initial_table_setting
+      initial_table_setting
       initial_game_setting
       while redis.hget(:game, :nofalive).to_i > 1
         until redis.hget(:street, :nofstreet).to_i == 5
@@ -447,12 +525,15 @@ class Poker
             postflop_setting
           end
           until redis.hget(:street, :can_next_street) == "true"
-            if redis.hget(player(redis.hget(:game, :current_player).to_i), :alive) == "true" && redis.hget(player(redis.hget(:game, :current_player).to_i), :active) == "true"
-              treat_action
+            current_player = redis.hget(:game, :current_player).to_i
+            if redis.hget(player(current_player), :alive) == "true" && redis.hget(player(redis.hget(:game, :current_player).to_i), :active) == "true"
+              urge_action_to_web(nil, redis.hget(:street, :nofbet).to_i, redis.hget(:game, :current_bet_amount).to_i, redis.hget(player(current_player), :amount).to_i, redis.hget(player(current_player), :prev_nofbet).to_i)
+              result = process_action()
+              treat_action(result)
             end
             next_player
+            check_next_street
           end
-          check_next_street
         end
         end_the_game
       end
@@ -460,8 +541,8 @@ class Poker
     end
 
     def initial_table_setting(nofplayers = nil, *user_names)
+      p "initial_table_setting"
       redis.hset(:game, :number, 1)
-      puts "how many people?"
       nofplayers = gets.chomp.to_i if nofplayers == nil
       redis.hmset(:game, :nofpeople, nofplayers, :button, 1, :minimum_bet_amount, 2, :nofalive, nofplayers)
       nofplayers.times do |n|
@@ -472,6 +553,7 @@ class Poker
       end
     end
     def initial_game_setting
+      p "initial_game_setting"
       deck = TRUMP
       deck.shuffle!
       cards = {
@@ -523,13 +605,20 @@ class Poker
         redis.hset(player(n+1), :rights_of_side_pot, 10)
       end
     end
-    def check_finish
+    def is_finish
+      p "is_finish?"
       if redis.hget(:game, :nofalive).to_i == 1
         puts "only one person is alive"
-        end_the_game
+        return true
       end
+      if redis.hget(:street, :nofstreet).to_i == 5
+        puts "go to showdown"
+        return true
+      end
+      false
     end
     def preflop_setting
+      p "preflop_setting"
       redis.hset(:street, :can_next_street, false)
       redis.hset(:game, :prev_bet_amount, 0)
       ####### pre flop 開始準備
@@ -576,6 +665,10 @@ class Poker
             current_player = 2
           end
         end
+        redis.hget(:game, :nofpeople).to_i.times do |n|
+          ActionCable.server.broadcast "room_1", {action: "show_betting", id: n+1, betting: redis.hget(player(n+1),:betting)}
+          ActionCable.server.broadcast "room_1", {action: "show_stack", id: n+1, stack: redis.hget(player(n+1),:amount)}
+        end
         redis.hset(:game ,:current_player, current_player)
         redis.hset(:street ,:temp_pot, 3)
         redis.hset(:street, :nofbet, 1)
@@ -584,6 +677,9 @@ class Poker
       end
     end
     def postflop_setting
+      p "postflop_setting"
+      redis.hset(:street, :can_next_street, false)
+      redis.hset(:game, :prev_bet_amount, 0)
       cards = cards = JSON.parse(redis.hget(:game, :cards))
       case redis.hget(:street, :nofstreet).to_i
       when 2
@@ -595,12 +691,7 @@ class Poker
         new_board = redis.hget(:game, :board) + "," + (cards["river"][0])
         redis.hset(:game, :board, new_board)
       end
-      
-      calc_pot_from_betting_status
-
-      redis.hget(:game, :nofpeople).to_i.times do |n|
-        redis.hset(player(n+1), :prev_nofbet, nil)
-      end
+      ActionCable.server.broadcast "room_1", {action: "deal_board", board: redis.hget(:game, :board)}
 
       #buttonとアクションプレイヤーの設定
       current_player = redis.hget(:game, :button).to_i
@@ -611,8 +702,14 @@ class Poker
       end
       redis.hset(:street, :nofbet, 0)
       redis.hmset(:game, :prev_bet_amount, 0, :current_bet_amount, 0, :facing_bet_amount, 0, :current_player, current_player)
+      redis.hget(:game, :nofpeople).to_i.times do |n|
+        redis.hset(player(n+1), :prev_nofbet, nil)
+        ActionCable.server.broadcast "room_1", {action: "show_betting", id: n+1, betting: redis.hget(player(n+1),:betting)}
+        ActionCable.server.broadcast "room_1", {action: "show_stack", id: n+1, stack: redis.hget(player(n+1),:amount)}
+      end
     end
     def calc_pot_from_betting_status
+      p "calc_pot_from_betting_status"
       # 前のストリートのpot処理
       nof_alive = redis.hget(:game, :nofalive).to_i
       nof_active = redis.hget(:game, :nofactive).to_i
@@ -699,10 +796,10 @@ class Poker
         redis.hset(player(n+1), :betting, 0)
       end
     end
-    def treat_action
+    def treat_action(array)
+      puts "treat_action"
+      result = [array[0].to_i, array[1].to_i, array[2].to_i]
       current_player = redis.hget(:game, :current_player).to_i
-      facing_bet = redis.hget(:game, :facing_bet_amount).to_i > redis.hget(player(current_player), :betting).to_i || false
-      result = get_action_from_web(facing_bet, redis.hget(:street, :nofbet).to_i, redis.hget(:game, :minimum_bet_amount).to_i, redis.hget(:game, :prev_bet_amount).to_i, redis.hget(:game, :current_bet_amount).to_i, redis.hget(player(current_player), :betting).to_i, redis.hget(player(current_player), :amount).to_i, redis.hget(player(current_player), :prev_nofbet).to_i, redis.hget(:game, :facing_bet_amount).to_i)
       if result[1] > 0
         pot = (result[1] - redis.hget(player(current_player), :betting).to_i) + redis.hget(:street, :temp_pot).to_i
         redis.hset(:street, :temp_pot, pot)
@@ -717,7 +814,6 @@ class Poker
         redis.hset(player(current_player), :alive, false)
         nofalive = redis.hget(:game, :nofalive).to_i - 1
         redis.hset(:game, :nofalive, nofalive)
-        check_finish
       when 1
         # status["player_#{player}".to_sym][:betting] はそのまま
       when 2
@@ -765,6 +861,7 @@ class Poker
       redis.hset(player(current_player), :prev_nofbet, result[2])
     end
     def next_player
+      p "next_player"
       current_player = redis.hget(:game, :current_player).to_i
       if redis.hget(:game, :nofpeople).to_i == current_player
         current_player = 1
@@ -774,6 +871,7 @@ class Poker
         redis.hset(:game, :current_player, current_player)
     end
     def check_next_street
+      puts "check_next_street"
       current_player = redis.hget(:game, :current_player)
       check_1, check_2, check_3, check_4 = false, false, false, false
       puts "check_1"
@@ -814,11 +912,12 @@ class Poker
     end
 
     def end_the_game
+      p "end_the_game"
       calc_pot_from_betting_status
       winners = get_winner
       give_pot(winners)
       next_game_setting
-      initial_game_setting
+      # initial_game_setting
     end
     def get_winner
       sorted_winners = []
@@ -912,7 +1011,6 @@ class Poker
     end
     def next_table_setting
       p "決着がついたっぽい"
-      gets.chomp
     end
 
     def test
