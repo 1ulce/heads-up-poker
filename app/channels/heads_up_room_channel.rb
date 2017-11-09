@@ -78,13 +78,13 @@ class HeadsUpRoomChannel < ApplicationCable::Channel
     Poker.check_next_street
     current_player = redis.hget(:game, :current_player).to_i
     unless redis.hget(:street, :can_next_street) == "true"
-      self.finish if Poker.is_finish
+      return self.finish if Poker.is_finish
       current_player = redis.hget(:game, :current_player).to_i
       if redis.hget(Poker.player(current_player), :alive) == "true" && redis.hget(Poker.player(redis.hget(:game, :current_player).to_i), :active) == "true"
         Poker.urge_action_to_web(nil, redis.hget(:street, :nofbet).to_i, redis.hget(:game, :current_bet_amount).to_i, redis.hget(Poker.player(current_player), :amount).to_i, redis.hget(Poker.player(current_player), :prev_nofbet).to_i)
       end
     else
-      self.finish if Poker.is_finish
+      return self.finish if Poker.is_finish
       Poker.calc_pot_from_betting_status
       Poker.postflop_setting
       puts redis.hget(Poker.player(current_player), :alive)
