@@ -37,19 +37,8 @@ App.heads_up_room = App.cable.subscriptions.create "HeadsUpRoomChannel",
   clear: ->
     @perform 'clear'
 
-  show_action: ->
-    $('.actions').html("")
-    $('.actions').append('<button class="fold"> fold </button>')
-    $('.actions').append('<button class="call"> call </button>')
-    $('.actions').append('<button class="check"> check </button>')
-    $('.actions').append('<button class="bet"> bet </button>')
-    $('.actions').append('<button class="raise"> raise </button>')
-    $('.actions').append('<button class="allin"> allin </button>')
-    $('.actions').append('<div class="amount"></div>')
-
   action: (name, amount=0) ->
     @perform 'action', data: [name, amount]
-    $('.actions').html('<button class="show_action"> show_action </button>')
 
   actions['join_me'] = (data)->
     $('#users #me').html(data.users)

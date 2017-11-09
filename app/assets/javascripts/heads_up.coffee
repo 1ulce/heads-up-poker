@@ -18,10 +18,6 @@ $(document).on 'turbolinks:load', ->
     App.heads_up_room.clear()
 
 $(document).on 'turbolinks:load', -> 
-  $(document).on 'click', 'button.show_action', ->
-    App.heads_up_room.show_action()
-
-$(document).on 'turbolinks:load', -> 
   $(document).on 'click', 'button.fold', ->
     App.heads_up_room.action("f")
 
