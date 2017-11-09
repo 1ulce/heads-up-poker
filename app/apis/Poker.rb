@@ -432,17 +432,21 @@ class Poker
             prev_bet_amount = redis.hget(:game, :prev_bet_amount).to_i
             min_raise = current_bet_amount * 2 - prev_bet_amount
             ActionCable.server.broadcast "user_#{u_name}", {action: "info", info:"you can do \'f\', \'c\' or \'r\'"}
+            min_raise = street_stack if min_raise > street_stack
             ActionCable.server.broadcast "user_#{u_name}", {action: "urge_action", actions:["f","c","r"], raise_amounts: [min_raise,street_stack]}
           end
         end
       else
         minimum_bet_amount = redis.hget(:game, :minimum_bet_amount).to_i
         if nofbet == 0
+          minimum_bet_amount = street_stack if minimum_bet_amount > street_stack
           ActionCable.server.broadcast "user_#{u_name}", {action: "info", info:"you can do \'x\' or \'b\'"}
           ActionCable.server.broadcast "user_#{u_name}", {action: "urge_action", actions:["x","b"], bet_amounts: [minimum_bet_amount,street_stack]}
         elsif nofbet == 1
+          min_raise = minimum_bet_amount * 2
+          min_raise = street_stack if min_raise > street_stack
           ActionCable.server.broadcast "user_#{u_name}", {action: "info", info:"you can do \'x\' or \'r\'"}
-          ActionCable.server.broadcast "user_#{u_name}", {action: "urge_action", actions:["x","r"], raise_amounts: [minimum_bet_amount * 2,street_stack]}
+          ActionCable.server.broadcast "user_#{u_name}", {action: "urge_action", actions:["x","r"], raise_amounts: [min_raise,street_stack]}
         end
       end
     end
