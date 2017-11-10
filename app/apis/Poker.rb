@@ -637,6 +637,7 @@ class Poker
         #!!!ここでのAIに関して処理していない& 1Big等
         button_num = redis.hget(:game, :button).to_i
         ActionCable.server.broadcast "room_1", {action: "deal_button", id: button_num}
+        ActionCable.server.broadcast "room_1", {action: "show_pot", pot: 0}
         unless redis.hget(:game, :nofpeople).to_i == 2
           if redis.hget(:game, :nofpeople).to_i < button_num + 1
             redis.hset(:player_1, :betting, 1)
@@ -696,7 +697,7 @@ class Poker
         redis.hset(:game, :board, new_board)
       end
       ActionCable.server.broadcast "room_1", {action: "deal_board", board: redis.hget(:game, :board)}
-
+      ActionCable.server.broadcast "room_1", {action: "show_pot", pot: redis.hget(:game, :side_pot_1)}
       #buttonとアクションプレイヤーの設定
       current_player = redis.hget(:game, :button).to_i
       if redis.hget(:game, :nofpeople).to_i == current_player

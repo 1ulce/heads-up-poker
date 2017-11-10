@@ -63,7 +63,7 @@ App.heads_up_room = App.cable.subscriptions.create "HeadsUpRoomChannel",
     $(".player_#{data.id} .button").html("dealer button")
 
   actions['deal_board'] = (data) ->
-    $(".board").html("#{data.board}")
+    $(".board").html("board: #{data.board}")
 
   actions['set_id'] = (data) ->
     for user,idx in data.players
@@ -81,7 +81,7 @@ App.heads_up_room = App.cable.subscriptions.create "HeadsUpRoomChannel",
         when "x" then $('.actions').append('<button class="check"> check </button>')
         when "b" 
           $('.actions').append('<button class="bet"> bet </button>')
-          $('.actions').append("<div class=hidden'>#{data.bet_amounts[0]}~#{data.bet_amounts[1]}</div>")
+          $('.actions').append("<div class='hidden'>#{data.bet_amounts[0]}~#{data.bet_amounts[1]}</div>")
         when "r" 
           $('.actions').append('<button class="raise"> raise </button>')
           $('.actions').append("<div class='hidden'>#{data.raise_amounts[0]}~#{data.raise_amounts[1]}</div>")
@@ -99,4 +99,7 @@ App.heads_up_room = App.cable.subscriptions.create "HeadsUpRoomChannel",
 
   actions['show_betting'] = (data) ->
     $(".player_#{data.id} .betting").html("#{data.betting}")
+
+  actions['show_pot'] = (data) ->
+   $(".pot").html("pot: #{data.pot}")
 
