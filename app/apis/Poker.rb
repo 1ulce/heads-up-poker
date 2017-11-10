@@ -621,6 +621,14 @@ class Poker
       end
       false
     end
+    def is_table_finish
+      p "is_finish?"
+      stack = []
+      redis.hget(:game, :nofpeople).to_i.times do |n|
+        stack << redis.hget(player(n+1), :amount).to_i
+      end
+      stack.include?(0) ? true : false
+    end
     def preflop_setting
       p "preflop_setting"
       redis.hset(:street, :can_next_street, false)
@@ -851,6 +859,9 @@ class Poker
           end
           # nofbetはこのまま
           redis.hset(player(current_player), :betting, result[1])
+        else
+          nofbet = redis.hget(:street, :nofbet).to_i + 1
+          redis.hset(:street, :nofbet, nofbet)
         end
         redis.hset(player(current_player), :active, false)
         nofactive = redis.hget(:game, :nofactive).to_i - 1
@@ -859,8 +870,6 @@ class Poker
         redis.hset(:game, :prev_bet_amount, redis.hget(:game, :current_bet_amount))
         redis.hset(:game, :current_bet_amount, result[1])
         redis.hset(:game, :facing_bet_amount, result[1])
-        nofbet = redis.hget(:street, :nofbet).to_i + 1
-        redis.hset(:street, :nofbet, nofbet)
         redis.hset(player(current_player), :betting, result[1])
       end
       redis.hset(player(current_player), :prev_nofbet, result[2])

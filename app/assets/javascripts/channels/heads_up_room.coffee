@@ -36,6 +36,7 @@ App.heads_up_room = App.cable.subscriptions.create "HeadsUpRoomChannel",
 
   clear: ->
     @perform 'clear'
+    $(".result").html("")
 
   action: (name, amount=0) ->
     @perform 'action', data: [name, amount]
@@ -101,5 +102,15 @@ App.heads_up_room = App.cable.subscriptions.create "HeadsUpRoomChannel",
     $(".player_#{data.id} .betting").html("#{data.betting}")
 
   actions['show_pot'] = (data) ->
-   $(".pot").html("pot: #{data.pot}")
+    $(".pot").html("pot: #{data.pot}")
+
+  actions['show_result'] = (data) ->
+    my_player_num = parseInt($("#me").attr('class').split(" ")[1].slice(-1))
+    switch data.result[my_player_num - 1]
+      when "win"
+        $(".result").html("you win!!")
+      when "lose"
+        $(".result").html("you lose..")
+      else
+        $(".result").html("result???")
 
