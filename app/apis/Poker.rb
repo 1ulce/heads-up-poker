@@ -784,7 +784,7 @@ class Poker
               end
               temp_pot = redis.hget(:street, :temp_pot).to_i - side_pot
               redis.hset(:street, :temp_pot, temp_pot)
-
+              side_pot = side_pot + redis.hget(:game, "side_pot_#{nofside_pot}".to_sym).to_i
               redis.hset(:game, "side_pot_#{nofside_pot}".to_sym, side_pot) # サイドポット金額確定
               (idx+1).times do |n|
                 alives.delete(allin_men[n][0]) # 生存者から今回のAIをした人らを削除する
