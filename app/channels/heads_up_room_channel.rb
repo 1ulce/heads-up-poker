@@ -39,9 +39,6 @@ class HeadsUpRoomChannel < ApplicationCable::Channel
     end
   end
 
-  def finished
-  end
-
   def put_message(data)
     ActionCable.server.broadcast "room_1", data
   end

@@ -31,7 +31,7 @@ App.heads_up_room = App.cable.subscriptions.create "HeadsUpRoomChannel",
     @perform 'start2'
 
   ready: () ->
-    $('#ready').remove()
+    $('#ready').html("")
     @perform 'ready'
 
   clear: ->
@@ -42,6 +42,7 @@ App.heads_up_room = App.cable.subscriptions.create "HeadsUpRoomChannel",
     $(".board").html("")
     $(".pot").html("")
     $(".actions").html("")
+    $('#ready').html("")
 
   action: (name, amount=0) ->
     @perform 'action', data: [name, amount]
@@ -54,10 +55,6 @@ App.heads_up_room = App.cable.subscriptions.create "HeadsUpRoomChannel",
 
   actions['filled'] = (data)->
     $('#ready').html('<button class="ready"> ready </button>')
-
-  actions['finished'] = (data)->
-    $('#ready').remove()
-    alert "game finished"
 
   actions['deal_hand'] = (data) ->
     result = data.cards.split(",")
