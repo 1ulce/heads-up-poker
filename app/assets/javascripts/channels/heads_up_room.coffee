@@ -37,6 +37,11 @@ App.heads_up_room = App.cable.subscriptions.create "HeadsUpRoomChannel",
   clear: ->
     @perform 'clear'
     $(".result").html("")
+    $(".user#me").html("")
+    $(".user#rival").html("")
+    $(".board").html("")
+    $(".pot").html("")
+    $(".actions").html("")
 
   action: (name, amount=0) ->
     @perform 'action', data: [name, amount]
