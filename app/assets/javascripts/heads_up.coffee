@@ -9,6 +9,9 @@
 #     App.heads_up_room.clear_people()
 
 $(document).on 'turbolinks:load', -> 
+  App.heads_up_room.load_page()
+
+$(document).on 'turbolinks:load', -> 
   $(document).on 'click', 'button.seat', ->
     App.heads_up_room.entered()
 

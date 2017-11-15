@@ -10,17 +10,21 @@ class HeadsUpRoomChannel < ApplicationCable::Channel
     stream_from "room_1"
     user = User.where(user_id: user_id).first || User.create(user_id: user_id)
     stream_from "user_#{user_id}"
-    unless redis.llen("seating_users") >= 2
-      ActionCable.server.broadcast "user_#{user_id}", {action: "show_seating_button"}
-    end
   end
 
   def unsubscribed
     # Any cleanup needed when channel is unsubscribed
   end
 
+  def load_page
+    unless redis.llen("seating_users") >= 2
+      ActionCable.server.broadcast "user_#{user_id}", {action: "show_seating_button"}
+    end
+  end
+
   def entered
     user = User.where(user_id: user_id).first
+    ActionCable.server.broadcast "user_#{user_id}", { action: "info", info: "seated!"}
     redis.rpush("seating_users", user.user_id)
     user_list = redis.llen("seating_users").times.map {|n| redis.lindex("seating_users", n)}
     ActionCable.server.broadcast 'room_1', { action: "render_users_count", count: redis.llen("seating_users")}
@@ -70,7 +74,7 @@ class HeadsUpRoomChannel < ApplicationCable::Channel
 
   def clear_table
     redis.flushdb
-    ActionCable.server.broadcast "user_#{user_id}", {action: "info", info: "someone table cleared"}
+    ActionCable.server.broadcast "room_1", {action: "info", info: "someone table cleared"}
     ActionCable.server.broadcast "room_1", {action: "clear_table"}
     unless redis.llen("seating_users") >= 2
       ActionCable.server.broadcast "room_1", {action: "show_seating_button"}

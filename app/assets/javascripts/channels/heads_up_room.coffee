@@ -31,6 +31,9 @@ App.heads_up_room = App.cable.subscriptions.create "HeadsUpRoomChannel",
   ready: () ->
     @perform 'ready'
 
+  load_page: ->
+    @perform 'load_page'
+
   clear_table: ->
     @perform 'clear_table'
     $(".result").html("")
