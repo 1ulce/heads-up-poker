@@ -68,6 +68,9 @@ class HeadsUpRoomChannel < ApplicationCable::Channel
 
   def clear_table
     redis.flushdb
+    unless redis.llen("seating_users") >= 2
+      ActionCable.server.broadcast 'room_1', {action: "show_seating_button"}
+    end
   end
 
   # def clear_people
