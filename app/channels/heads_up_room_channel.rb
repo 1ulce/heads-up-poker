@@ -11,7 +11,6 @@ class HeadsUpRoomChannel < ApplicationCable::Channel
     user = User.where(user_id: user_id).first || User.create(user_id: user_id)
     stream_from "user_#{user_id}"
     unless redis.llen("seating_users") >= 2
-      p "yooooooooooooooooooooooo"
       ActionCable.server.broadcast "user_#{user_id}", {action: "show_seating_button"}
     end
   end
