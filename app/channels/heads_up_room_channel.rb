@@ -7,6 +7,12 @@ class HeadsUpRoomChannel < ApplicationCable::Channel
   def subscribed
     # stream_from "some_channel"
     #stream_from "heads_up_room_channel"
+    stream_from "room_1"
+    user = User.where(user_id: user_id).first || User.create(user_id: user_id)
+    stream_from "user_#{user_id}"
+    unless redis.llen("seating_users") >= 2
+      ActionCable.server.broadcast 'room_1', {action: "show_seating_button"}
+    end
   end
 
   def unsubscribed
@@ -14,14 +20,9 @@ class HeadsUpRoomChannel < ApplicationCable::Channel
   end
 
   def entered
-    stream_from "room_1"
-    user = User.where(user_id: user_id).first || User.new
-    user.user_id = user_id
-    puts user.user_id
-    user.save
-    stream_from "user_#{user_id}"
-    redis.rpush("user_id_list", user.user_id)
-    user_list = redis.lrange("user_id_list",redis.llen("user_id_list") -2 , redis.llen("user_id_list"))
+    user = User.where(user_id: user_id).first
+    redis.rpush("seating_users", user.user_id)
+    user_list = redis.llen("seating_users").times.map {|n| redis.lindex("seating_users", n)}
     rendered_users = "" 
     user_list.each do |u|
       user_list.each do |uu|
@@ -48,25 +49,29 @@ class HeadsUpRoomChannel < ApplicationCable::Channel
   end
 
   def ready
-    redis.rpush("ready_user_id_list", user_id)
-    if redis.llen("ready_user_id_list") == 2
+    redis.rpush("ready_users", user_id)
+    if redis.llen("ready_users") == 2
       u_names = []
       2.times do |n|
-        u_name = redis.lindex("ready_user_id_list",n)
+        u_name = redis.lindex("ready_users",n)
         u_names << u_name
-        redis.rpush("playing_user_id_list", u_name)
+        redis.rpush("playing_users", u_name)
         ActionCable.server.broadcast "user_#{u_name}", {action: "start"}
       end
       Poker.initial_table_setting(2, "#{u_names[0]}", "#{u_names[1]}")
       ActionCable.server.broadcast "room_1", {action: "set_id", players: u_names}
-      redis.del("ready_user_id_list")
+      2.times {|n| redis.lpop("ready_users")}
       start
     end
   end
 
-  def clear
-    redis.flushall
+  def clear_table
+    redis.flushdb
   end
+
+  # def clear_people
+  #   redis.flushdb
+  # end
 
   def action(actions)
     result = Poker.process_action(actions["data"][0], actions["data"][1].to_i)
@@ -118,6 +123,9 @@ class HeadsUpRoomChannel < ApplicationCable::Channel
       end
     end
     ActionCable.server.broadcast "room_1", {action: "show_result", result: results}
+    redis.select(1)
+    2.times {|n| redis.lpop("playing_users")}
+    2.times {|n| redis.lpop("seating_users")}
   end
 
   def start

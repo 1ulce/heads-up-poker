@@ -3,8 +3,13 @@
 #   entered_room: (data) ->
 #     alert "aiue"
 #     $('#users').append(data)
+
+# $(document).on 'turbolinks:load', -> 
+#   $(document).on 'click', 'button.clear_people', ->
+#     App.heads_up_room.clear_people()
+
 $(document).on 'turbolinks:load', -> 
-  $('button.seat').click ()->
+  $(document).on 'click', 'button.seat', ->
     App.heads_up_room.entered()
 
 $(document).on 'turbolinks:load', -> 
@@ -12,9 +17,8 @@ $(document).on 'turbolinks:load', ->
     App.heads_up_room.ready()
 
 $(document).on 'turbolinks:load', -> 
-  $(document).on 'click', 'button.clear', ->
-    console.log("clear")
-    App.heads_up_room.clear()
+  $(document).on 'click', 'button.clear_table', ->
+    App.heads_up_room.clear_table()
 
 $(document).on 'turbolinks:load', -> 
   $(document).on 'click', 'button.fold', ->

@@ -88,4 +88,7 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # 1ulce add
+  config.session_store :redis_store, servers: 'redis://h:pc7bfd9a4468f39f94174fcdd6f6d4c191e12e332f91d71edf4a42176b9df848c@ec2-34-236-65-51.compute-1.amazonaws.com:63539', expire_in: 1.day
 end

@@ -18,6 +18,7 @@ App.heads_up_room = App.cable.subscriptions.create "HeadsUpRoomChannel",
     #App.heads_up_room.entered_room(data)
   entered: ->
     @perform 'entered'
+    $('#seat_button').html("")
 
   put_message: (msg) ->
     alert "hell"
@@ -34,8 +35,8 @@ App.heads_up_room = App.cable.subscriptions.create "HeadsUpRoomChannel",
     $('#ready').html("")
     @perform 'ready'
 
-  clear: ->
-    @perform 'clear'
+  clear_table: ->
+    @perform 'clear_table'
     $(".result").html("")
     $(".user#me").html("")
     $(".user#rival").html("")
@@ -44,8 +45,14 @@ App.heads_up_room = App.cable.subscriptions.create "HeadsUpRoomChannel",
     $(".actions").html("")
     $('#ready').html("")
 
+  # clear_people: ->
+  #   @perform 'clear_people'
+
   action: (name, amount=0) ->
     @perform 'action', data: [name, amount]
+
+  actions['show_seating_button'] = ->
+    $('#seat_button').html('<button class="seat"> 着席 </button>')
 
   actions['join_me'] = (data)->
     $('#users #me').html(data.users)

@@ -610,7 +610,7 @@ class Poker
       end
     end
     def is_finish
-      p "is_finish?"
+      p "is_game_finish?"
       if redis.hget(:game, :nofalive).to_i == 1
         puts "only one person is alive"
         return true
@@ -622,7 +622,7 @@ class Poker
       false
     end
     def is_table_finish
-      p "is_finish?"
+      p "is_table_finish?"
       stack = []
       redis.hget(:game, :nofpeople).to_i.times do |n|
         stack << redis.hget(player(n+1), :amount).to_i
