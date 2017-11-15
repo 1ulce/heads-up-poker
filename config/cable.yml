@@ -1,6 +1,6 @@
 development:
   adapter: redis
-  url: redis://localhost:6379/1
+  url: redis://localhost:6379/0
   channel_prefix: heads-up-poker_production
 
 test:
