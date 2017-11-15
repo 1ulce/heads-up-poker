@@ -23,10 +23,11 @@ class HeadsUpRoomChannel < ApplicationCable::Channel
     user = User.where(user_id: user_id).first
     redis.rpush("seating_users", user.user_id)
     user_list = redis.llen("seating_users").times.map {|n| redis.lindex("seating_users", n)}
+    ActionCable.server.broadcast 'room_1', { action: "render_users_count", count: redis.llen("seating_users")}
     rendered_users = "" 
     user_list.each do |u|
       user_list.each do |uu|
-        rendered_user = ApplicationController.renderer.render(partial: 'users/user', locals: { user: uu})
+        rendered_user = ApplicationController.renderer.render(partial: 'users/user', locals: { user: uu })
         if uu == u
           ActionCable.server.broadcast "user_#{u}", { action: "join_me", users: rendered_user }
         else 
@@ -74,6 +75,7 @@ class HeadsUpRoomChannel < ApplicationCable::Channel
     unless redis.llen("seating_users") >= 2
       ActionCable.server.broadcast "room_1", {action: "show_seating_button"}
     end
+    ActionCable.server.broadcast 'room_1', { action: "render_users_count", count: redis.llen("seating_users")}
   end
 
   # def clear_people
