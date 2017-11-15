@@ -51,6 +51,7 @@ class HeadsUpRoomChannel < ApplicationCable::Channel
   def ready
     redis.rpush("ready_users", user_id)
     if redis.llen("ready_users") == 2
+      ActionCable.server.broadcast 'room_1', {action: "clear_ready_button"}
       u_names = []
       2.times do |n|
         u_name = redis.lindex("ready_users",n)

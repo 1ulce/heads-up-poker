@@ -32,7 +32,6 @@ App.heads_up_room = App.cable.subscriptions.create "HeadsUpRoomChannel",
     @perform 'start2'
 
   ready: () ->
-    $('#ready').html("")
     @perform 'ready'
 
   clear_table: ->
@@ -50,6 +49,9 @@ App.heads_up_room = App.cable.subscriptions.create "HeadsUpRoomChannel",
 
   action: (name, amount=0) ->
     @perform 'action', data: [name, amount]
+
+  actions['clear_ready_button'] = ->
+    $('#ready').html("")
 
   actions['show_seating_button'] = ->
     $('#seat_button').html('<button class="seat"> 着席 </button>')

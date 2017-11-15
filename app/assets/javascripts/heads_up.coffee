@@ -14,6 +14,7 @@ $(document).on 'turbolinks:load', ->
 
 $(document).on 'turbolinks:load', -> 
   $(document).on 'click', 'button.ready', ->
+    this.disabled = true
     App.heads_up_room.ready()
 
 $(document).on 'turbolinks:load', -> 
