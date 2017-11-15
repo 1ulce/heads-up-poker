@@ -11,7 +11,8 @@ class HeadsUpRoomChannel < ApplicationCable::Channel
     user = User.where(user_id: user_id).first || User.create(user_id: user_id)
     stream_from "user_#{user_id}"
     unless redis.llen("seating_users") >= 2
-      ActionCable.server.broadcast 'room_1', {action: "show_seating_button"}
+      p "yooooooooooooooooooooooo"
+      ActionCable.server.broadcast "user_#{user_id}", {action: "show_seating_button"}
     end
   end
 
@@ -36,7 +37,8 @@ class HeadsUpRoomChannel < ApplicationCable::Channel
     end
 
     if user_list.count == 2
-      ActionCable.server.broadcast 'room_1', {action: "filled"}
+      user_list.each {|u| ActionCable.server.broadcast "user_#{u}", {action: "filled"}}
+      user_list.each {|u| ActionCable.server.broadcast "room_1", {action: "clear_seat_button"}}
     end
   end
 
@@ -68,8 +70,10 @@ class HeadsUpRoomChannel < ApplicationCable::Channel
 
   def clear_table
     redis.flushdb
+    ActionCable.server.broadcast "user_#{user_id}", {action: "info", info: "someone table cleared"}
+    ActionCable.server.broadcast "room_1", {action: "clear_table"}
     unless redis.llen("seating_users") >= 2
-      ActionCable.server.broadcast 'room_1', {action: "show_seating_button"}
+      ActionCable.server.broadcast "room_1", {action: "show_seating_button"}
     end
   end
 
@@ -112,6 +116,7 @@ class HeadsUpRoomChannel < ApplicationCable::Channel
   end
 
   def finish
+    sleep(2)
     Poker.end_the_game
     p "GAME END!!!!!!!!!!!!!!!!!"
     self.start
@@ -126,9 +131,10 @@ class HeadsUpRoomChannel < ApplicationCable::Channel
         results << "win"
       end
     end
-    ActionCable.server.broadcast "room_1", {action: "show_result", result: results}
-    redis.select(1)
-    2.times {|n| redis.lpop("playing_users")}
+    2.times do |n| 
+      user = redis.lpop("playing_users")
+      ActionCable.server.broadcast "user_#{user}", {action: "show_result", result: results}
+    end
     2.times {|n| redis.lpop("seating_users")}
   end
 

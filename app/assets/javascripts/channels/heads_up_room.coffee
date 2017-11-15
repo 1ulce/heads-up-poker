@@ -7,15 +7,12 @@ App.heads_up_room = App.cable.subscriptions.create "HeadsUpRoomChannel",
 
   disconnected: ->
     # Called when the subscription has been terminated by the server
-    alert "someone(you) disconnected"
+    console.log "someone(you) disconnected"
     @perform 'stop_stream'
 
   received: (data) ->
-    #$('#users').html(data)
-    #alert data['user']
-    console.log(data.action)
     actions[data.action](data, this)
-    #App.heads_up_room.entered_room(data)
+    
   entered: ->
     @perform 'entered'
     $('#seat_button').html("")
@@ -49,6 +46,18 @@ App.heads_up_room = App.cable.subscriptions.create "HeadsUpRoomChannel",
 
   action: (name, amount=0) ->
     @perform 'action', data: [name, amount]
+
+  actions['clear_table'] = ->
+    $(".result").html("")
+    $(".user#me").html("")
+    $(".user#rival").html("")
+    $(".board").html("")
+    $(".pot").html("")
+    $(".actions").html("")
+    $('#ready').html("")
+
+  actions['clear_seat_button'] = ->
+    $('#seat_button').html("")
 
   actions['clear_ready_button'] = ->
     $('#ready').html("")

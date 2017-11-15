@@ -6,6 +6,14 @@ class Poker
       @redis ||= Redis.current
     end
 
+    def push_info(string)
+      p string
+      redis.llen("playing_users").times do |n| 
+        user = redis.lindex("playing_users", n)
+        ActionCable.server.broadcast "user_#{user}", {action: "info", info: string}
+      end
+    end
+
     def get_handRank(array) #例 ["Ac","As","Ts","9h","9h","9s","2d"] 返り値 [7, "fullhouse", [9, 14]]
       is_flush = false
       is_straight = false
@@ -236,13 +244,13 @@ class Poker
 
       array_hands.each_with_index do |hand, idx|
         if hand == []
-          p "player_#{idx+1} is folded"
+          push_info("player_#{idx+1} is folded")
           @bucket_0 << [0, "folded", [], idx+1]
         else
           player_hand = hand
           player_hand.concat(board)
           result = get_handRank(player_hand) #[7, "fullhouse", [9, 14]]
-          p "player_#{idx+1} has #{result[1]}"
+          push_info("player_#{idx+1} has #{result[1]}")
           result << idx+1
           eval("@bucket_#{result[0]} << result")
         end
@@ -945,7 +953,7 @@ class Poker
           end
         end
         sorted_winners = get_wh_at_showdown(redis.hget(:game, :board).split(","), array_hands)
-        puts "player_#{sorted_winners[0][3]} win"
+        push_info("player_#{sorted_winners[0][3]} win by #{sorted_winners[0][1]} with #{sorted_winners[0][2]}")
       else
         alive = nil
         redis.hget(:game, :nofpeople).to_i.times do |n|
@@ -954,7 +962,7 @@ class Poker
           end
         end
         sorted_winners = [[nil,nil,nil,alive]]
-        puts "player_#{sorted_winners[0][3]} win"
+        push_info("player_#{sorted_winners[0][3]} win by #{sorted_winners[0][1]} with #{sorted_winners[0][2]}")
       end
       sorted_winners
     end
@@ -998,7 +1006,7 @@ class Poker
             button = redis.hget(:game, :button).to_i
             position = gifted_player.map {|p| p + button}
             bad_position = position.sort[0] - button
-            p "player#{gifted_player} win by side_pot_#{n+1}($#{pot})"
+            push_info("player#{gifted_player} win by side_pot_#{n+1}($#{pot})")
             gifted_player.each do |got_player|
               amount = redis.hget(player(got_player), :amount).to_i
               if got_player == bad_position
