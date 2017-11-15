@@ -8,7 +8,6 @@ class HeadsUpRoomChannel < ApplicationCable::Channel
     # stream_from "some_channel"
     #stream_from "heads_up_room_channel"
     stream_from "room_1"
-    user = User.where(user_id: user_id).first || User.create(user_id: user_id)
     stream_from "user_#{user_id}"
   end
 
@@ -23,26 +22,54 @@ class HeadsUpRoomChannel < ApplicationCable::Channel
   end
 
   def entered
-    user = User.where(user_id: user_id).first
-    ActionCable.server.broadcast "user_#{user_id}", { action: "info", info: "seated!"}
-    redis.rpush("seating_users", user.user_id)
-    user_list = redis.llen("seating_users").times.map {|n| redis.lindex("seating_users", n)}
-    ActionCable.server.broadcast 'room_1', { action: "render_users_count", count: redis.llen("seating_users")}
-    rendered_users = "" 
-    user_list.each do |u|
-      user_list.each do |uu|
-        rendered_user = ApplicationController.renderer.render(partial: 'users/user', locals: { user: uu })
-        if uu == u
-          ActionCable.server.broadcast "user_#{u}", { action: "join_me", users: rendered_user }
-        else 
-          ActionCable.server.broadcast "user_#{u}", { action: "join_rival", users: rendered_user }
+    if redis.llen("seating_users") < 2
+      user_list = redis.llen("seating_users").times.map {|n| redis.lindex("seating_users", n)}
+      unless user_list.include?(user_id)
+        ActionCable.server.broadcast "user_#{user_id}", { action: "info", info: "seated!"}
+        redis.rpush("seating_users", user_id)
+        user_list << user_id
+        ActionCable.server.broadcast 'room_1', { action: "render_users_count", count: redis.llen("seating_users")}
+        rendered_users = "" 
+        user_list.each do |u|
+          user_list.each do |uu|
+            rendered_user = ApplicationController.renderer.render(partial: 'users/user', locals: { user: uu })
+            if uu == u
+              ActionCable.server.broadcast "user_#{u}", { action: "join_me", users: rendered_user }
+            else 
+              ActionCable.server.broadcast "user_#{u}", { action: "join_rival", users: rendered_user }
+            end
+          end
+        end
+
+        if user_list.count == 2
+          user_list.each {|u| ActionCable.server.broadcast "user_#{u}", {action: "filled"}}
+          user_list.each {|u| ActionCable.server.broadcast "room_1", {action: "clear_seat_button"}}
+        end
+      else
+        rendered_user = ApplicationController.renderer.render(partial: 'users/user', locals: { user: user_id })
+        ActionCable.server.broadcast "user_#{user_id}", { action: "join_me", users: rendered_user }
+      end
+    elsif redis.llen("seating_users") == 2
+      user_list = redis.llen("seating_users").times.map {|n| redis.lindex("seating_users", n)}
+      if user_list.include?(user_id)
+        ActionCable.server.broadcast 'room_1', { action: "render_users_count", count: redis.llen("seating_users")}
+        rendered_users = "" 
+        user_list.each do |u|
+          user_list.each do |uu|
+            rendered_user = ApplicationController.renderer.render(partial: 'users/user', locals: { user: uu })
+            if uu == u
+              ActionCable.server.broadcast "user_#{u}", { action: "join_me", users: rendered_user }
+            else 
+              ActionCable.server.broadcast "user_#{u}", { action: "join_rival", users: rendered_user }
+            end
+          end
+        end
+
+        if user_list.count == 2
+          user_list.each {|u| ActionCable.server.broadcast "user_#{u}", {action: "filled"}}
+          user_list.each {|u| ActionCable.server.broadcast "room_1", {action: "clear_seat_button"}}
         end
       end
-    end
-
-    if user_list.count == 2
-      user_list.each {|u| ActionCable.server.broadcast "user_#{u}", {action: "filled"}}
-      user_list.each {|u| ActionCable.server.broadcast "room_1", {action: "clear_seat_button"}}
     end
   end
 

@@ -12,34 +12,35 @@ $(document).on 'turbolinks:load', ->
   App.heads_up_room.load_page()
 
 $(document).on 'turbolinks:load', -> 
+  $(document).off 'click', 'button.seat'
   $(document).on 'click', 'button.seat', ->
     App.heads_up_room.entered()
 
-$(document).on 'turbolinks:load', -> 
+  $(document).off 'click', 'button.ready'
   $(document).on 'click', 'button.ready', ->
     this.disabled = true
     App.heads_up_room.ready()
 
-$(document).on 'turbolinks:load', -> 
+  $(document).off 'click', 'button.clear_table'
   $(document).on 'click', 'button.clear_table', ->
     App.heads_up_room.clear_table()
 
-$(document).on 'turbolinks:load', -> 
+  $(document).off 'click', 'button.fold'
   $(document).on 'click', 'button.fold', ->
     App.heads_up_room.action("f")
     $('.actions').html("")
 
-$(document).on 'turbolinks:load', -> 
+  $(document).off 'click', 'button.check'
   $(document).on 'click', 'button.check', ->
     App.heads_up_room.action("x")
     $('.actions').html("")
 
-$(document).on 'turbolinks:load', -> 
+  $(document).off 'click', 'button.call'
   $(document).on 'click', 'button.call', ->
     App.heads_up_room.action("c")
     $('.actions').html("")
 
-$(document).on 'turbolinks:load', -> 
+  $(document).off 'click', 'button.bet'
   $(document).on 'click', 'button.bet', ->
     ranges = $('.hidden').text().split("~")
     amount = 0
@@ -48,7 +49,7 @@ $(document).on 'turbolinks:load', ->
     App.heads_up_room.action("b", amount)
     $('.actions').html("")
 
-$(document).on 'turbolinks:load', -> 
+  $(document).off 'click', 'button.raise'
   $(document).on 'click', 'button.raise', ->
     ranges = $('.hidden').text().split("~")
     amount = 0
