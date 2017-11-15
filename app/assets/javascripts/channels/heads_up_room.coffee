@@ -54,6 +54,9 @@ App.heads_up_room = App.cable.subscriptions.create "HeadsUpRoomChannel",
   actions['show_seating_button'] = ->
     $('#seat_button').html('<button class="seat"> 着席 </button>')
 
+  actions['render_users_count'] = (data)->
+    $('#heads_up_users_count').html("user: #{data.count}/2")
+
   actions['join_me'] = (data)->
     $('#users #me').html(data.users)
 
