@@ -560,7 +560,7 @@ class Poker
       nofplayers.times do |n|
         # puts "how much player_#{n+1} has?"
         # amount = gets.chomp.to_i
-        amount = 200
+        amount = 50
         redis.hmset(player(n+1), :name, user_names[n], :amount, amount)
       end
     end
