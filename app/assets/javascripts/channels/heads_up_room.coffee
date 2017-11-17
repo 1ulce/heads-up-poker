@@ -83,6 +83,7 @@ App.heads_up_room = App.cable.subscriptions.create "HeadsUpRoomChannel",
   actions['deal_hand'] = (data) ->
     result = data.cards.split(",")
     $('#me .hand').html("#{hand_to_img(result[0])}#{hand_to_img(result[1])}")
+    $("#rival .hand").html("#{hand_to_img('uk')}#{hand_to_img('uk')}")
 
   actions['deal_button'] = (data) ->
     $(".button").html("")
@@ -91,14 +92,12 @@ App.heads_up_room = App.cable.subscriptions.create "HeadsUpRoomChannel",
 
   actions['deal_board'] = (data) ->
     cards = data.board.split(",")
-    $(".board").html("board: ")
-    for card in cards
-      $(".board").append("#{hand_to_img(card)}")
+    $(".board").html("board: #{hand_to_img(cards[0])}#{hand_to_img(cards[1])}#{hand_to_img(cards[2])}#{hand_to_img(cards[3])}#{hand_to_img(cards[4])}")
 
   actions['set_id'] = (data) ->
     for user,idx in data.players
       for n in [0..$('.user').length-1]
-        name = $(".user:eq(#{n})").text()
+        name = $(".user .user_session:eq(#{n})").text()
         if user == name
           $(".user:eq(#{n})").addClass("player_#{idx + 1}")
 
@@ -125,13 +124,21 @@ App.heads_up_room = App.cable.subscriptions.create "HeadsUpRoomChannel",
     console.log(data.info)
 
   actions['show_stack'] = (data) ->
-    $(".player_#{data.id} .stack").html("#{data.stack}")
+    $(".player_#{data.id} .stack").html("stack: #{data.stack}")
 
   actions['show_betting'] = (data) ->
-    $(".player_#{data.id} .betting").html("#{data.betting}")
+    $(".player_#{data.id} .betting").html("betting: #{data.betting}")
 
   actions['show_pot'] = (data) ->
     $(".pot").html("pot: #{data.pot}")
+
+  actions['fold'] = (data) ->
+    $(".player_#{data.id} .hand").html('<span style="color:red;">fold</span>')
+    # $(".player_#{data.id} .hand").html("")
+
+  actions['showdown_opp_hand'] = (data) ->
+    result = data.cards.split(",")
+    $(".player_#{data.id} .hand").html("#{hand_to_img(result[0])}#{hand_to_img(result[1])}")
 
   actions['show_result'] = (data) ->
     my_player_num = parseInt($("#me").attr('class').split(" ")[1].slice(-1))

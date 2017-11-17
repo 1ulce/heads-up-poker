@@ -5,3 +5,7 @@
 p {font-size: 20px;}
 .hidden {display: none;}
 card img{height: 100px;}
+button.fold, button.check, button.call, button.bet, button.raise {
+  color: red;
+}
+.user {margin-bottom: 20px;}

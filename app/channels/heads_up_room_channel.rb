@@ -32,10 +32,12 @@ class HeadsUpRoomChannel < ApplicationCable::Channel
         rendered_users = "" 
         user_list.each do |u|
           user_list.each do |uu|
-            rendered_user = ApplicationController.renderer.render(partial: 'users/user', locals: { user: uu })
+            # rendered_user = ApplicationController.renderer.render(partial: 'users/user', locals: { user: uu })
             if uu == u
+              rendered_user = ApplicationController.renderer.render(partial: 'users/user', locals: { id: uu, name: "me" })
               ActionCable.server.broadcast "user_#{u}", { action: "join_me", users: rendered_user }
             else 
+              rendered_user = ApplicationController.renderer.render(partial: 'users/user', locals: { id: uu, name: "rival" })
               ActionCable.server.broadcast "user_#{u}", { action: "join_rival", users: rendered_user }
             end
           end
@@ -46,7 +48,7 @@ class HeadsUpRoomChannel < ApplicationCable::Channel
           user_list.each {|u| ActionCable.server.broadcast "room_1", {action: "clear_seat_button"}}
         end
       else
-        rendered_user = ApplicationController.renderer.render(partial: 'users/user', locals: { user: user_id })
+        rendered_user = ApplicationController.renderer.render(partial: 'users/user', locals: { id: uu, name: "me" })
         ActionCable.server.broadcast "user_#{user_id}", { action: "join_me", users: rendered_user }
       end
     elsif redis.llen("seating_users") == 2
@@ -56,10 +58,12 @@ class HeadsUpRoomChannel < ApplicationCable::Channel
         rendered_users = "" 
         user_list.each do |u|
           user_list.each do |uu|
-            rendered_user = ApplicationController.renderer.render(partial: 'users/user', locals: { user: uu })
+            # rendered_user = ApplicationController.renderer.render(partial: 'users/user', locals: { user: uu })
             if uu == u
+              rendered_user = ApplicationController.renderer.render(partial: 'users/user', locals: { id: uu, name: "me" })
               ActionCable.server.broadcast "user_#{u}", { action: "join_me", users: rendered_user }
             else 
+              rendered_user = ApplicationController.renderer.render(partial: 'users/user', locals: { id: uu, name: "opp" })
               ActionCable.server.broadcast "user_#{u}", { action: "join_rival", users: rendered_user }
             end
           end
@@ -148,8 +152,8 @@ class HeadsUpRoomChannel < ApplicationCable::Channel
   end
 
   def finish
-    sleep(2)
     Poker.end_the_game
+    sleep(2)
     p "GAME END!!!!!!!!!!!!!!!!!"
     self.start
   end

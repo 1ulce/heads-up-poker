@@ -1,0 +1,1501 @@
+2017-11-17T08:54:46.604316+00:00 app[web.1]: D, [2017-11-17T08:54:46.603583 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"198"} (via streamed from room_1)
+2017-11-17T08:54:46.608744+00:00 app[web.1]: D, [2017-11-17T08:54:46.603833 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"198"} (via streamed from room_1)
+2017-11-17T08:54:46.616776+00:00 app[web.1]: D, [2017-11-17T08:54:46.616677 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_betting", :id=>2, :betting=>"0"}
+2017-11-17T08:54:46.618243+00:00 app[web.1]: D, [2017-11-17T08:54:46.618133 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_stack", :id=>2, :stack=>"192"}
+2017-11-17T08:54:46.619390+00:00 app[web.1]: D, [2017-11-17T08:54:46.619328 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:54:46.620203+00:00 app[web.1]: D, [2017-11-17T08:54:46.619596 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:54:46.621006+00:00 app[web.1]: D, [2017-11-17T08:54:46.620395 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:54:46.630280+00:00 app[web.1]: D, [2017-11-17T08:54:46.629472 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"192"} (via streamed from room_1)
+2017-11-17T08:54:46.621584+00:00 app[web.1]: D, [2017-11-17T08:54:46.621519 #4] DEBUG -- : [ActionCable] Broadcasting to user_1f23c51920937afd07c01fc452e4c5f9: {:action=>"info", :info=>"you can do 'x' or 'b'"}
+2017-11-17T08:54:46.631065+00:00 app[web.1]: D, [2017-11-17T08:54:46.630996 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"192"} (via streamed from room_1)
+2017-11-17T08:54:46.622294+00:00 app[web.1]: D, [2017-11-17T08:54:46.622231 #4] DEBUG -- : [ActionCable] Broadcasting to user_1f23c51920937afd07c01fc452e4c5f9: {:action=>"urge_action", :actions=>["x", "b"], :bet_amounts=>[2, 198]}
+2017-11-17T08:54:46.635556+00:00 app[web.1]: D, [2017-11-17T08:54:46.635423 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"urge_action", "actions"=>["x", "b"], "bet_amounts"=>[2, 198]} (via streamed from user_1f23c51920937afd07c01fc452e4c5f9)
+2017-11-17T08:54:46.636547+00:00 app[web.1]: D, [2017-11-17T08:54:46.636174 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"info", "info"=>"you can do 'x' or 'b'"} (via streamed from user_1f23c51920937afd07c01fc452e4c5f9)
+2017-11-17T08:54:46.636944+00:00 app[web.1]: D, [2017-11-17T08:54:46.636471 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"192"} (via streamed from room_1)
+2017-11-17T08:54:47.458354+00:00 heroku[router]: at=info method=GET path="/png/5d.png" host=poker-app-1.herokuapp.com request_id=4367792c-52be-484d-b190-92d543d5601e fwd="182.251.242.13" dyno=web.1 connect=1ms service=5ms status=304 bytes=48 protocol=https
+2017-11-17T08:54:54.711525+00:00 app[web.1]: I, [2017-11-17T08:54:54.711398 #4]  INFO -- : HeadsUpRoomChannel#action({"data"=>["x", 0]})
+2017-11-17T08:54:54.711605+00:00 app[web.1]: "process_action"
+2017-11-17T08:54:54.729588+00:00 app[web.1]: "next_player"
+2017-11-17T08:54:54.732385+00:00 app[web.1]: check_next_street
+2017-11-17T08:54:54.728209+00:00 app[web.1]: treat_action
+2017-11-17T08:54:54.733120+00:00 app[web.1]: check_1
+2017-11-17T08:54:54.733811+00:00 app[web.1]: true
+2017-11-17T08:54:54.733813+00:00 app[web.1]: check_2
+2017-11-17T08:54:54.734840+00:00 app[web.1]: true
+2017-11-17T08:54:54.747375+00:00 app[web.1]: "urge_action_to_web"
+2017-11-17T08:54:54.734842+00:00 app[web.1]: check_3
+2017-11-17T08:54:54.736233+00:00 app[web.1]: check_4
+2017-11-17T08:54:54.738835+00:00 app[web.1]: "is_game_finish?"
+2017-11-17T08:54:54.761801+00:00 app[web.1]: D, [2017-11-17T08:54:54.761697 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:54:54.753395+00:00 app[web.1]: D, [2017-11-17T08:54:54.752653 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_betting", :id=>1, :betting=>"0"}
+2017-11-17T08:54:54.762393+00:00 app[web.1]: D, [2017-11-17T08:54:54.762316 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:54:54.765035+00:00 app[web.1]: D, [2017-11-17T08:54:54.764975 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:54:54.767173+00:00 app[web.1]: D, [2017-11-17T08:54:54.767077 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_stack", :id=>1, :stack=>"198"}
+2017-11-17T08:54:54.772034+00:00 app[web.1]: D, [2017-11-17T08:54:54.771924 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"198"} (via streamed from room_1)
+2017-11-17T08:54:54.779349+00:00 app[web.1]: D, [2017-11-17T08:54:54.779263 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:54:54.772778+00:00 app[web.1]: D, [2017-11-17T08:54:54.772703 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"198"} (via streamed from room_1)
+2017-11-17T08:54:54.775327+00:00 app[web.1]: D, [2017-11-17T08:54:54.775249 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_betting", :id=>2, :betting=>"0"}
+2017-11-17T08:54:54.773423+00:00 app[web.1]: D, [2017-11-17T08:54:54.773353 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"198"} (via streamed from room_1)
+2017-11-17T08:54:54.776626+00:00 app[web.1]: D, [2017-11-17T08:54:54.776550 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_stack", :id=>2, :stack=>"192"}
+2017-11-17T08:54:54.781007+00:00 app[web.1]: D, [2017-11-17T08:54:54.780942 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"192"} (via streamed from room_1)
+2017-11-17T08:54:54.779971+00:00 app[web.1]: D, [2017-11-17T08:54:54.779899 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"192"} (via streamed from room_1)
+2017-11-17T08:54:54.782118+00:00 app[web.1]: D, [2017-11-17T08:54:54.782053 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"192"} (via streamed from room_1)
+2017-11-17T08:54:54.780452+00:00 app[web.1]: D, [2017-11-17T08:54:54.780382 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:54:54.781579+00:00 app[web.1]: D, [2017-11-17T08:54:54.781508 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:54:54.782596+00:00 app[web.1]: D, [2017-11-17T08:54:54.782540 #4] DEBUG -- : [ActionCable] Broadcasting to user_0ddc4cc02a029e71643a4dc8725e4707: {:action=>"info", :info=>"you can do 'x' or 'b'"}
+2017-11-17T08:54:54.788136+00:00 app[web.1]: D, [2017-11-17T08:54:54.788027 #4] DEBUG -- : [ActionCable] Broadcasting to user_0ddc4cc02a029e71643a4dc8725e4707: {:action=>"urge_action", :actions=>["x", "b"], :bet_amounts=>[2, 192]}
+2017-11-17T08:54:54.789575+00:00 app[web.1]: D, [2017-11-17T08:54:54.789493 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"urge_action", "actions"=>["x", "b"], "bet_amounts"=>[2, 192]} (via streamed from user_0ddc4cc02a029e71643a4dc8725e4707)
+2017-11-17T08:54:54.795417+00:00 app[web.1]: D, [2017-11-17T08:54:54.795316 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"info", "info"=>"you can do 'x' or 'b'"} (via streamed from user_0ddc4cc02a029e71643a4dc8725e4707)
+2017-11-17T08:54:57.116297+00:00 app[web.1]: I, [2017-11-17T08:54:57.116183 #4]  INFO -- : HeadsUpRoomChannel#action({"data"=>["x", 0]})
+2017-11-17T08:54:57.129205+00:00 app[web.1]: treat_action
+2017-11-17T08:54:57.116386+00:00 app[web.1]: "process_action"
+2017-11-17T08:54:57.135954+00:00 app[web.1]: check_1
+2017-11-17T08:54:57.131181+00:00 app[web.1]: "next_player"
+2017-11-17T08:54:57.134325+00:00 app[web.1]: check_next_street
+2017-11-17T08:54:57.138348+00:00 app[web.1]: check_2
+2017-11-17T08:54:57.143121+00:00 app[web.1]: true
+2017-11-17T08:54:57.143127+00:00 app[web.1]: check_3
+2017-11-17T08:54:57.151183+00:00 app[web.1]: true
+2017-11-17T08:54:57.163049+00:00 app[web.1]: !!!!!Game!!!!!
+2017-11-17T08:54:57.138344+00:00 app[web.1]: true
+2017-11-17T08:54:57.151224+00:00 app[web.1]: check_4
+2017-11-17T08:54:57.165729+00:00 app[web.1]: 30
+2017-11-17T08:54:57.166252+00:00 app[web.1]: nofalive
+2017-11-17T08:54:57.163043+00:00 app[web.1]: go to next street
+2017-11-17T08:54:57.166232+00:00 app[web.1]: current_player
+2017-11-17T08:54:57.166258+00:00 app[web.1]: current_bet_amount
+2017-11-17T08:54:57.166236+00:00 app[web.1]: 1
+2017-11-17T08:54:57.166255+00:00 app[web.1]: 2
+2017-11-17T08:54:57.166289+00:00 app[web.1]: 14
+2017-11-17T08:54:57.166272+00:00 app[web.1]: 0
+2017-11-17T08:54:57.166275+00:00 app[web.1]: number
+2017-11-17T08:54:57.166304+00:00 app[web.1]: facing_bet_amount
+2017-11-17T08:54:57.166306+00:00 app[web.1]: 0
+2017-11-17T08:54:57.167291+00:00 app[web.1]: 0
+2017-11-17T08:54:57.166326+00:00 app[web.1]: side_pot_3
+2017-11-17T08:54:57.166345+00:00 app[web.1]: 0
+2017-11-17T08:54:57.166328+00:00 app[web.1]: 0
+2017-11-17T08:54:57.166343+00:00 app[web.1]: side_pot_9
+2017-11-17T08:54:57.167288+00:00 app[web.1]: side_pot_4
+2017-11-17T08:54:57.167335+00:00 app[web.1]: 0
+2017-11-17T08:54:57.170987+00:00 app[web.1]: 0
+2017-11-17T08:54:57.170995+00:00 app[web.1]: 4
+2017-11-17T08:54:57.167294+00:00 app[web.1]: side_pot_6
+2017-11-17T08:54:57.167339+00:00 app[web.1]: 0
+2017-11-17T08:54:57.167357+00:00 app[web.1]: !!!!!Street!!!!!
+2017-11-17T08:54:57.167318+00:00 app[web.1]: prev_bet_amount
+2017-11-17T08:54:57.167315+00:00 app[web.1]: 0
+2017-11-17T08:54:57.170994+00:00 app[web.1]: nofstreet
+2017-11-17T08:54:57.167337+00:00 app[web.1]: side_pot_8
+2017-11-17T08:54:57.170997+00:00 app[web.1]: true
+2017-11-17T08:54:57.170999+00:00 app[web.1]: temp_pot
+2017-11-17T08:54:57.171033+00:00 app[web.1]: 0
+2017-11-17T08:54:57.170996+00:00 app[web.1]: can_next_street
+2017-11-17T08:54:57.172589+00:00 app[web.1]: !!!!!Player_1!!!!!
+2017-11-17T08:54:57.171015+00:00 app[web.1]: 0
+2017-11-17T08:54:57.171031+00:00 app[web.1]: nofbet
+2017-11-17T08:54:57.176998+00:00 app[web.1]: amount
+2017-11-17T08:54:57.176052+00:00 app[web.1]: 0
+2017-11-17T08:54:57.176997+00:00 app[web.1]: 1f23c51920937afd07c01fc452e4c5f9
+2017-11-17T08:54:57.176999+00:00 app[web.1]: 198
+2017-11-17T08:54:57.176994+00:00 app[web.1]: name
+2017-11-17T08:54:57.177019+00:00 app[web.1]: prev_nofbet
+2017-11-17T08:54:57.177038+00:00 app[web.1]: 0
+2017-11-17T08:54:57.177040+00:00 app[web.1]: alive
+2017-11-17T08:54:57.177021+00:00 app[web.1]: 0
+2017-11-17T08:54:57.177023+00:00 app[web.1]: betting
+2017-11-17T08:54:57.177042+00:00 app[web.1]: true
+2017-11-17T08:54:57.177055+00:00 app[web.1]: active
+2017-11-17T08:54:57.177057+00:00 app[web.1]: true
+2017-11-17T08:54:57.177071+00:00 app[web.1]: rights_of_side_pot
+2017-11-17T08:54:57.177076+00:00 app[web.1]: hand
+2017-11-17T08:54:57.179619+00:00 app[web.1]: 0
+2017-11-17T08:54:57.179622+00:00 app[web.1]: name
+2017-11-17T08:54:57.179646+00:00 app[web.1]: 192
+2017-11-17T08:54:57.179625+00:00 app[web.1]: amount
+2017-11-17T08:54:57.180495+00:00 app[web.1]: 0
+2017-11-17T08:54:57.180501+00:00 app[web.1]: 0
+2017-11-17T08:54:57.180521+00:00 app[web.1]: true
+2017-11-17T08:54:57.180523+00:00 app[web.1]: active
+2017-11-17T08:54:57.180542+00:00 app[web.1]: rights_of_side_pot
+2017-11-17T08:54:57.180548+00:00 app[web.1]: Qd,7s
+2017-11-17T08:54:57.180498+00:00 app[web.1]: betting
+2017-11-17T08:54:57.177074+00:00 app[web.1]: 10
+2017-11-17T08:54:57.177091+00:00 app[web.1]: Jc,Td
+2017-11-17T08:54:57.179623+00:00 app[web.1]: 0ddc4cc02a029e71643a4dc8725e4707
+2017-11-17T08:54:57.182408+00:00 app[web.1]: "is_game_finish?"
+2017-11-17T08:54:57.179648+00:00 app[web.1]: prev_nofbet
+2017-11-17T08:54:57.177646+00:00 app[web.1]: !!!!!Player_2!!!!!
+2017-11-17T08:54:57.180524+00:00 app[web.1]: true
+2017-11-17T08:54:57.180544+00:00 app[web.1]: 10
+2017-11-17T08:54:57.180547+00:00 app[web.1]: hand
+2017-11-17T08:54:57.243341+00:00 app[web.1]: D, [2017-11-17T08:54:57.240946 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"deal_board", "board"=>"As,8c,8s,5d,3s"} (via streamed from room_1)
+2017-11-17T08:54:57.180520+00:00 app[web.1]: alive
+2017-11-17T08:54:57.235110+00:00 app[web.1]: D, [2017-11-17T08:54:57.234990 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"deal_board", :board=>"As,8c,8s,5d,3s"}
+2017-11-17T08:54:57.237776+00:00 app[web.1]: D, [2017-11-17T08:54:57.237699 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"deal_board", "board"=>"As,8c,8s,5d,3s"} (via streamed from room_1)
+2017-11-17T08:54:57.243046+00:00 app[web.1]: D, [2017-11-17T08:54:57.240626 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_pot", "pot"=>"10"} (via streamed from room_1)
+2017-11-17T08:54:57.241591+00:00 app[web.1]: D, [2017-11-17T08:54:57.241518 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_pot", "pot"=>"10"} (via streamed from room_1)
+2017-11-17T08:54:57.223239+00:00 app[web.1]: "postflop_setting"
+2017-11-17T08:54:57.238922+00:00 app[web.1]: D, [2017-11-17T08:54:57.238845 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_pot", :pot=>"10"}
+2017-11-17T08:54:57.241026+00:00 app[web.1]: D, [2017-11-17T08:54:57.239231 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"deal_board", "board"=>"As,8c,8s,5d,3s"} (via streamed from room_1)
+2017-11-17T08:54:57.185587+00:00 app[web.1]: "calc_pot_from_betting_status"
+2017-11-17T08:54:57.242074+00:00 app[web.1]: D, [2017-11-17T08:54:57.242012 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_pot", "pot"=>"10"} (via streamed from room_1)
+2017-11-17T08:54:57.258386+00:00 app[web.1]: D, [2017-11-17T08:54:57.258267 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:54:57.295132+00:00 app[web.1]: D, [2017-11-17T08:54:57.294586 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"192"} (via streamed from room_1)
+2017-11-17T08:54:57.316465+00:00 app[web.1]: D, [2017-11-17T08:54:57.316385 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:54:57.320012+00:00 app[web.1]: D, [2017-11-17T08:54:57.319270 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"192"} (via streamed from room_1)
+2017-11-17T08:54:57.255781+00:00 app[web.1]: D, [2017-11-17T08:54:57.255613 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:54:57.272954+00:00 app[web.1]: D, [2017-11-17T08:54:57.272884 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:54:57.311636+00:00 app[web.1]: D, [2017-11-17T08:54:57.311557 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_stack", :id=>1, :stack=>"198"}
+2017-11-17T08:54:57.315145+00:00 app[web.1]: D, [2017-11-17T08:54:57.314177 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"198"} (via streamed from room_1)
+2017-11-17T08:54:57.317229+00:00 app[web.1]: D, [2017-11-17T08:54:57.316580 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:54:57.290864+00:00 app[web.1]: D, [2017-11-17T08:54:57.290743 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"192"} (via streamed from room_1)
+2017-11-17T08:54:57.305804+00:00 app[web.1]: "urge_action_to_web"
+2017-11-17T08:54:57.314684+00:00 app[web.1]: D, [2017-11-17T08:54:57.313559 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"198"} (via streamed from room_1)
+2017-11-17T08:54:57.319772+00:00 app[web.1]: D, [2017-11-17T08:54:57.319083 #4] DEBUG -- : [ActionCable] Broadcasting to user_1f23c51920937afd07c01fc452e4c5f9: {:action=>"info", :info=>"you can do 'x' or 'b'"}
+2017-11-17T08:54:57.263116+00:00 app[web.1]: D, [2017-11-17T08:54:57.263037 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_stack", :id=>1, :stack=>"198"}
+2017-11-17T08:54:57.269628+00:00 app[web.1]: D, [2017-11-17T08:54:57.269572 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"198"} (via streamed from room_1)
+2017-11-17T08:54:57.312930+00:00 app[web.1]: D, [2017-11-17T08:54:57.312041 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:54:57.314903+00:00 app[web.1]: D, [2017-11-17T08:54:57.313708 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_betting", :id=>2, :betting=>"0"}
+2017-11-17T08:54:57.317821+00:00 app[web.1]: D, [2017-11-17T08:54:57.316885 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_stack", :id=>2, :stack=>"192"}
+2017-11-17T08:54:57.320301+00:00 app[web.1]: D, [2017-11-17T08:54:57.319691 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"192"} (via streamed from room_1)
+2017-11-17T08:54:57.271153+00:00 app[web.1]: D, [2017-11-17T08:54:57.271072 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_betting", :id=>2, :betting=>"0"}
+2017-11-17T08:54:57.274834+00:00 app[web.1]: D, [2017-11-17T08:54:57.274281 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:54:57.310351+00:00 app[web.1]: D, [2017-11-17T08:54:57.310269 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_betting", :id=>1, :betting=>"0"}
+2017-11-17T08:54:57.314254+00:00 app[web.1]: D, [2017-11-17T08:54:57.312271 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:54:57.317528+00:00 app[web.1]: D, [2017-11-17T08:54:57.316756 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:54:57.250824+00:00 app[web.1]: D, [2017-11-17T08:54:57.250714 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_betting", :id=>1, :betting=>"0"}
+2017-11-17T08:54:57.320937+00:00 app[web.1]: D, [2017-11-17T08:54:57.320344 #4] DEBUG -- : [ActionCable] Broadcasting to user_1f23c51920937afd07c01fc452e4c5f9: {:action=>"urge_action", :actions=>["x", "b"], :bet_amounts=>[2, 198]}
+2017-11-17T08:54:57.261356+00:00 app[web.1]: D, [2017-11-17T08:54:57.261237 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:54:57.266237+00:00 app[web.1]: D, [2017-11-17T08:54:57.266163 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"198"} (via streamed from room_1)
+2017-11-17T08:54:57.269002+00:00 app[web.1]: D, [2017-11-17T08:54:57.268933 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"198"} (via streamed from room_1)
+2017-11-17T08:54:57.274357+00:00 app[web.1]: D, [2017-11-17T08:54:57.274002 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:54:57.285860+00:00 app[web.1]: D, [2017-11-17T08:54:57.285721 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_stack", :id=>2, :stack=>"192"}
+2017-11-17T08:54:57.301960+00:00 app[web.1]: D, [2017-11-17T08:54:57.301827 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"192"} (via streamed from room_1)
+2017-11-17T08:54:57.319027+00:00 app[web.1]: D, [2017-11-17T08:54:57.318934 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"192"} (via streamed from room_1)
+2017-11-17T08:54:57.321312+00:00 app[web.1]: D, [2017-11-17T08:54:57.321250 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"info", "info"=>"you can do 'x' or 'b'"} (via streamed from user_1f23c51920937afd07c01fc452e4c5f9)
+2017-11-17T08:54:57.312606+00:00 app[web.1]: D, [2017-11-17T08:54:57.311833 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:54:57.315418+00:00 app[web.1]: D, [2017-11-17T08:54:57.314615 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"198"} (via streamed from room_1)
+2017-11-17T08:54:57.322074+00:00 app[web.1]: D, [2017-11-17T08:54:57.322019 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"urge_action", "actions"=>["x", "b"], "bet_amounts"=>[2, 198]} (via streamed from user_1f23c51920937afd07c01fc452e4c5f9)
+2017-11-17T08:54:58.043702+00:00 heroku[router]: at=info method=GET path="/png/3s.png" host=poker-app-1.herokuapp.com request_id=3f48f4ba-68bb-4e25-924b-fa17d96fc179 fwd="182.251.242.13" dyno=web.1 connect=1ms service=8ms status=304 bytes=48 protocol=https
+2017-11-17T08:55:00.214061+00:00 app[web.1]: I, [2017-11-17T08:55:00.213948 #4]  INFO -- : HeadsUpRoomChannel#action({"data"=>["x", 0]})
+2017-11-17T08:55:00.243132+00:00 app[web.1]: "next_player"
+2017-11-17T08:55:00.214154+00:00 app[web.1]: "process_action"
+2017-11-17T08:55:00.257802+00:00 app[web.1]: check_next_street
+2017-11-17T08:55:00.259042+00:00 app[web.1]: check_1
+2017-11-17T08:55:00.239067+00:00 app[web.1]: treat_action
+2017-11-17T08:55:00.260012+00:00 app[web.1]: check_2
+2017-11-17T08:55:00.262706+00:00 app[web.1]: true
+2017-11-17T08:55:00.260009+00:00 app[web.1]: true
+2017-11-17T08:55:00.262710+00:00 app[web.1]: check_3
+2017-11-17T08:55:00.272054+00:00 app[web.1]: check_4
+2017-11-17T08:55:00.276239+00:00 app[web.1]: "is_game_finish?"
+2017-11-17T08:55:00.291840+00:00 app[web.1]: "urge_action_to_web"
+2017-11-17T08:55:00.299219+00:00 app[web.1]: D, [2017-11-17T08:55:00.299099 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_betting", :id=>1, :betting=>"0"}
+2017-11-17T08:55:00.304612+00:00 app[web.1]: D, [2017-11-17T08:55:00.304507 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:55:00.305275+00:00 app[web.1]: D, [2017-11-17T08:55:00.305219 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:55:00.306323+00:00 app[web.1]: D, [2017-11-17T08:55:00.306267 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_stack", :id=>1, :stack=>"198"}
+2017-11-17T08:55:00.307255+00:00 app[web.1]: D, [2017-11-17T08:55:00.307164 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:55:00.308229+00:00 app[web.1]: D, [2017-11-17T08:55:00.308156 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"198"} (via streamed from room_1)
+2017-11-17T08:55:00.308850+00:00 app[web.1]: D, [2017-11-17T08:55:00.308778 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"198"} (via streamed from room_1)
+2017-11-17T08:55:00.310876+00:00 app[web.1]: D, [2017-11-17T08:55:00.310793 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_betting", :id=>2, :betting=>"0"}
+2017-11-17T08:55:00.316325+00:00 app[web.1]: D, [2017-11-17T08:55:00.316205 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"198"} (via streamed from room_1)
+2017-11-17T08:55:00.320229+00:00 app[web.1]: D, [2017-11-17T08:55:00.320119 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:55:00.320976+00:00 app[web.1]: D, [2017-11-17T08:55:00.320902 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:55:00.326360+00:00 app[web.1]: D, [2017-11-17T08:55:00.326279 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:55:00.326949+00:00 app[web.1]: D, [2017-11-17T08:55:00.326425 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_stack", :id=>2, :stack=>"192"}
+2017-11-17T08:55:00.328217+00:00 app[web.1]: D, [2017-11-17T08:55:00.328132 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"192"} (via streamed from room_1)
+2017-11-17T08:55:00.329323+00:00 app[web.1]: D, [2017-11-17T08:55:00.328384 #4] DEBUG -- : [ActionCable] Broadcasting to user_0ddc4cc02a029e71643a4dc8725e4707: {:action=>"info", :info=>"you can do 'x' or 'b'"}
+2017-11-17T08:55:00.329641+00:00 app[web.1]: D, [2017-11-17T08:55:00.328632 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"192"} (via streamed from room_1)
+2017-11-17T08:55:00.329904+00:00 app[web.1]: D, [2017-11-17T08:55:00.328817 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"192"} (via streamed from room_1)
+2017-11-17T08:55:00.331177+00:00 app[web.1]: D, [2017-11-17T08:55:00.331119 #4] DEBUG -- : [ActionCable] Broadcasting to user_0ddc4cc02a029e71643a4dc8725e4707: {:action=>"urge_action", :actions=>["x", "b"], :bet_amounts=>[2, 192]}
+2017-11-17T08:55:00.331753+00:00 app[web.1]: D, [2017-11-17T08:55:00.331684 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"info", "info"=>"you can do 'x' or 'b'"} (via streamed from user_0ddc4cc02a029e71643a4dc8725e4707)
+2017-11-17T08:55:00.332507+00:00 app[web.1]: D, [2017-11-17T08:55:00.332453 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"urge_action", "actions"=>["x", "b"], "bet_amounts"=>[2, 192]} (via streamed from user_0ddc4cc02a029e71643a4dc8725e4707)
+2017-11-17T08:55:03.123518+00:00 app[web.1]: I, [2017-11-17T08:55:03.123390 #4]  INFO -- : HeadsUpRoomChannel#action({"data"=>["x", 0]})
+2017-11-17T08:55:03.123620+00:00 app[web.1]: "process_action"
+2017-11-17T08:55:03.139083+00:00 app[web.1]: treat_action
+2017-11-17T08:55:03.148080+00:00 app[web.1]: "next_player"
+2017-11-17T08:55:03.184171+00:00 app[web.1]: true
+2017-11-17T08:55:03.187839+00:00 app[web.1]: check_2
+2017-11-17T08:55:03.200992+00:00 app[web.1]: check_3
+2017-11-17T08:55:03.162527+00:00 app[web.1]: check_next_street
+2017-11-17T08:55:03.264808+00:00 app[web.1]: go to next street
+2017-11-17T08:55:03.167658+00:00 app[web.1]: check_1
+2017-11-17T08:55:03.207671+00:00 app[web.1]: true
+2017-11-17T08:55:03.200773+00:00 app[web.1]: true
+2017-11-17T08:55:03.271707+00:00 app[web.1]: 30
+2017-11-17T08:55:03.207679+00:00 app[web.1]: check_4
+2017-11-17T08:55:03.272077+00:00 app[web.1]: 1
+2017-11-17T08:55:03.272108+00:00 app[web.1]: nofalive
+2017-11-17T08:55:03.272047+00:00 app[web.1]: current_player
+2017-11-17T08:55:03.272794+00:00 app[web.1]: facing_bet_amount
+2017-11-17T08:55:03.264994+00:00 app[web.1]: !!!!!Game!!!!!
+2017-11-17T08:55:03.273437+00:00 app[web.1]: side_pot_4
+2017-11-17T08:55:03.272230+00:00 app[web.1]: 2
+2017-11-17T08:55:03.272446+00:00 app[web.1]: current_bet_amount
+2017-11-17T08:55:03.272765+00:00 app[web.1]: 14
+2017-11-17T08:55:03.273185+00:00 app[web.1]: side_pot_3
+2017-11-17T08:55:03.273607+00:00 app[web.1]: 0
+2017-11-17T08:55:03.273637+00:00 app[web.1]: side_pot_6
+2017-11-17T08:55:03.272737+00:00 app[web.1]: number
+2017-11-17T08:55:03.272930+00:00 app[web.1]: 0
+2017-11-17T08:55:03.273407+00:00 app[web.1]: 0
+2017-11-17T08:55:03.272474+00:00 app[web.1]: 0
+2017-11-17T08:55:03.273384+00:00 app[web.1]: side_pot_9
+2017-11-17T08:55:03.274229+00:00 app[web.1]: 0
+2017-11-17T08:55:03.273354+00:00 app[web.1]: 0
+2017-11-17T08:55:03.274116+00:00 app[web.1]: 0
+2017-11-17T08:55:03.274174+00:00 app[web.1]: 0
+2017-11-17T08:55:03.274259+00:00 app[web.1]: !!!!!Street!!!!!
+2017-11-17T08:55:03.277172+00:00 app[web.1]: 0
+2017-11-17T08:55:03.274148+00:00 app[web.1]: prev_bet_amount
+2017-11-17T08:55:03.277177+00:00 app[web.1]: nofstreet
+2017-11-17T08:55:03.274202+00:00 app[web.1]: side_pot_8
+2017-11-17T08:55:03.277178+00:00 app[web.1]: 5
+2017-11-17T08:55:03.277194+00:00 app[web.1]: can_next_street
+2017-11-17T08:55:03.277197+00:00 app[web.1]: true
+2017-11-17T08:55:03.277213+00:00 app[web.1]: temp_pot
+2017-11-17T08:55:03.277215+00:00 app[web.1]: 0
+2017-11-17T08:55:03.277230+00:00 app[web.1]: nofbet
+2017-11-17T08:55:03.277232+00:00 app[web.1]: 0
+2017-11-17T08:55:03.285449+00:00 app[web.1]: name
+2017-11-17T08:55:03.280085+00:00 app[web.1]: !!!!!Player_1!!!!!
+2017-11-17T08:55:03.285443+00:00 app[web.1]: 0
+2017-11-17T08:55:03.285499+00:00 app[web.1]: 0
+2017-11-17T08:55:03.285452+00:00 app[web.1]: amount
+2017-11-17T08:55:03.285455+00:00 app[web.1]: 198
+2017-11-17T08:55:03.285471+00:00 app[web.1]: prev_nofbet
+2017-11-17T08:55:03.285500+00:00 app[web.1]: alive
+2017-11-17T08:55:03.285503+00:00 app[web.1]: true
+2017-11-17T08:55:03.285450+00:00 app[web.1]: 1f23c51920937afd07c01fc452e4c5f9
+2017-11-17T08:55:03.285474+00:00 app[web.1]: 0
+2017-11-17T08:55:03.285522+00:00 app[web.1]: true
+2017-11-17T08:55:03.285495+00:00 app[web.1]: betting
+2017-11-17T08:55:03.285519+00:00 app[web.1]: active
+2017-11-17T08:55:03.290523+00:00 app[web.1]: 10
+2017-11-17T08:55:03.285642+00:00 app[web.1]: rights_of_side_pot
+2017-11-17T08:55:03.290534+00:00 app[web.1]: hand
+2017-11-17T08:55:03.290536+00:00 app[web.1]: Jc,Td
+2017-11-17T08:55:03.290575+00:00 app[web.1]: !!!!!Player_2!!!!!
+2017-11-17T08:55:03.298360+00:00 app[web.1]: active
+2017-11-17T08:55:03.298363+00:00 app[web.1]: true
+2017-11-17T08:55:03.298298+00:00 app[web.1]: 0
+2017-11-17T08:55:03.298306+00:00 app[web.1]: 0ddc4cc02a029e71643a4dc8725e4707
+2017-11-17T08:55:03.298308+00:00 app[web.1]: 192
+2017-11-17T08:55:03.298310+00:00 app[web.1]: 0
+2017-11-17T08:55:03.298342+00:00 app[web.1]: true
+2017-11-17T08:55:03.298305+00:00 app[web.1]: name
+2017-11-17T08:55:03.298307+00:00 app[web.1]: amount
+2017-11-17T08:55:03.298335+00:00 app[web.1]: betting
+2017-11-17T08:55:03.303195+00:00 app[web.1]: rights_of_side_pot
+2017-11-17T08:55:03.303224+00:00 app[web.1]: Qd,7s
+2017-11-17T08:55:03.298310+00:00 app[web.1]: prev_nofbet
+2017-11-17T08:55:03.298338+00:00 app[web.1]: 0
+2017-11-17T08:55:03.303223+00:00 app[web.1]: hand
+2017-11-17T08:55:03.298340+00:00 app[web.1]: alive
+2017-11-17T08:55:03.308121+00:00 app[web.1]: go to showdown
+2017-11-17T08:55:03.303199+00:00 app[web.1]: 10
+2017-11-17T08:55:03.306388+00:00 app[web.1]: "is_game_finish?"
+2017-11-17T08:55:05.311015+00:00 app[web.1]: "end_the_game"
+2017-11-17T08:55:05.311088+00:00 app[web.1]: "calc_pot_from_betting_status"
+2017-11-17T08:55:05.347583+00:00 app[web.1]: "player_1 has one pair"
+2017-11-17T08:55:05.351276+00:00 app[web.1]: D, [2017-11-17T08:55:05.349076 #4] DEBUG -- : [ActionCable] Broadcasting to user_1f23c51920937afd07c01fc452e4c5f9: {:action=>"info", :info=>"player_1 has one pair"}
+2017-11-17T08:55:05.357404+00:00 app[web.1]: D, [2017-11-17T08:55:05.356360 #4] DEBUG -- : [ActionCable] Broadcasting to user_0ddc4cc02a029e71643a4dc8725e4707: {:action=>"info", :info=>"player_1 has one pair"}
+2017-11-17T08:55:05.359966+00:00 app[web.1]: "player_2 has one pair"
+2017-11-17T08:55:05.361995+00:00 app[web.1]: D, [2017-11-17T08:55:05.361801 #4] DEBUG -- : [ActionCable] Broadcasting to user_1f23c51920937afd07c01fc452e4c5f9: {:action=>"info", :info=>"player_2 has one pair"}
+2017-11-17T08:55:05.363352+00:00 app[web.1]: D, [2017-11-17T08:55:05.363267 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"info", "info"=>"player_1 has one pair"} (via streamed from user_0ddc4cc02a029e71643a4dc8725e4707)
+2017-11-17T08:55:05.364201+00:00 app[web.1]: D, [2017-11-17T08:55:05.364137 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"info", "info"=>"player_2 has one pair"} (via streamed from user_1f23c51920937afd07c01fc452e4c5f9)
+2017-11-17T08:55:05.370267+00:00 app[web.1]: D, [2017-11-17T08:55:05.370164 #4] DEBUG -- : [ActionCable] Broadcasting to user_0ddc4cc02a029e71643a4dc8725e4707: {:action=>"info", :info=>"player_2 has one pair"}
+2017-11-17T08:55:05.371307+00:00 app[web.1]: D, [2017-11-17T08:55:05.371225 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"info", "info"=>"player_1 has one pair"} (via streamed from user_1f23c51920937afd07c01fc452e4c5f9)
+2017-11-17T08:55:05.375227+00:00 app[web.1]: D, [2017-11-17T08:55:05.375143 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"info", "info"=>"player_2 has one pair"} (via streamed from user_0ddc4cc02a029e71643a4dc8725e4707)
+2017-11-17T08:55:05.377549+00:00 app[web.1]: "player_2 win by one pair with [8, 14, 12, 7]"
+2017-11-17T08:55:05.391283+00:00 app[web.1]: D, [2017-11-17T08:55:05.391142 #4] DEBUG -- : [ActionCable] Broadcasting to user_1f23c51920937afd07c01fc452e4c5f9: {:action=>"info", :info=>"player_2 win by one pair with [8, 14, 12, 7]"}
+2017-11-17T08:55:05.403539+00:00 app[web.1]: D, [2017-11-17T08:55:05.403412 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"info", "info"=>"player_2 win by one pair with [8, 14, 12, 7]"} (via streamed from user_1f23c51920937afd07c01fc452e4c5f9)
+2017-11-17T08:55:05.409825+00:00 app[web.1]: D, [2017-11-17T08:55:05.409708 #4] DEBUG -- : [ActionCable] Broadcasting to user_0ddc4cc02a029e71643a4dc8725e4707: {:action=>"info", :info=>"player_2 win by one pair with [8, 14, 12, 7]"}
+2017-11-17T08:55:05.414239+00:00 app[web.1]: D, [2017-11-17T08:55:05.413940 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"info", "info"=>"player_2 win by one pair with [8, 14, 12, 7]"} (via streamed from user_0ddc4cc02a029e71643a4dc8725e4707)
+2017-11-17T08:55:05.423041+00:00 app[web.1]: "player[2] win by side_pot_1($10)"
+2017-11-17T08:55:05.426897+00:00 app[web.1]: D, [2017-11-17T08:55:05.426804 #4] DEBUG -- : [ActionCable] Broadcasting to user_0ddc4cc02a029e71643a4dc8725e4707: {:action=>"info", :info=>"player[2] win by side_pot_1($10)"}
+2017-11-17T08:55:05.424365+00:00 app[web.1]: D, [2017-11-17T08:55:05.424264 #4] DEBUG -- : [ActionCable] Broadcasting to user_1f23c51920937afd07c01fc452e4c5f9: {:action=>"info", :info=>"player[2] win by side_pot_1($10)"}
+2017-11-17T08:55:05.435781+00:00 app[web.1]: D, [2017-11-17T08:55:05.435686 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"info", "info"=>"player[2] win by side_pot_1($10)"} (via streamed from user_1f23c51920937afd07c01fc452e4c5f9)
+2017-11-17T08:55:05.436881+00:00 app[web.1]: D, [2017-11-17T08:55:05.436817 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"info", "info"=>"player[2] win by side_pot_1($10)"} (via streamed from user_0ddc4cc02a029e71643a4dc8725e4707)
+2017-11-17T08:55:05.442781+00:00 app[web.1]: "1 game finished. go to next game"
+2017-11-17T08:55:05.442784+00:00 app[web.1]: "GAME END!!!!!!!!!!!!!!!!!"
+2017-11-17T08:55:05.442804+00:00 app[web.1]: "GAME START!!!!!!!!!!!!!!!!!"
+2017-11-17T08:55:05.442821+00:00 app[web.1]: "initial_game_setting"
+2017-11-17T08:55:05.466237+00:00 app[web.1]: "preflop_setting"
+2017-11-17T08:55:05.475881+00:00 app[web.1]: D, [2017-11-17T08:55:05.475821 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"deal_hand", "cards"=>"8s,Jc"} (via streamed from user_1f23c51920937afd07c01fc452e4c5f9)
+2017-11-17T08:55:05.473010+00:00 app[web.1]: D, [2017-11-17T08:55:05.472896 #4] DEBUG -- : [ActionCable] Broadcasting to user_1f23c51920937afd07c01fc452e4c5f9: {:action=>"deal_hand", :cards=>"8s,Jc"}
+2017-11-17T08:55:05.476397+00:00 app[web.1]: D, [2017-11-17T08:55:05.476338 #4] DEBUG -- : [ActionCable] Broadcasting to user_0ddc4cc02a029e71643a4dc8725e4707: {:action=>"deal_hand", :cards=>"5s,Kc"}
+2017-11-17T08:55:05.477552+00:00 app[web.1]: D, [2017-11-17T08:55:05.477491 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"deal_hand", "cards"=>"5s,Kc"} (via streamed from user_0ddc4cc02a029e71643a4dc8725e4707)
+2017-11-17T08:55:05.477990+00:00 app[web.1]: D, [2017-11-17T08:55:05.477934 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"deal_button", :id=>1}
+2017-11-17T08:55:05.482321+00:00 app[web.1]: D, [2017-11-17T08:55:05.478757 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_pot", :pot=>0}
+2017-11-17T08:55:05.482323+00:00 app[web.1]: D, [2017-11-17T08:55:05.479485 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"deal_button", "id"=>1} (via streamed from room_1)
+2017-11-17T08:55:05.482324+00:00 app[web.1]: D, [2017-11-17T08:55:05.480487 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"deal_button", "id"=>1} (via streamed from room_1)
+2017-11-17T08:55:05.482325+00:00 app[web.1]: D, [2017-11-17T08:55:05.481235 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"deal_button", "id"=>1} (via streamed from room_1)
+2017-11-17T08:55:05.482325+00:00 app[web.1]: D, [2017-11-17T08:55:05.482187 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_pot", "pot"=>0} (via streamed from room_1)
+2017-11-17T08:55:05.482683+00:00 app[web.1]: D, [2017-11-17T08:55:05.482602 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_pot", "pot"=>0} (via streamed from room_1)
+2017-11-17T08:55:05.483230+00:00 app[web.1]: D, [2017-11-17T08:55:05.483167 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_pot", "pot"=>0} (via streamed from room_1)
+2017-11-17T08:55:05.485996+00:00 app[web.1]: D, [2017-11-17T08:55:05.485942 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_betting", :id=>1, :betting=>"1"}
+2017-11-17T08:55:05.487371+00:00 app[web.1]: D, [2017-11-17T08:55:05.487302 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"1"} (via streamed from room_1)
+2017-11-17T08:55:05.488372+00:00 app[web.1]: D, [2017-11-17T08:55:05.487516 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"1"} (via streamed from room_1)
+2017-11-17T08:55:05.489072+00:00 app[web.1]: D, [2017-11-17T08:55:05.487719 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"1"} (via streamed from room_1)
+2017-11-17T08:55:05.489443+00:00 app[web.1]: D, [2017-11-17T08:55:05.488835 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_stack", :id=>1, :stack=>"198"}
+2017-11-17T08:55:05.490890+00:00 app[web.1]: D, [2017-11-17T08:55:05.490815 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"198"} (via streamed from room_1)
+2017-11-17T08:55:05.491891+00:00 app[web.1]: D, [2017-11-17T08:55:05.491187 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"198"} (via streamed from room_1)
+2017-11-17T08:55:05.492294+00:00 app[web.1]: D, [2017-11-17T08:55:05.491391 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"198"} (via streamed from room_1)
+2017-11-17T08:55:05.492642+00:00 app[web.1]: D, [2017-11-17T08:55:05.491801 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_betting", :id=>2, :betting=>"2"}
+2017-11-17T08:55:05.494424+00:00 app[web.1]: D, [2017-11-17T08:55:05.494356 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"2"} (via streamed from room_1)
+2017-11-17T08:55:05.495000+00:00 app[web.1]: D, [2017-11-17T08:55:05.494921 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"2"} (via streamed from room_1)
+2017-11-17T08:55:05.495917+00:00 app[web.1]: D, [2017-11-17T08:55:05.495285 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"2"} (via streamed from room_1)
+2017-11-17T08:55:05.496268+00:00 app[web.1]: D, [2017-11-17T08:55:05.495480 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_stack", :id=>2, :stack=>"202"}
+2017-11-17T08:55:05.497463+00:00 app[web.1]: D, [2017-11-17T08:55:05.497366 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"202"} (via streamed from room_1)
+2017-11-17T08:55:05.498745+00:00 app[web.1]: D, [2017-11-17T08:55:05.497980 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"202"} (via streamed from room_1)
+2017-11-17T08:55:05.507997+00:00 app[web.1]: "urge_action_to_web"
+2017-11-17T08:55:05.499740+00:00 app[web.1]: D, [2017-11-17T08:55:05.498642 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"202"} (via streamed from room_1)
+2017-11-17T08:55:05.502118+00:00 app[web.1]: "is_table_finish?"
+2017-11-17T08:55:05.518084+00:00 app[web.1]: D, [2017-11-17T08:55:05.518008 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"1"} (via streamed from room_1)
+2017-11-17T08:55:05.516534+00:00 app[web.1]: D, [2017-11-17T08:55:05.516449 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_betting", :id=>1, :betting=>"1"}
+2017-11-17T08:55:05.519729+00:00 app[web.1]: D, [2017-11-17T08:55:05.519297 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"1"} (via streamed from room_1)
+2017-11-17T08:55:05.518710+00:00 app[web.1]: D, [2017-11-17T08:55:05.518651 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"1"} (via streamed from room_1)
+2017-11-17T08:55:05.522229+00:00 app[web.1]: D, [2017-11-17T08:55:05.521352 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"198"} (via streamed from room_1)
+2017-11-17T08:55:05.519130+00:00 app[web.1]: D, [2017-11-17T08:55:05.519063 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_stack", :id=>1, :stack=>"198"}
+2017-11-17T08:55:05.521201+00:00 app[web.1]: D, [2017-11-17T08:55:05.521135 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"198"} (via streamed from room_1)
+2017-11-17T08:55:05.522497+00:00 app[web.1]: D, [2017-11-17T08:55:05.521648 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"198"} (via streamed from room_1)
+2017-11-17T08:55:05.522788+00:00 app[web.1]: D, [2017-11-17T08:55:05.521816 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_betting", :id=>2, :betting=>"2"}
+2017-11-17T08:55:05.525005+00:00 app[web.1]: D, [2017-11-17T08:55:05.524930 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_stack", :id=>2, :stack=>"202"}
+2017-11-17T08:55:05.527269+00:00 app[web.1]: D, [2017-11-17T08:55:05.526008 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"2"} (via streamed from room_1)
+2017-11-17T08:55:05.526391+00:00 app[web.1]: D, [2017-11-17T08:55:05.525799 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"2"} (via streamed from room_1)
+2017-11-17T08:55:05.527673+00:00 app[web.1]: D, [2017-11-17T08:55:05.527602 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"202"} (via streamed from room_1)
+2017-11-17T08:55:05.529205+00:00 app[web.1]: D, [2017-11-17T08:55:05.529146 #4] DEBUG -- : [ActionCable] Broadcasting to user_1f23c51920937afd07c01fc452e4c5f9: {:action=>"info", :info=>"you can do 'f', 'c' or 'r'"}
+2017-11-17T08:55:05.528552+00:00 app[web.1]: D, [2017-11-17T08:55:05.527797 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"202"} (via streamed from room_1)
+2017-11-17T08:55:05.525676+00:00 app[web.1]: D, [2017-11-17T08:55:05.525200 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"2"} (via streamed from room_1)
+2017-11-17T08:55:05.528830+00:00 app[web.1]: D, [2017-11-17T08:55:05.528223 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"202"} (via streamed from room_1)
+2017-11-17T08:55:05.532123+00:00 app[web.1]: D, [2017-11-17T08:55:05.532069 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"urge_action", "actions"=>["f", "c", "r"], "raise_amounts"=>[4, 198]} (via streamed from user_1f23c51920937afd07c01fc452e4c5f9)
+2017-11-17T08:55:05.530572+00:00 app[web.1]: D, [2017-11-17T08:55:05.530505 #4] DEBUG -- : [ActionCable] Broadcasting to user_1f23c51920937afd07c01fc452e4c5f9: {:action=>"urge_action", :actions=>["f", "c", "r"], :raise_amounts=>[4, 198]}
+2017-11-17T08:55:05.531283+00:00 app[web.1]: D, [2017-11-17T08:55:05.531216 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"info", "info"=>"you can do 'f', 'c' or 'r'"} (via streamed from user_1f23c51920937afd07c01fc452e4c5f9)
+2017-11-17T08:55:06.352601+00:00 heroku[router]: at=info method=GET path="/png/5s.png" host=poker-app-1.herokuapp.com request_id=c913f1a5-ae24-4b68-94e9-cfb8a4b6d546 fwd="182.251.242.13" dyno=web.1 connect=1ms service=8ms status=200 bytes=6680 protocol=https
+2017-11-17T08:55:06.756878+00:00 heroku[router]: at=info method=GET path="/png/Kc.png" host=poker-app-1.herokuapp.com request_id=29c8da41-c0ef-42c1-94f8-669bdf72d4bb fwd="182.251.242.13" dyno=web.1 connect=1ms service=5ms status=200 bytes=65677 protocol=https
+2017-11-17T08:55:17.335088+00:00 app[web.1]: I, [2017-11-17T08:55:17.334974 #4]  INFO -- : HeadsUpRoomChannel#action({"data"=>["r", "5"]})
+2017-11-17T08:55:17.335106+00:00 app[web.1]: "process_action"
+2017-11-17T08:55:17.338586+00:00 app[web.1]: treat_action
+2017-11-17T08:55:17.344524+00:00 app[web.1]: "next_player"
+2017-11-17T08:55:17.346035+00:00 app[web.1]: check_next_street
+2017-11-17T08:55:17.346589+00:00 app[web.1]: check_1
+2017-11-17T08:55:17.347239+00:00 app[web.1]: true
+2017-11-17T08:55:17.347240+00:00 app[web.1]: check_2
+2017-11-17T08:55:17.348208+00:00 app[web.1]: check_3
+2017-11-17T08:55:17.350185+00:00 app[web.1]: "is_game_finish?"
+2017-11-17T08:55:17.349146+00:00 app[web.1]: check_4
+2017-11-17T08:55:17.354678+00:00 app[web.1]: "urge_action_to_web"
+2017-11-17T08:55:17.358651+00:00 app[web.1]: D, [2017-11-17T08:55:17.358557 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_betting", :id=>1, :betting=>"5"}
+2017-11-17T08:55:17.360292+00:00 app[web.1]: D, [2017-11-17T08:55:17.360168 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"5"} (via streamed from room_1)
+2017-11-17T08:55:17.361055+00:00 app[web.1]: D, [2017-11-17T08:55:17.360981 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"5"} (via streamed from room_1)
+2017-11-17T08:55:17.361716+00:00 app[web.1]: D, [2017-11-17T08:55:17.361646 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_stack", :id=>1, :stack=>"198"}
+2017-11-17T08:55:17.362276+00:00 app[web.1]: D, [2017-11-17T08:55:17.361892 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"5"} (via streamed from room_1)
+2017-11-17T08:55:17.363333+00:00 app[web.1]: D, [2017-11-17T08:55:17.363263 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"198"} (via streamed from room_1)
+2017-11-17T08:55:17.363892+00:00 app[web.1]: D, [2017-11-17T08:55:17.363817 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"198"} (via streamed from room_1)
+2017-11-17T08:55:17.364589+00:00 app[web.1]: D, [2017-11-17T08:55:17.363980 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_betting", :id=>2, :betting=>"2"}
+2017-11-17T08:55:17.364916+00:00 app[web.1]: D, [2017-11-17T08:55:17.364499 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"198"} (via streamed from room_1)
+2017-11-17T08:55:17.365971+00:00 app[web.1]: D, [2017-11-17T08:55:17.365898 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"2"} (via streamed from room_1)
+2017-11-17T08:55:17.366371+00:00 app[web.1]: D, [2017-11-17T08:55:17.366297 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_stack", :id=>2, :stack=>"202"}
+2017-11-17T08:55:17.366834+00:00 app[web.1]: D, [2017-11-17T08:55:17.366772 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"2"} (via streamed from room_1)
+2017-11-17T08:55:17.367565+00:00 app[web.1]: D, [2017-11-17T08:55:17.367489 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"2"} (via streamed from room_1)
+2017-11-17T08:55:17.368597+00:00 app[web.1]: D, [2017-11-17T08:55:17.368518 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"202"} (via streamed from room_1)
+2017-11-17T08:55:17.369212+00:00 app[web.1]: D, [2017-11-17T08:55:17.369137 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"202"} (via streamed from room_1)
+2017-11-17T08:55:17.369966+00:00 app[web.1]: D, [2017-11-17T08:55:17.369895 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"202"} (via streamed from room_1)
+2017-11-17T08:55:17.371575+00:00 app[web.1]: D, [2017-11-17T08:55:17.371373 #4] DEBUG -- : [ActionCable] Broadcasting to user_0ddc4cc02a029e71643a4dc8725e4707: {:action=>"urge_action", :actions=>["f", "c", "r"], :raise_amounts=>[8, 202]}
+2017-11-17T08:55:17.370792+00:00 app[web.1]: D, [2017-11-17T08:55:17.370726 #4] DEBUG -- : [ActionCable] Broadcasting to user_0ddc4cc02a029e71643a4dc8725e4707: {:action=>"info", :info=>"you can do 'f', 'c' or 'r'"}
+2017-11-17T08:55:17.372366+00:00 app[web.1]: D, [2017-11-17T08:55:17.372294 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"info", "info"=>"you can do 'f', 'c' or 'r'"} (via streamed from user_0ddc4cc02a029e71643a4dc8725e4707)
+2017-11-17T08:55:17.373159+00:00 app[web.1]: D, [2017-11-17T08:55:17.373101 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"urge_action", "actions"=>["f", "c", "r"], "raise_amounts"=>[8, 202]} (via streamed from user_0ddc4cc02a029e71643a4dc8725e4707)
+2017-11-17T08:55:21.499643+00:00 app[web.1]: "process_action"
+2017-11-17T08:55:21.499551+00:00 app[web.1]: I, [2017-11-17T08:55:21.499421 #4]  INFO -- : HeadsUpRoomChannel#action({"data"=>["c", 0]})
+2017-11-17T08:55:21.503476+00:00 app[web.1]: treat_action
+2017-11-17T08:55:21.507053+00:00 app[web.1]: "next_player"
+2017-11-17T08:55:21.508627+00:00 app[web.1]: check_next_street
+2017-11-17T08:55:21.510099+00:00 app[web.1]: true
+2017-11-17T08:55:21.509350+00:00 app[web.1]: check_1
+2017-11-17T08:55:21.510126+00:00 app[web.1]: check_2
+2017-11-17T08:55:21.514199+00:00 app[web.1]: true
+2017-11-17T08:55:21.514234+00:00 app[web.1]: check_3
+2017-11-17T08:55:21.523042+00:00 app[web.1]: true
+2017-11-17T08:55:21.526961+00:00 app[web.1]: check_4
+2017-11-17T08:55:21.539762+00:00 app[web.1]: !!!!!Game!!!!!
+2017-11-17T08:55:21.539725+00:00 app[web.1]: go to next street
+2017-11-17T08:55:21.540941+00:00 app[web.1]: 30
+2017-11-17T08:55:21.541001+00:00 app[web.1]: current_player
+2017-11-17T08:55:21.541028+00:00 app[web.1]: 1
+2017-11-17T08:55:21.541117+00:00 app[web.1]: current_bet_amount
+2017-11-17T08:55:21.541171+00:00 app[web.1]: 5
+2017-11-17T08:55:21.541060+00:00 app[web.1]: nofalive
+2017-11-17T08:55:21.541087+00:00 app[web.1]: 2
+2017-11-17T08:55:21.541341+00:00 app[web.1]: facing_bet_amount
+2017-11-17T08:55:21.541204+00:00 app[web.1]: number
+2017-11-17T08:55:21.541230+00:00 app[web.1]: 15
+2017-11-17T08:55:21.541370+00:00 app[web.1]: 5
+2017-11-17T08:55:21.541400+00:00 app[web.1]: side_pot_3
+2017-11-17T08:55:21.541463+00:00 app[web.1]: side_pot_9
+2017-11-17T08:55:21.541431+00:00 app[web.1]: 0
+2017-11-17T08:55:21.541516+00:00 app[web.1]: 0
+2017-11-17T08:55:21.541546+00:00 app[web.1]: side_pot_4
+2017-11-17T08:55:21.541694+00:00 app[web.1]: 0
+2017-11-17T08:55:21.541727+00:00 app[web.1]: side_pot_6
+2017-11-17T08:55:21.541757+00:00 app[web.1]: 0
+2017-11-17T08:55:21.541788+00:00 app[web.1]: prev_bet_amount
+2017-11-17T08:55:21.541874+00:00 app[web.1]: side_pot_8
+2017-11-17T08:55:21.541829+00:00 app[web.1]: 2
+2017-11-17T08:55:21.541901+00:00 app[web.1]: 0
+2017-11-17T08:55:21.541930+00:00 app[web.1]: !!!!!Street!!!!!
+2017-11-17T08:55:21.547127+00:00 app[web.1]: 0
+2017-11-17T08:55:21.547135+00:00 app[web.1]: nofstreet
+2017-11-17T08:55:21.547135+00:00 app[web.1]: 2
+2017-11-17T08:55:21.547136+00:00 app[web.1]: can_next_street
+2017-11-17T08:55:21.547139+00:00 app[web.1]: true
+2017-11-17T08:55:21.547141+00:00 app[web.1]: temp_pot
+2017-11-17T08:55:21.547160+00:00 app[web.1]: 10
+2017-11-17T08:55:21.547164+00:00 app[web.1]: nofbet
+2017-11-17T08:55:21.547180+00:00 app[web.1]: 2
+2017-11-17T08:55:21.547901+00:00 app[web.1]: !!!!!Player_1!!!!!
+2017-11-17T08:55:21.555358+00:00 app[web.1]: 0
+2017-11-17T08:55:21.555366+00:00 app[web.1]: name
+2017-11-17T08:55:21.555368+00:00 app[web.1]: 1f23c51920937afd07c01fc452e4c5f9
+2017-11-17T08:55:21.555369+00:00 app[web.1]: amount
+2017-11-17T08:55:21.555369+00:00 app[web.1]: 198
+2017-11-17T08:55:21.555371+00:00 app[web.1]: prev_nofbet
+2017-11-17T08:55:21.555373+00:00 app[web.1]: 2
+2017-11-17T08:55:21.555396+00:00 app[web.1]: betting
+2017-11-17T08:55:21.555399+00:00 app[web.1]: 5
+2017-11-17T08:55:21.555414+00:00 app[web.1]: alive
+2017-11-17T08:55:21.555417+00:00 app[web.1]: true
+2017-11-17T08:55:21.555420+00:00 app[web.1]: active
+2017-11-17T08:55:21.555434+00:00 app[web.1]: true
+2017-11-17T08:55:21.555451+00:00 app[web.1]: rights_of_side_pot
+2017-11-17T08:55:21.555454+00:00 app[web.1]: 10
+2017-11-17T08:55:21.555468+00:00 app[web.1]: hand
+2017-11-17T08:55:21.555471+00:00 app[web.1]: 8s,Jc
+2017-11-17T08:55:21.555496+00:00 app[web.1]: !!!!!Player_2!!!!!
+2017-11-17T08:55:21.556624+00:00 app[web.1]: 0
+2017-11-17T08:55:21.556627+00:00 app[web.1]: name
+2017-11-17T08:55:21.556630+00:00 app[web.1]: 0ddc4cc02a029e71643a4dc8725e4707
+2017-11-17T08:55:21.556650+00:00 app[web.1]: amount
+2017-11-17T08:55:21.556653+00:00 app[web.1]: 202
+2017-11-17T08:55:21.556656+00:00 app[web.1]: prev_nofbet
+2017-11-17T08:55:21.556670+00:00 app[web.1]: 2
+2017-11-17T08:55:21.556674+00:00 app[web.1]: betting
+2017-11-17T08:55:21.556677+00:00 app[web.1]: 5
+2017-11-17T08:55:21.556692+00:00 app[web.1]: alive
+2017-11-17T08:55:21.556695+00:00 app[web.1]: true
+2017-11-17T08:55:21.556710+00:00 app[web.1]: active
+2017-11-17T08:55:21.556712+00:00 app[web.1]: true
+2017-11-17T08:55:21.556715+00:00 app[web.1]: rights_of_side_pot
+2017-11-17T08:55:21.556733+00:00 app[web.1]: hand
+2017-11-17T08:55:21.556730+00:00 app[web.1]: 10
+2017-11-17T08:55:21.556735+00:00 app[web.1]: 5s,Kc
+2017-11-17T08:55:21.563101+00:00 app[web.1]: "is_game_finish?"
+2017-11-17T08:55:21.571031+00:00 app[web.1]: "calc_pot_from_betting_status"
+2017-11-17T08:55:21.627030+00:00 app[web.1]: "postflop_setting"
+2017-11-17T08:55:21.647227+00:00 app[web.1]: D, [2017-11-17T08:55:21.647077 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"deal_board", :board=>"9h,7c,Ad"}
+2017-11-17T08:55:21.649146+00:00 app[web.1]: D, [2017-11-17T08:55:21.649071 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"deal_board", "board"=>"9h,7c,Ad"} (via streamed from room_1)
+2017-11-17T08:55:21.655949+00:00 app[web.1]: D, [2017-11-17T08:55:21.655834 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"deal_board", "board"=>"9h,7c,Ad"} (via streamed from room_1)
+2017-11-17T08:55:21.657022+00:00 app[web.1]: D, [2017-11-17T08:55:21.656955 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"deal_board", "board"=>"9h,7c,Ad"} (via streamed from room_1)
+2017-11-17T08:55:21.659157+00:00 app[web.1]: D, [2017-11-17T08:55:21.659078 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_pot", :pot=>"10"}
+2017-11-17T08:55:21.660793+00:00 app[web.1]: D, [2017-11-17T08:55:21.660712 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_pot", "pot"=>"10"} (via streamed from room_1)
+2017-11-17T08:55:21.661671+00:00 app[web.1]: D, [2017-11-17T08:55:21.661609 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_pot", "pot"=>"10"} (via streamed from room_1)
+2017-11-17T08:55:21.662513+00:00 app[web.1]: D, [2017-11-17T08:55:21.662450 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_pot", "pot"=>"10"} (via streamed from room_1)
+2017-11-17T08:55:21.666976+00:00 app[web.1]: D, [2017-11-17T08:55:21.666866 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_betting", :id=>1, :betting=>"0"}
+2017-11-17T08:55:21.668777+00:00 app[web.1]: D, [2017-11-17T08:55:21.668711 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:55:21.669537+00:00 app[web.1]: D, [2017-11-17T08:55:21.669474 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:55:21.670280+00:00 app[web.1]: D, [2017-11-17T08:55:21.670216 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:55:21.670797+00:00 app[web.1]: D, [2017-11-17T08:55:21.670733 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_stack", :id=>1, :stack=>"193"}
+2017-11-17T08:55:21.673080+00:00 app[web.1]: D, [2017-11-17T08:55:21.673018 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"193"} (via streamed from room_1)
+2017-11-17T08:55:21.672251+00:00 app[web.1]: D, [2017-11-17T08:55:21.672155 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"193"} (via streamed from room_1)
+2017-11-17T08:55:21.675748+00:00 app[web.1]: D, [2017-11-17T08:55:21.675667 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_betting", :id=>2, :betting=>"0"}
+2017-11-17T08:55:21.673963+00:00 app[web.1]: D, [2017-11-17T08:55:21.673897 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"193"} (via streamed from room_1)
+2017-11-17T08:55:21.677433+00:00 app[web.1]: D, [2017-11-17T08:55:21.677368 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:55:21.678334+00:00 app[web.1]: D, [2017-11-17T08:55:21.678271 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:55:21.679211+00:00 app[web.1]: D, [2017-11-17T08:55:21.679149 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:55:21.680418+00:00 app[web.1]: D, [2017-11-17T08:55:21.680353 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_stack", :id=>2, :stack=>"197"}
+2017-11-17T08:55:21.681942+00:00 app[web.1]: D, [2017-11-17T08:55:21.681875 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"197"} (via streamed from room_1)
+2017-11-17T08:55:21.686804+00:00 app[web.1]: "urge_action_to_web"
+2017-11-17T08:55:21.683384+00:00 app[web.1]: D, [2017-11-17T08:55:21.683321 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"197"} (via streamed from room_1)
+2017-11-17T08:55:21.682673+00:00 app[web.1]: D, [2017-11-17T08:55:21.682609 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"197"} (via streamed from room_1)
+2017-11-17T08:55:21.691124+00:00 app[web.1]: D, [2017-11-17T08:55:21.691012 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_betting", :id=>1, :betting=>"0"}
+2017-11-17T08:55:21.692728+00:00 app[web.1]: D, [2017-11-17T08:55:21.692660 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:55:21.693517+00:00 app[web.1]: D, [2017-11-17T08:55:21.693013 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:55:21.694238+00:00 app[web.1]: D, [2017-11-17T08:55:21.694175 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:55:21.695496+00:00 app[web.1]: D, [2017-11-17T08:55:21.695428 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_stack", :id=>1, :stack=>"193"}
+2017-11-17T08:55:21.697243+00:00 app[web.1]: D, [2017-11-17T08:55:21.697080 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"193"} (via streamed from room_1)
+2017-11-17T08:55:21.698279+00:00 app[web.1]: D, [2017-11-17T08:55:21.697537 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"193"} (via streamed from room_1)
+2017-11-17T08:55:21.699127+00:00 app[web.1]: D, [2017-11-17T08:55:21.699069 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"193"} (via streamed from room_1)
+2017-11-17T08:55:21.700378+00:00 app[web.1]: D, [2017-11-17T08:55:21.700307 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_betting", :id=>2, :betting=>"0"}
+2017-11-17T08:55:21.702206+00:00 app[web.1]: D, [2017-11-17T08:55:21.702137 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:55:21.703078+00:00 app[web.1]: D, [2017-11-17T08:55:21.702500 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:55:21.703936+00:00 app[web.1]: D, [2017-11-17T08:55:21.703874 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:55:21.704634+00:00 app[web.1]: D, [2017-11-17T08:55:21.704539 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_stack", :id=>2, :stack=>"197"}
+2017-11-17T08:55:21.706957+00:00 app[web.1]: D, [2017-11-17T08:55:21.706075 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"197"} (via streamed from room_1)
+2017-11-17T08:55:21.707720+00:00 app[web.1]: D, [2017-11-17T08:55:21.707260 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"197"} (via streamed from room_1)
+2017-11-17T08:55:21.708904+00:00 app[web.1]: D, [2017-11-17T08:55:21.708848 #4] DEBUG -- : [ActionCable] Broadcasting to user_0ddc4cc02a029e71643a4dc8725e4707: {:action=>"info", :info=>"you can do 'x' or 'b'"}
+2017-11-17T08:55:21.710164+00:00 app[web.1]: D, [2017-11-17T08:55:21.709562 #4] DEBUG -- : [ActionCable] Broadcasting to user_0ddc4cc02a029e71643a4dc8725e4707: {:action=>"urge_action", :actions=>["x", "b"], :bet_amounts=>[2, 197]}
+2017-11-17T08:55:21.708385+00:00 app[web.1]: D, [2017-11-17T08:55:21.708329 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"197"} (via streamed from room_1)
+2017-11-17T08:55:21.710447+00:00 app[web.1]: D, [2017-11-17T08:55:21.710099 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"info", "info"=>"you can do 'x' or 'b'"} (via streamed from user_0ddc4cc02a029e71643a4dc8725e4707)
+2017-11-17T08:55:21.711679+00:00 app[web.1]: D, [2017-11-17T08:55:21.711416 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"urge_action", "actions"=>["x", "b"], "bet_amounts"=>[2, 197]} (via streamed from user_0ddc4cc02a029e71643a4dc8725e4707)
+2017-11-17T08:55:21.967242+00:00 heroku[router]: at=info method=GET path="/png/Ad.png" host=poker-app-1.herokuapp.com request_id=9a4825c6-fc0f-43da-8001-9d46cc9e1d4d fwd="153.207.179.140" dyno=web.1 connect=0ms service=4ms status=304 bytes=48 protocol=https
+2017-11-17T08:55:22.153262+00:00 heroku[router]: at=info method=GET path="/png/9h.png" host=poker-app-1.herokuapp.com request_id=f64ab7c3-8f14-4e63-97d0-654fb87ee0f7 fwd="153.207.179.140" dyno=web.1 connect=0ms service=3ms status=304 bytes=48 protocol=https
+2017-11-17T08:55:22.909033+00:00 heroku[router]: at=info method=GET path="/png/9h.png" host=poker-app-1.herokuapp.com request_id=0d5f3ae3-96ab-4d3c-aa2b-7691c50b9b8f fwd="182.251.242.13" dyno=web.1 connect=1ms service=4ms status=200 bytes=7347 protocol=https
+2017-11-17T08:55:23.320343+00:00 heroku[router]: at=info method=GET path="/png/Ad.png" host=poker-app-1.herokuapp.com request_id=fe282701-8391-46c1-a4c7-81ef9ea7511d fwd="182.251.242.13" dyno=web.1 connect=1ms service=3ms status=304 bytes=48 protocol=https
+2017-11-17T08:55:23.352557+00:00 heroku[router]: at=info method=GET path="/png/7c.png" host=poker-app-1.herokuapp.com request_id=0d2fbacc-9974-4ac8-94df-fe959eda9f13 fwd="182.251.242.13" dyno=web.1 connect=1ms service=4ms status=304 bytes=48 protocol=https
+2017-11-17T08:54:43+00:00 app[heroku-redis]: source=REDIS sample#active-connections=4 sample#load-avg-1m=0.05 sample#load-avg-5m=0.085 sample#load-avg-15m=0.085 sample#read-iops=0 sample#write-iops=0 sample#memory-total=15664248kB sample#memory-free=12519420kB sample#memory-cached=1331148kB sample#memory-redis=346080bytes sample#hit-rate=0.99813 sample#evicted-keys=0
+2017-11-17T08:55:25.747516+00:00 app[web.1]: "process_action"
+2017-11-17T08:55:25.747434+00:00 app[web.1]: I, [2017-11-17T08:55:25.747325 #4]  INFO -- : HeadsUpRoomChannel#action({"data"=>["x", 0]})
+2017-11-17T08:55:25.760710+00:00 app[web.1]: check_next_street
+2017-11-17T08:55:25.754353+00:00 app[web.1]: treat_action
+2017-11-17T08:55:25.756745+00:00 app[web.1]: "next_player"
+2017-11-17T08:55:25.762229+00:00 app[web.1]: check_1
+2017-11-17T08:55:25.768214+00:00 app[web.1]: check_3
+2017-11-17T08:55:25.763155+00:00 app[web.1]: true
+2017-11-17T08:55:25.763158+00:00 app[web.1]: check_2
+2017-11-17T08:55:25.768212+00:00 app[web.1]: true
+2017-11-17T08:55:25.770030+00:00 app[web.1]: check_4
+2017-11-17T08:55:25.771642+00:00 app[web.1]: "is_game_finish?"
+2017-11-17T08:55:25.776327+00:00 app[web.1]: "urge_action_to_web"
+2017-11-17T08:55:25.785577+00:00 app[web.1]: D, [2017-11-17T08:55:25.785450 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_betting", :id=>1, :betting=>"0"}
+2017-11-17T08:55:25.788038+00:00 app[web.1]: D, [2017-11-17T08:55:25.787968 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_stack", :id=>1, :stack=>"193"}
+2017-11-17T08:55:25.789654+00:00 app[web.1]: D, [2017-11-17T08:55:25.789579 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:55:25.791303+00:00 app[web.1]: D, [2017-11-17T08:55:25.790037 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:55:25.792088+00:00 app[web.1]: D, [2017-11-17T08:55:25.790406 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:55:25.792736+00:00 app[web.1]: D, [2017-11-17T08:55:25.792678 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"193"} (via streamed from room_1)
+2017-11-17T08:55:25.793094+00:00 app[web.1]: D, [2017-11-17T08:55:25.792018 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"193"} (via streamed from room_1)
+2017-11-17T08:55:25.793590+00:00 app[web.1]: D, [2017-11-17T08:55:25.791232 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"193"} (via streamed from room_1)
+2017-11-17T08:55:25.794166+00:00 app[web.1]: D, [2017-11-17T08:55:25.794103 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_betting", :id=>2, :betting=>"0"}
+2017-11-17T08:55:25.795441+00:00 app[web.1]: D, [2017-11-17T08:55:25.795375 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:55:25.797476+00:00 app[web.1]: D, [2017-11-17T08:55:25.795672 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:55:25.798092+00:00 app[web.1]: D, [2017-11-17T08:55:25.796772 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:55:25.799642+00:00 app[web.1]: D, [2017-11-17T08:55:25.799569 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_stack", :id=>2, :stack=>"197"}
+2017-11-17T08:55:25.802415+00:00 app[web.1]: D, [2017-11-17T08:55:25.802335 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"197"} (via streamed from room_1)
+2017-11-17T08:55:25.806037+00:00 app[web.1]: D, [2017-11-17T08:55:25.803094 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"197"} (via streamed from room_1)
+2017-11-17T08:55:25.807323+00:00 app[web.1]: D, [2017-11-17T08:55:25.804226 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"197"} (via streamed from room_1)
+2017-11-17T08:55:25.809409+00:00 app[web.1]: D, [2017-11-17T08:55:25.809107 #4] DEBUG -- : [ActionCable] Broadcasting to user_1f23c51920937afd07c01fc452e4c5f9: {:action=>"info", :info=>"you can do 'x' or 'b'"}
+2017-11-17T08:55:25.815861+00:00 app[web.1]: D, [2017-11-17T08:55:25.815719 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"info", "info"=>"you can do 'x' or 'b'"} (via streamed from user_1f23c51920937afd07c01fc452e4c5f9)
+2017-11-17T08:55:25.816555+00:00 app[web.1]: D, [2017-11-17T08:55:25.816486 #4] DEBUG -- : [ActionCable] Broadcasting to user_1f23c51920937afd07c01fc452e4c5f9: {:action=>"urge_action", :actions=>["x", "b"], :bet_amounts=>[2, 193]}
+2017-11-17T08:55:25.819487+00:00 app[web.1]: D, [2017-11-17T08:55:25.819375 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"urge_action", "actions"=>["x", "b"], "bet_amounts"=>[2, 193]} (via streamed from user_1f23c51920937afd07c01fc452e4c5f9)
+2017-11-17T08:55:36.051701+00:00 app[web.1]: I, [2017-11-17T08:55:36.051582 #4]  INFO -- : HeadsUpRoomChannel#action({"data"=>["b", "5"]})
+2017-11-17T08:55:36.051776+00:00 app[web.1]: "process_action"
+2017-11-17T08:55:36.063113+00:00 app[web.1]: treat_action
+2017-11-17T08:55:36.120013+00:00 app[web.1]: "next_player"
+2017-11-17T08:55:36.121937+00:00 app[web.1]: check_next_street
+2017-11-17T08:55:36.122444+00:00 app[web.1]: check_1
+2017-11-17T08:55:36.122978+00:00 app[web.1]: true
+2017-11-17T08:55:36.122981+00:00 app[web.1]: check_2
+2017-11-17T08:55:36.124169+00:00 app[web.1]: check_3
+2017-11-17T08:55:36.125480+00:00 app[web.1]: check_4
+2017-11-17T08:55:36.126500+00:00 app[web.1]: "is_game_finish?"
+2017-11-17T08:55:36.147833+00:00 app[web.1]: "urge_action_to_web"
+2017-11-17T08:55:36.179268+00:00 app[web.1]: D, [2017-11-17T08:55:36.179125 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_betting", :id=>1, :betting=>"5"}
+2017-11-17T08:55:36.182180+00:00 app[web.1]: D, [2017-11-17T08:55:36.182045 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"5"} (via streamed from room_1)
+2017-11-17T08:55:36.184381+00:00 app[web.1]: D, [2017-11-17T08:55:36.184094 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"5"} (via streamed from room_1)
+2017-11-17T08:55:36.185937+00:00 app[web.1]: D, [2017-11-17T08:55:36.185667 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"5"} (via streamed from room_1)
+2017-11-17T08:55:36.191487+00:00 app[web.1]: D, [2017-11-17T08:55:36.191361 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_stack", :id=>1, :stack=>"193"}
+2017-11-17T08:55:36.201247+00:00 app[web.1]: D, [2017-11-17T08:55:36.201098 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"193"} (via streamed from room_1)
+2017-11-17T08:55:36.202116+00:00 app[web.1]: D, [2017-11-17T08:55:36.202039 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"193"} (via streamed from room_1)
+2017-11-17T08:55:36.202749+00:00 app[web.1]: D, [2017-11-17T08:55:36.202682 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"193"} (via streamed from room_1)
+2017-11-17T08:55:36.207250+00:00 app[web.1]: D, [2017-11-17T08:55:36.207068 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_betting", :id=>2, :betting=>"0"}
+2017-11-17T08:55:36.215135+00:00 app[web.1]: D, [2017-11-17T08:55:36.214968 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:55:36.218913+00:00 app[web.1]: D, [2017-11-17T08:55:36.218779 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:55:36.219620+00:00 app[web.1]: D, [2017-11-17T08:55:36.219549 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:55:36.220158+00:00 app[web.1]: D, [2017-11-17T08:55:36.220051 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_stack", :id=>2, :stack=>"197"}
+2017-11-17T08:55:36.225735+00:00 app[web.1]: D, [2017-11-17T08:55:36.225603 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"197"} (via streamed from room_1)
+2017-11-17T08:55:36.226775+00:00 app[web.1]: D, [2017-11-17T08:55:36.226487 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"197"} (via streamed from room_1)
+2017-11-17T08:55:36.228156+00:00 app[web.1]: D, [2017-11-17T08:55:36.228084 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"197"} (via streamed from room_1)
+2017-11-17T08:55:36.260515+00:00 app[web.1]: D, [2017-11-17T08:55:36.260373 #4] DEBUG -- : [ActionCable] Broadcasting to user_0ddc4cc02a029e71643a4dc8725e4707: {:action=>"info", :info=>"you can do 'f', 'c' or 'r'"}
+2017-11-17T08:55:36.262193+00:00 app[web.1]: D, [2017-11-17T08:55:36.262119 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"info", "info"=>"you can do 'f', 'c' or 'r'"} (via streamed from user_0ddc4cc02a029e71643a4dc8725e4707)
+2017-11-17T08:55:36.262958+00:00 app[web.1]: D, [2017-11-17T08:55:36.262868 #4] DEBUG -- : [ActionCable] Broadcasting to user_0ddc4cc02a029e71643a4dc8725e4707: {:action=>"urge_action", :actions=>["f", "c", "r"], :raise_amounts=>[10, 197]}
+2017-11-17T08:55:36.271952+00:00 app[web.1]: D, [2017-11-17T08:55:36.271834 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"urge_action", "actions"=>["f", "c", "r"], "raise_amounts"=>[10, 197]} (via streamed from user_0ddc4cc02a029e71643a4dc8725e4707)
+2017-11-17T08:55:41.213696+00:00 app[web.1]: I, [2017-11-17T08:55:41.213013 #4]  INFO -- : HeadsUpRoomChannel#action({"data"=>["f", 0]})
+2017-11-17T08:55:41.251227+00:00 app[web.1]: "next_player"
+2017-11-17T08:55:41.213712+00:00 app[web.1]: "process_action"
+2017-11-17T08:55:41.263095+00:00 app[web.1]: check_1
+2017-11-17T08:55:41.231536+00:00 app[web.1]: treat_action
+2017-11-17T08:55:41.260230+00:00 app[web.1]: check_next_street
+2017-11-17T08:55:41.268795+00:00 app[web.1]: true
+2017-11-17T08:55:41.267126+00:00 app[web.1]: check_2
+2017-11-17T08:55:41.267119+00:00 app[web.1]: true
+2017-11-17T08:55:41.268804+00:00 app[web.1]: check_3
+2017-11-17T08:55:41.275102+00:00 app[web.1]: true
+2017-11-17T08:55:41.275109+00:00 app[web.1]: check_4
+2017-11-17T08:55:41.287168+00:00 app[web.1]: go to next street
+2017-11-17T08:55:41.287174+00:00 app[web.1]: !!!!!Game!!!!!
+2017-11-17T08:55:41.290656+00:00 app[web.1]: 30
+2017-11-17T08:55:41.290661+00:00 app[web.1]: 1
+2017-11-17T08:55:41.290661+00:00 app[web.1]: current_player
+2017-11-17T08:55:41.290665+00:00 app[web.1]: 1
+2017-11-17T08:55:41.290663+00:00 app[web.1]: nofalive
+2017-11-17T08:55:41.290685+00:00 app[web.1]: 5
+2017-11-17T08:55:41.290701+00:00 app[web.1]: number
+2017-11-17T08:55:41.290683+00:00 app[web.1]: current_bet_amount
+2017-11-17T08:55:41.290719+00:00 app[web.1]: facing_bet_amount
+2017-11-17T08:55:41.290703+00:00 app[web.1]: 15
+2017-11-17T08:55:41.290721+00:00 app[web.1]: 5
+2017-11-17T08:55:41.290736+00:00 app[web.1]: side_pot_3
+2017-11-17T08:55:41.290738+00:00 app[web.1]: 0
+2017-11-17T08:55:41.290756+00:00 app[web.1]: 0
+2017-11-17T08:55:41.290771+00:00 app[web.1]: side_pot_4
+2017-11-17T08:55:41.290773+00:00 app[web.1]: 0
+2017-11-17T08:55:41.290754+00:00 app[web.1]: side_pot_9
+2017-11-17T08:55:41.290789+00:00 app[web.1]: 0
+2017-11-17T08:55:41.290804+00:00 app[web.1]: prev_bet_amount
+2017-11-17T08:55:41.290787+00:00 app[web.1]: side_pot_6
+2017-11-17T08:55:41.290820+00:00 app[web.1]: side_pot_8
+2017-11-17T08:55:41.290806+00:00 app[web.1]: 0
+2017-11-17T08:55:41.290822+00:00 app[web.1]: 0
+2017-11-17T08:55:41.291900+00:00 app[web.1]: 3
+2017-11-17T08:55:41.290837+00:00 app[web.1]: !!!!!Street!!!!!
+2017-11-17T08:55:41.291916+00:00 app[web.1]: can_next_street
+2017-11-17T08:55:41.291895+00:00 app[web.1]: 0
+2017-11-17T08:55:41.291898+00:00 app[web.1]: nofstreet
+2017-11-17T08:55:41.291918+00:00 app[web.1]: true
+2017-11-17T08:55:41.291935+00:00 app[web.1]: 5
+2017-11-17T08:55:41.291950+00:00 app[web.1]: nofbet
+2017-11-17T08:55:41.291933+00:00 app[web.1]: temp_pot
+2017-11-17T08:55:41.291953+00:00 app[web.1]: 1
+2017-11-17T08:55:41.293953+00:00 app[web.1]: !!!!!Player_1!!!!!
+2017-11-17T08:55:41.294667+00:00 app[web.1]: 0
+2017-11-17T08:55:41.294671+00:00 app[web.1]: 1f23c51920937afd07c01fc452e4c5f9
+2017-11-17T08:55:41.294672+00:00 app[web.1]: amount
+2017-11-17T08:55:41.294672+00:00 app[web.1]: 193
+2017-11-17T08:55:41.294668+00:00 app[web.1]: name
+2017-11-17T08:55:41.294675+00:00 app[web.1]: 1
+2017-11-17T08:55:41.294681+00:00 app[web.1]: alive
+2017-11-17T08:55:41.294684+00:00 app[web.1]: true
+2017-11-17T08:55:41.294677+00:00 app[web.1]: betting
+2017-11-17T08:55:41.294679+00:00 app[web.1]: 5
+2017-11-17T08:55:41.294674+00:00 app[web.1]: prev_nofbet
+2017-11-17T08:55:41.294702+00:00 app[web.1]: true
+2017-11-17T08:55:41.294704+00:00 app[web.1]: rights_of_side_pot
+2017-11-17T08:55:41.294701+00:00 app[web.1]: active
+2017-11-17T08:55:41.294706+00:00 app[web.1]: hand
+2017-11-17T08:55:41.294708+00:00 app[web.1]: 8s,Jc
+2017-11-17T08:55:41.294723+00:00 app[web.1]: !!!!!Player_2!!!!!
+2017-11-17T08:55:41.294705+00:00 app[web.1]: 10
+2017-11-17T08:55:41.295486+00:00 app[web.1]: 0
+2017-11-17T08:55:41.295523+00:00 app[web.1]: name
+2017-11-17T08:55:41.295525+00:00 app[web.1]: 0ddc4cc02a029e71643a4dc8725e4707
+2017-11-17T08:55:41.295613+00:00 app[web.1]: 197
+2017-11-17T08:55:41.295616+00:00 app[web.1]: prev_nofbet
+2017-11-17T08:55:41.295528+00:00 app[web.1]: amount
+2017-11-17T08:55:41.295636+00:00 app[web.1]: betting
+2017-11-17T08:55:41.295617+00:00 app[web.1]: 0
+2017-11-17T08:55:41.295638+00:00 app[web.1]: 0
+2017-11-17T08:55:41.295640+00:00 app[web.1]: alive
+2017-11-17T08:55:41.295685+00:00 app[web.1]: false
+2017-11-17T08:55:41.295688+00:00 app[web.1]: active
+2017-11-17T08:55:41.295708+00:00 app[web.1]: false
+2017-11-17T08:55:41.295786+00:00 app[web.1]: rights_of_side_pot
+2017-11-17T08:55:41.295789+00:00 app[web.1]: 0
+2017-11-17T08:55:41.295790+00:00 app[web.1]: hand
+2017-11-17T08:55:41.297525+00:00 app[web.1]: "is_game_finish?"
+2017-11-17T08:55:41.295793+00:00 app[web.1]: 5s,Kc
+2017-11-17T08:55:41.298019+00:00 app[web.1]: only one person is alive
+2017-11-17T08:55:43.298260+00:00 app[web.1]: "end_the_game"
+2017-11-17T08:55:43.298280+00:00 app[web.1]: "calc_pot_from_betting_status"
+2017-11-17T08:55:43.309935+00:00 app[web.1]: D, [2017-11-17T08:55:43.309837 #4] DEBUG -- : [ActionCable] Broadcasting to user_1f23c51920937afd07c01fc452e4c5f9: {:action=>"info", :info=>"player_1 win by  with "}
+2017-11-17T08:55:43.308772+00:00 app[web.1]: "player_1 win by  with "
+2017-11-17T08:55:43.311573+00:00 app[web.1]: D, [2017-11-17T08:55:43.311502 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"info", "info"=>"player_1 win by  with "} (via streamed from user_1f23c51920937afd07c01fc452e4c5f9)
+2017-11-17T08:55:43.312054+00:00 app[web.1]: D, [2017-11-17T08:55:43.311975 #4] DEBUG -- : [ActionCable] Broadcasting to user_0ddc4cc02a029e71643a4dc8725e4707: {:action=>"info", :info=>"player_1 win by  with "}
+2017-11-17T08:55:43.313345+00:00 app[web.1]: D, [2017-11-17T08:55:43.313287 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"info", "info"=>"player_1 win by  with "} (via streamed from user_0ddc4cc02a029e71643a4dc8725e4707)
+2017-11-17T08:55:43.316603+00:00 app[web.1]: "player[1] win by side_pot_1($15)"
+2017-11-17T08:55:43.317631+00:00 app[web.1]: D, [2017-11-17T08:55:43.317576 #4] DEBUG -- : [ActionCable] Broadcasting to user_1f23c51920937afd07c01fc452e4c5f9: {:action=>"info", :info=>"player[1] win by side_pot_1($15)"}
+2017-11-17T08:55:43.318678+00:00 app[web.1]: D, [2017-11-17T08:55:43.318620 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"info", "info"=>"player[1] win by side_pot_1($15)"} (via streamed from user_1f23c51920937afd07c01fc452e4c5f9)
+2017-11-17T08:55:43.319093+00:00 app[web.1]: D, [2017-11-17T08:55:43.318994 #4] DEBUG -- : [ActionCable] Broadcasting to user_0ddc4cc02a029e71643a4dc8725e4707: {:action=>"info", :info=>"player[1] win by side_pot_1($15)"}
+2017-11-17T08:55:43.327198+00:00 app[web.1]: "GAME END!!!!!!!!!!!!!!!!!"
+2017-11-17T08:55:43.319968+00:00 app[web.1]: D, [2017-11-17T08:55:43.319903 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"info", "info"=>"player[1] win by side_pot_1($15)"} (via streamed from user_0ddc4cc02a029e71643a4dc8725e4707)
+2017-11-17T08:55:43.327196+00:00 app[web.1]: "1 game finished. go to next game"
+2017-11-17T08:55:43.327201+00:00 app[web.1]: "GAME START!!!!!!!!!!!!!!!!!"
+2017-11-17T08:55:43.327201+00:00 app[web.1]: "initial_game_setting"
+2017-11-17T08:55:43.343011+00:00 app[web.1]: "preflop_setting"
+2017-11-17T08:55:43.346651+00:00 app[web.1]: D, [2017-11-17T08:55:43.346561 #4] DEBUG -- : [ActionCable] Broadcasting to user_1f23c51920937afd07c01fc452e4c5f9: {:action=>"deal_hand", :cards=>"Qc,Ac"}
+2017-11-17T08:55:43.348017+00:00 app[web.1]: D, [2017-11-17T08:55:43.347952 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"deal_hand", "cards"=>"Qc,Ac"} (via streamed from user_1f23c51920937afd07c01fc452e4c5f9)
+2017-11-17T08:55:43.348910+00:00 app[web.1]: D, [2017-11-17T08:55:43.348855 #4] DEBUG -- : [ActionCable] Broadcasting to user_0ddc4cc02a029e71643a4dc8725e4707: {:action=>"deal_hand", :cards=>"7h,6h"}
+2017-11-17T08:55:43.350128+00:00 app[web.1]: D, [2017-11-17T08:55:43.350063 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"deal_hand", "cards"=>"7h,6h"} (via streamed from user_0ddc4cc02a029e71643a4dc8725e4707)
+2017-11-17T08:55:43.350541+00:00 app[web.1]: D, [2017-11-17T08:55:43.350176 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"deal_button", :id=>2}
+2017-11-17T08:55:43.352005+00:00 app[web.1]: D, [2017-11-17T08:55:43.351935 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"deal_button", "id"=>2} (via streamed from room_1)
+2017-11-17T08:55:43.351286+00:00 app[web.1]: D, [2017-11-17T08:55:43.351110 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_pot", :pot=>0}
+2017-11-17T08:55:43.353320+00:00 app[web.1]: D, [2017-11-17T08:55:43.352268 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"deal_button", "id"=>2} (via streamed from room_1)
+2017-11-17T08:55:43.354316+00:00 app[web.1]: D, [2017-11-17T08:55:43.352566 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"deal_button", "id"=>2} (via streamed from room_1)
+2017-11-17T08:55:43.355017+00:00 app[web.1]: D, [2017-11-17T08:55:43.354230 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_pot", "pot"=>0} (via streamed from room_1)
+2017-11-17T08:55:43.355740+00:00 app[web.1]: D, [2017-11-17T08:55:43.354718 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_pot", "pot"=>0} (via streamed from room_1)
+2017-11-17T08:55:43.356024+00:00 app[web.1]: D, [2017-11-17T08:55:43.355149 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_pot", "pot"=>0} (via streamed from room_1)
+2017-11-17T08:55:43.358600+00:00 app[web.1]: D, [2017-11-17T08:55:43.358532 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"2"} (via streamed from room_1)
+2017-11-17T08:55:43.356984+00:00 app[web.1]: D, [2017-11-17T08:55:43.356909 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_betting", :id=>1, :betting=>"2"}
+2017-11-17T08:55:43.359147+00:00 app[web.1]: D, [2017-11-17T08:55:43.359039 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"2"} (via streamed from room_1)
+2017-11-17T08:55:43.359597+00:00 app[web.1]: D, [2017-11-17T08:55:43.359536 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"2"} (via streamed from room_1)
+2017-11-17T08:55:43.359959+00:00 app[web.1]: D, [2017-11-17T08:55:43.359896 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_stack", :id=>1, :stack=>"203"}
+2017-11-17T08:55:43.361102+00:00 app[web.1]: D, [2017-11-17T08:55:43.361025 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"203"} (via streamed from room_1)
+2017-11-17T08:55:43.361776+00:00 app[web.1]: D, [2017-11-17T08:55:43.361705 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"203"} (via streamed from room_1)
+2017-11-17T08:55:43.362687+00:00 app[web.1]: D, [2017-11-17T08:55:43.362625 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"203"} (via streamed from room_1)
+2017-11-17T08:55:43.362205+00:00 app[web.1]: D, [2017-11-17T08:55:43.362118 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_betting", :id=>2, :betting=>"1"}
+2017-11-17T08:55:43.363686+00:00 app[web.1]: D, [2017-11-17T08:55:43.363616 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"1"} (via streamed from room_1)
+2017-11-17T08:55:43.364223+00:00 app[web.1]: D, [2017-11-17T08:55:43.364145 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"1"} (via streamed from room_1)
+2017-11-17T08:55:43.364653+00:00 app[web.1]: D, [2017-11-17T08:55:43.364591 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"1"} (via streamed from room_1)
+2017-11-17T08:55:43.365106+00:00 app[web.1]: D, [2017-11-17T08:55:43.365024 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_stack", :id=>2, :stack=>"197"}
+2017-11-17T08:55:43.367255+00:00 app[web.1]: D, [2017-11-17T08:55:43.367195 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"197"} (via streamed from room_1)
+2017-11-17T08:55:43.366481+00:00 app[web.1]: D, [2017-11-17T08:55:43.366413 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"197"} (via streamed from room_1)
+2017-11-17T08:55:43.367953+00:00 app[web.1]: D, [2017-11-17T08:55:43.367427 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"197"} (via streamed from room_1)
+2017-11-17T08:55:43.369182+00:00 app[web.1]: "is_table_finish?"
+2017-11-17T08:55:43.374061+00:00 app[web.1]: "urge_action_to_web"
+2017-11-17T08:55:43.378126+00:00 app[web.1]: D, [2017-11-17T08:55:43.378062 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_betting", :id=>1, :betting=>"2"}
+2017-11-17T08:55:43.379258+00:00 app[web.1]: D, [2017-11-17T08:55:43.379191 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_stack", :id=>1, :stack=>"203"}
+2017-11-17T08:55:43.379673+00:00 app[web.1]: D, [2017-11-17T08:55:43.379608 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"2"} (via streamed from room_1)
+2017-11-17T08:55:43.380968+00:00 app[web.1]: D, [2017-11-17T08:55:43.379850 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"2"} (via streamed from room_1)
+2017-11-17T08:55:43.381738+00:00 app[web.1]: D, [2017-11-17T08:55:43.380126 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"2"} (via streamed from room_1)
+2017-11-17T08:55:43.382755+00:00 app[web.1]: D, [2017-11-17T08:55:43.381659 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_betting", :id=>2, :betting=>"1"}
+2017-11-17T08:55:43.382472+00:00 app[web.1]: D, [2017-11-17T08:55:43.381523 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"203"} (via streamed from room_1)
+2017-11-17T08:55:43.383055+00:00 app[web.1]: D, [2017-11-17T08:55:43.382138 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"203"} (via streamed from room_1)
+2017-11-17T08:55:43.382231+00:00 app[web.1]: D, [2017-11-17T08:55:43.381346 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"203"} (via streamed from room_1)
+2017-11-17T08:55:43.384191+00:00 app[web.1]: D, [2017-11-17T08:55:43.384129 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"1"} (via streamed from room_1)
+2017-11-17T08:55:43.384619+00:00 app[web.1]: D, [2017-11-17T08:55:43.384555 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"1"} (via streamed from room_1)
+2017-11-17T08:55:43.385063+00:00 app[web.1]: D, [2017-11-17T08:55:43.384993 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"1"} (via streamed from room_1)
+2017-11-17T08:55:43.385440+00:00 app[web.1]: D, [2017-11-17T08:55:43.385382 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_stack", :id=>2, :stack=>"197"}
+2017-11-17T08:55:43.386622+00:00 app[web.1]: D, [2017-11-17T08:55:43.386532 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"197"} (via streamed from room_1)
+2017-11-17T08:55:43.387643+00:00 app[web.1]: D, [2017-11-17T08:55:43.386728 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"197"} (via streamed from room_1)
+2017-11-17T08:55:43.387980+00:00 app[web.1]: D, [2017-11-17T08:55:43.386907 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"197"} (via streamed from room_1)
+2017-11-17T08:55:43.388385+00:00 app[web.1]: D, [2017-11-17T08:55:43.387567 #4] DEBUG -- : [ActionCable] Broadcasting to user_0ddc4cc02a029e71643a4dc8725e4707: {:action=>"info", :info=>"you can do 'f', 'c' or 'r'"}
+2017-11-17T08:55:43.389059+00:00 app[web.1]: D, [2017-11-17T08:55:43.388951 #4] DEBUG -- : [ActionCable] Broadcasting to user_0ddc4cc02a029e71643a4dc8725e4707: {:action=>"urge_action", :actions=>["f", "c", "r"], :raise_amounts=>[4, 197]}
+2017-11-17T08:55:43.389632+00:00 app[web.1]: D, [2017-11-17T08:55:43.389580 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"info", "info"=>"you can do 'f', 'c' or 'r'"} (via streamed from user_0ddc4cc02a029e71643a4dc8725e4707)
+2017-11-17T08:55:43.390622+00:00 app[web.1]: D, [2017-11-17T08:55:43.390567 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"urge_action", "actions"=>["f", "c", "r"], "raise_amounts"=>[4, 197]} (via streamed from user_0ddc4cc02a029e71643a4dc8725e4707)
+2017-11-17T08:55:43.566824+00:00 heroku[router]: at=info method=GET path="/png/Ac.png" host=poker-app-1.herokuapp.com request_id=0bf0e000-fbbd-40db-ac0e-9ed3184f83ed fwd="153.207.179.140" dyno=web.1 connect=0ms service=1ms status=304 bytes=48 protocol=https
+2017-11-17T08:55:44.413768+00:00 heroku[router]: at=info method=GET path="/png/7h.png" host=poker-app-1.herokuapp.com request_id=658a29c4-5226-49e5-9514-474715419362 fwd="182.251.242.13" dyno=web.1 connect=1ms service=2ms status=200 bytes=6339 protocol=https
+2017-11-17T08:55:44.828146+00:00 heroku[router]: at=info method=GET path="/png/6h.png" host=poker-app-1.herokuapp.com request_id=e2954a96-0807-4da3-bba8-af0ebe67d1aa fwd="182.251.242.13" dyno=web.1 connect=1ms service=3ms status=304 bytes=48 protocol=https
+2017-11-17T08:55:48.867890+00:00 app[web.1]: I, [2017-11-17T08:55:48.867766 #4]  INFO -- : HeadsUpRoomChannel#action({"data"=>["r", "5"]})
+2017-11-17T08:55:48.867980+00:00 app[web.1]: "process_action"
+2017-11-17T08:55:48.879148+00:00 app[web.1]: treat_action
+2017-11-17T08:55:48.910544+00:00 app[web.1]: check_1
+2017-11-17T08:55:48.915149+00:00 app[web.1]: true
+2017-11-17T08:55:48.897988+00:00 app[web.1]: "next_player"
+2017-11-17T08:55:48.905213+00:00 app[web.1]: check_next_street
+2017-11-17T08:55:48.917177+00:00 app[web.1]: check_3
+2017-11-17T08:55:48.925373+00:00 app[web.1]: check_4
+2017-11-17T08:55:48.915152+00:00 app[web.1]: check_2
+2017-11-17T08:55:48.925955+00:00 app[web.1]: "is_game_finish?"
+2017-11-17T08:55:48.970913+00:00 app[web.1]: D, [2017-11-17T08:55:48.967215 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_betting", :id=>1, :betting=>"2"}
+2017-11-17T08:55:48.943651+00:00 app[web.1]: "urge_action_to_web"
+2017-11-17T08:55:48.976728+00:00 app[web.1]: D, [2017-11-17T08:55:48.976608 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_stack", :id=>1, :stack=>"203"}
+2017-11-17T08:55:48.978550+00:00 app[web.1]: D, [2017-11-17T08:55:48.978460 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"203"} (via streamed from room_1)
+2017-11-17T08:55:48.970916+00:00 app[web.1]: D, [2017-11-17T08:55:48.969763 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"2"} (via streamed from room_1)
+2017-11-17T08:55:48.985265+00:00 app[web.1]: D, [2017-11-17T08:55:48.984280 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"203"} (via streamed from room_1)
+2017-11-17T08:55:48.971114+00:00 app[web.1]: D, [2017-11-17T08:55:48.970967 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"2"} (via streamed from room_1)
+2017-11-17T08:55:48.985945+00:00 app[web.1]: D, [2017-11-17T08:55:48.983919 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"2"} (via streamed from room_1)
+2017-11-17T08:55:48.984489+00:00 app[web.1]: D, [2017-11-17T08:55:48.979034 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"203"} (via streamed from room_1)
+2017-11-17T08:55:48.987731+00:00 app[web.1]: D, [2017-11-17T08:55:48.987614 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_betting", :id=>2, :betting=>"5"}
+2017-11-17T08:55:48.989357+00:00 app[web.1]: D, [2017-11-17T08:55:48.989287 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_stack", :id=>2, :stack=>"197"}
+2017-11-17T08:55:48.991295+00:00 app[web.1]: D, [2017-11-17T08:55:48.991001 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"5"} (via streamed from room_1)
+2017-11-17T08:55:48.993951+00:00 app[web.1]: D, [2017-11-17T08:55:48.993878 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"197"} (via streamed from room_1)
+2017-11-17T08:55:48.992572+00:00 app[web.1]: D, [2017-11-17T08:55:48.992483 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"197"} (via streamed from room_1)
+2017-11-17T08:55:48.993200+00:00 app[web.1]: D, [2017-11-17T08:55:48.993090 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"197"} (via streamed from room_1)
+2017-11-17T08:55:48.999504+00:00 app[web.1]: D, [2017-11-17T08:55:48.999397 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"5"} (via streamed from room_1)
+2017-11-17T08:55:48.994629+00:00 app[web.1]: D, [2017-11-17T08:55:48.994556 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"5"} (via streamed from room_1)
+2017-11-17T08:55:49.010012+00:00 app[web.1]: D, [2017-11-17T08:55:49.009885 #4] DEBUG -- : [ActionCable] Broadcasting to user_1f23c51920937afd07c01fc452e4c5f9: {:action=>"urge_action", :actions=>["f", "c", "r"], :raise_amounts=>[8, 203]}
+2017-11-17T08:55:49.019537+00:00 app[web.1]: D, [2017-11-17T08:55:49.019414 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"info", "info"=>"you can do 'f', 'c' or 'r'"} (via streamed from user_1f23c51920937afd07c01fc452e4c5f9)
+2017-11-17T08:55:49.001905+00:00 app[web.1]: D, [2017-11-17T08:55:49.001813 #4] DEBUG -- : [ActionCable] Broadcasting to user_1f23c51920937afd07c01fc452e4c5f9: {:action=>"info", :info=>"you can do 'f', 'c' or 'r'"}
+2017-11-17T08:55:49.023509+00:00 app[web.1]: D, [2017-11-17T08:55:49.023397 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"urge_action", "actions"=>["f", "c", "r"], "raise_amounts"=>[8, 203]} (via streamed from user_1f23c51920937afd07c01fc452e4c5f9)
+2017-11-17T08:55:54.092676+00:00 app[web.1]: treat_action
+2017-11-17T08:55:54.085417+00:00 app[web.1]: I, [2017-11-17T08:55:54.085276 #4]  INFO -- : HeadsUpRoomChannel#action({"data"=>["r", "15"]})
+2017-11-17T08:55:54.085494+00:00 app[web.1]: "process_action"
+2017-11-17T08:55:54.118525+00:00 app[web.1]: "next_player"
+2017-11-17T08:55:54.121657+00:00 app[web.1]: check_next_street
+2017-11-17T08:55:54.123002+00:00 app[web.1]: check_1
+2017-11-17T08:55:54.123715+00:00 app[web.1]: true
+2017-11-17T08:55:54.123717+00:00 app[web.1]: check_2
+2017-11-17T08:55:54.127016+00:00 app[web.1]: check_3
+2017-11-17T08:55:54.133995+00:00 app[web.1]: "is_game_finish?"
+2017-11-17T08:55:54.131106+00:00 app[web.1]: check_4
+2017-11-17T08:55:54.140675+00:00 app[web.1]: "urge_action_to_web"
+2017-11-17T08:55:54.151856+00:00 app[web.1]: D, [2017-11-17T08:55:54.151736 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_betting", :id=>1, :betting=>"15"}
+2017-11-17T08:55:54.179574+00:00 app[web.1]: D, [2017-11-17T08:55:54.179387 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_stack", :id=>1, :stack=>"203"}
+2017-11-17T08:55:54.183407+00:00 app[web.1]: D, [2017-11-17T08:55:54.183261 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"15"} (via streamed from room_1)
+2017-11-17T08:55:54.185467+00:00 app[web.1]: D, [2017-11-17T08:55:54.185389 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"203"} (via streamed from room_1)
+2017-11-17T08:55:54.186660+00:00 app[web.1]: D, [2017-11-17T08:55:54.186515 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"203"} (via streamed from room_1)
+2017-11-17T08:55:54.187711+00:00 app[web.1]: D, [2017-11-17T08:55:54.187654 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"15"} (via streamed from room_1)
+2017-11-17T08:55:54.188878+00:00 app[web.1]: D, [2017-11-17T08:55:54.188799 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"203"} (via streamed from room_1)
+2017-11-17T08:55:54.189621+00:00 app[web.1]: D, [2017-11-17T08:55:54.189562 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"15"} (via streamed from room_1)
+2017-11-17T08:55:54.191535+00:00 app[web.1]: D, [2017-11-17T08:55:54.191466 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_betting", :id=>2, :betting=>"5"}
+2017-11-17T08:55:54.194839+00:00 app[web.1]: D, [2017-11-17T08:55:54.194732 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"5"} (via streamed from room_1)
+2017-11-17T08:55:54.195841+00:00 app[web.1]: D, [2017-11-17T08:55:54.195779 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"5"} (via streamed from room_1)
+2017-11-17T08:55:54.204166+00:00 app[web.1]: D, [2017-11-17T08:55:54.204004 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"197"} (via streamed from room_1)
+2017-11-17T08:55:54.196732+00:00 app[web.1]: D, [2017-11-17T08:55:54.196676 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"5"} (via streamed from room_1)
+2017-11-17T08:55:54.206309+00:00 app[web.1]: D, [2017-11-17T08:55:54.206207 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"197"} (via streamed from room_1)
+2017-11-17T08:55:54.199158+00:00 app[web.1]: D, [2017-11-17T08:55:54.199054 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_stack", :id=>2, :stack=>"197"}
+2017-11-17T08:55:54.211262+00:00 app[web.1]: D, [2017-11-17T08:55:54.211134 #4] DEBUG -- : [ActionCable] Broadcasting to user_0ddc4cc02a029e71643a4dc8725e4707: {:action=>"info", :info=>"you can do 'f', 'c' or 'r'"}
+2017-11-17T08:55:54.207035+00:00 app[web.1]: D, [2017-11-17T08:55:54.206977 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"197"} (via streamed from room_1)
+2017-11-17T08:55:54.219869+00:00 app[web.1]: D, [2017-11-17T08:55:54.219717 #4] DEBUG -- : [ActionCable] Broadcasting to user_0ddc4cc02a029e71643a4dc8725e4707: {:action=>"urge_action", :actions=>["f", "c", "r"], :raise_amounts=>[25, 197]}
+2017-11-17T08:55:54.222516+00:00 app[web.1]: D, [2017-11-17T08:55:54.222383 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"info", "info"=>"you can do 'f', 'c' or 'r'"} (via streamed from user_0ddc4cc02a029e71643a4dc8725e4707)
+2017-11-17T08:55:54.235397+00:00 app[web.1]: D, [2017-11-17T08:55:54.235277 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"urge_action", "actions"=>["f", "c", "r"], "raise_amounts"=>[25, 197]} (via streamed from user_0ddc4cc02a029e71643a4dc8725e4707)
+2017-11-17T08:56:04.335630+00:00 app[web.1]: I, [2017-11-17T08:56:04.335488 #4]  INFO -- : HeadsUpRoomChannel#action({"data"=>["r", "39"]})
+2017-11-17T08:56:04.335647+00:00 app[web.1]: "process_action"
+2017-11-17T08:56:04.359054+00:00 app[web.1]: treat_action
+2017-11-17T08:56:04.381765+00:00 app[web.1]: "next_player"
+2017-11-17T08:56:04.393717+00:00 app[web.1]: check_next_street
+2017-11-17T08:56:04.394702+00:00 app[web.1]: check_1
+2017-11-17T08:56:04.399087+00:00 app[web.1]: check_2
+2017-11-17T08:56:04.399080+00:00 app[web.1]: true
+2017-11-17T08:56:04.401578+00:00 app[web.1]: check_3
+2017-11-17T08:56:04.407837+00:00 app[web.1]: check_4
+2017-11-17T08:56:04.424665+00:00 app[web.1]: "urge_action_to_web"
+2017-11-17T08:56:04.408919+00:00 app[web.1]: "is_game_finish?"
+2017-11-17T08:56:04.438844+00:00 app[web.1]: D, [2017-11-17T08:56:04.438706 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_betting", :id=>1, :betting=>"15"}
+2017-11-17T08:56:04.443712+00:00 app[web.1]: D, [2017-11-17T08:56:04.443585 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"15"} (via streamed from room_1)
+2017-11-17T08:56:04.444596+00:00 app[web.1]: D, [2017-11-17T08:56:04.444524 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"15"} (via streamed from room_1)
+2017-11-17T08:56:04.445284+00:00 app[web.1]: D, [2017-11-17T08:56:04.445211 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"15"} (via streamed from room_1)
+2017-11-17T08:56:04.446976+00:00 app[web.1]: D, [2017-11-17T08:56:04.446851 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_stack", :id=>1, :stack=>"203"}
+2017-11-17T08:56:04.449515+00:00 app[web.1]: D, [2017-11-17T08:56:04.449405 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"203"} (via streamed from room_1)
+2017-11-17T08:56:04.450345+00:00 app[web.1]: D, [2017-11-17T08:56:04.450187 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"203"} (via streamed from room_1)
+2017-11-17T08:56:04.450977+00:00 app[web.1]: D, [2017-11-17T08:56:04.450876 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"203"} (via streamed from room_1)
+2017-11-17T08:56:04.453477+00:00 app[web.1]: D, [2017-11-17T08:56:04.453374 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_betting", :id=>2, :betting=>"39"}
+2017-11-17T08:56:04.464564+00:00 app[web.1]: D, [2017-11-17T08:56:04.464455 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"39"} (via streamed from room_1)
+2017-11-17T08:56:04.468392+00:00 app[web.1]: D, [2017-11-17T08:56:04.468292 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"39"} (via streamed from room_1)
+2017-11-17T08:56:04.469037+00:00 app[web.1]: D, [2017-11-17T08:56:04.468974 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"39"} (via streamed from room_1)
+2017-11-17T08:56:04.469807+00:00 app[web.1]: D, [2017-11-17T08:56:04.469734 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_stack", :id=>2, :stack=>"197"}
+2017-11-17T08:56:04.471353+00:00 app[web.1]: D, [2017-11-17T08:56:04.471278 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"197"} (via streamed from room_1)
+2017-11-17T08:56:04.472291+00:00 app[web.1]: D, [2017-11-17T08:56:04.472220 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"197"} (via streamed from room_1)
+2017-11-17T08:56:04.473090+00:00 app[web.1]: D, [2017-11-17T08:56:04.472514 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"197"} (via streamed from room_1)
+2017-11-17T08:56:04.473594+00:00 app[web.1]: D, [2017-11-17T08:56:04.472676 #4] DEBUG -- : [ActionCable] Broadcasting to user_1f23c51920937afd07c01fc452e4c5f9: {:action=>"info", :info=>"you can do 'f', 'c' or 'r'"}
+2017-11-17T08:56:04.474436+00:00 app[web.1]: D, [2017-11-17T08:56:04.474363 #4] DEBUG -- : [ActionCable] Broadcasting to user_1f23c51920937afd07c01fc452e4c5f9: {:action=>"urge_action", :actions=>["f", "c", "r"], :raise_amounts=>[63, 203]}
+2017-11-17T08:56:04.475276+00:00 app[web.1]: D, [2017-11-17T08:56:04.475208 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"info", "info"=>"you can do 'f', 'c' or 'r'"} (via streamed from user_1f23c51920937afd07c01fc452e4c5f9)
+2017-11-17T08:56:04.476246+00:00 app[web.1]: D, [2017-11-17T08:56:04.476186 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"urge_action", "actions"=>["f", "c", "r"], "raise_amounts"=>[63, 203]} (via streamed from user_1f23c51920937afd07c01fc452e4c5f9)
+2017-11-17T08:56:08.395541+00:00 app[web.1]: I, [2017-11-17T08:56:08.395402 #4]  INFO -- : HeadsUpRoomChannel#action({"data"=>["c", 0]})
+2017-11-17T08:56:08.395590+00:00 app[web.1]: "process_action"
+2017-11-17T08:56:08.407166+00:00 app[web.1]: treat_action
+2017-11-17T08:56:08.415972+00:00 app[web.1]: "next_player"
+2017-11-17T08:56:08.419966+00:00 app[web.1]: check_next_street
+2017-11-17T08:56:08.420902+00:00 app[web.1]: check_1
+2017-11-17T08:56:08.421866+00:00 app[web.1]: true
+2017-11-17T08:56:08.421870+00:00 app[web.1]: check_2
+2017-11-17T08:56:08.423704+00:00 app[web.1]: true
+2017-11-17T08:56:08.423710+00:00 app[web.1]: check_3
+2017-11-17T08:56:08.427059+00:00 app[web.1]: true
+2017-11-17T08:56:08.427068+00:00 app[web.1]: check_4
+2017-11-17T08:56:08.436235+00:00 app[web.1]: go to next street
+2017-11-17T08:56:08.436243+00:00 app[web.1]: !!!!!Game!!!!!
+2017-11-17T08:56:08.437735+00:00 app[web.1]: 30
+2017-11-17T08:56:08.437737+00:00 app[web.1]: current_player
+2017-11-17T08:56:08.437737+00:00 app[web.1]: 2
+2017-11-17T08:56:08.437738+00:00 app[web.1]: nofalive
+2017-11-17T08:56:08.437738+00:00 app[web.1]: 2
+2017-11-17T08:56:08.437739+00:00 app[web.1]: current_bet_amount
+2017-11-17T08:56:08.437740+00:00 app[web.1]: 39
+2017-11-17T08:56:08.437740+00:00 app[web.1]: number
+2017-11-17T08:56:08.437741+00:00 app[web.1]: 16
+2017-11-17T08:56:08.437742+00:00 app[web.1]: facing_bet_amount
+2017-11-17T08:56:08.437742+00:00 app[web.1]: 39
+2017-11-17T08:56:08.437743+00:00 app[web.1]: side_pot_3
+2017-11-17T08:56:08.437743+00:00 app[web.1]: 0
+2017-11-17T08:56:08.437744+00:00 app[web.1]: side_pot_9
+2017-11-17T08:56:08.437744+00:00 app[web.1]: 0
+2017-11-17T08:56:08.437745+00:00 app[web.1]: side_pot_4
+2017-11-17T08:56:08.437745+00:00 app[web.1]: 0
+2017-11-17T08:56:08.437746+00:00 app[web.1]: 0
+2017-11-17T08:56:08.437747+00:00 app[web.1]: prev_bet_amount
+2017-11-17T08:56:08.437746+00:00 app[web.1]: side_pot_6
+2017-11-17T08:56:08.437747+00:00 app[web.1]: 15
+2017-11-17T08:56:08.437748+00:00 app[web.1]: 0
+2017-11-17T08:56:08.437869+00:00 app[web.1]: 0
+2017-11-17T08:56:08.437749+00:00 app[web.1]: !!!!!Street!!!!!
+2017-11-17T08:56:08.437748+00:00 app[web.1]: side_pot_8
+2017-11-17T08:56:08.437873+00:00 app[web.1]: 2
+2017-11-17T08:56:08.437872+00:00 app[web.1]: nofstreet
+2017-11-17T08:56:08.437888+00:00 app[web.1]: can_next_street
+2017-11-17T08:56:08.437891+00:00 app[web.1]: true
+2017-11-17T08:56:08.437892+00:00 app[web.1]: temp_pot
+2017-11-17T08:56:08.437895+00:00 app[web.1]: 78
+2017-11-17T08:56:08.437909+00:00 app[web.1]: nofbet
+2017-11-17T08:56:08.437911+00:00 app[web.1]: 4
+2017-11-17T08:56:08.439219+00:00 app[web.1]: !!!!!Player_1!!!!!
+2017-11-17T08:56:08.440271+00:00 app[web.1]: 0
+2017-11-17T08:56:08.440274+00:00 app[web.1]: name
+2017-11-17T08:56:08.440276+00:00 app[web.1]: 1f23c51920937afd07c01fc452e4c5f9
+2017-11-17T08:56:08.440295+00:00 app[web.1]: amount
+2017-11-17T08:56:08.440297+00:00 app[web.1]: 203
+2017-11-17T08:56:08.440298+00:00 app[web.1]: prev_nofbet
+2017-11-17T08:56:08.440313+00:00 app[web.1]: 4
+2017-11-17T08:56:08.440315+00:00 app[web.1]: betting
+2017-11-17T08:56:08.440317+00:00 app[web.1]: 39
+2017-11-17T08:56:08.440330+00:00 app[web.1]: alive
+2017-11-17T08:56:08.440332+00:00 app[web.1]: true
+2017-11-17T08:56:08.440346+00:00 app[web.1]: active
+2017-11-17T08:56:08.440348+00:00 app[web.1]: true
+2017-11-17T08:56:08.440349+00:00 app[web.1]: rights_of_side_pot
+2017-11-17T08:56:08.440351+00:00 app[web.1]: 10
+2017-11-17T08:56:08.440365+00:00 app[web.1]: hand
+2017-11-17T08:56:08.440367+00:00 app[web.1]: Qc,Ac
+2017-11-17T08:56:08.440385+00:00 app[web.1]: !!!!!Player_2!!!!!
+2017-11-17T08:56:08.441099+00:00 app[web.1]: 0
+2017-11-17T08:56:08.441102+00:00 app[web.1]: name
+2017-11-17T08:56:08.441104+00:00 app[web.1]: 0ddc4cc02a029e71643a4dc8725e4707
+2017-11-17T08:56:08.441121+00:00 app[web.1]: amount
+2017-11-17T08:56:08.441123+00:00 app[web.1]: 197
+2017-11-17T08:56:08.441125+00:00 app[web.1]: prev_nofbet
+2017-11-17T08:56:08.441139+00:00 app[web.1]: 4
+2017-11-17T08:56:08.441145+00:00 app[web.1]: betting
+2017-11-17T08:56:08.441146+00:00 app[web.1]: 39
+2017-11-17T08:56:08.441148+00:00 app[web.1]: alive
+2017-11-17T08:56:08.441150+00:00 app[web.1]: true
+2017-11-17T08:56:08.441163+00:00 app[web.1]: active
+2017-11-17T08:56:08.441166+00:00 app[web.1]: true
+2017-11-17T08:56:08.441168+00:00 app[web.1]: rights_of_side_pot
+2017-11-17T08:56:08.441182+00:00 app[web.1]: 10
+2017-11-17T08:56:08.441185+00:00 app[web.1]: hand
+2017-11-17T08:56:08.441186+00:00 app[web.1]: 7h,6h
+2017-11-17T08:56:08.443664+00:00 app[web.1]: "is_game_finish?"
+2017-11-17T08:56:08.445541+00:00 app[web.1]: "calc_pot_from_betting_status"
+2017-11-17T08:56:08.473014+00:00 app[web.1]: "postflop_setting"
+2017-11-17T08:56:08.494251+00:00 app[web.1]: D, [2017-11-17T08:56:08.494112 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"deal_board", :board=>"Jc,5d,Ad"}
+2017-11-17T08:56:08.496257+00:00 app[web.1]: D, [2017-11-17T08:56:08.496164 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_pot", :pot=>"78"}
+2017-11-17T08:56:08.504043+00:00 app[web.1]: D, [2017-11-17T08:56:08.503927 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_pot", "pot"=>"78"} (via streamed from room_1)
+2017-11-17T08:56:08.504821+00:00 app[web.1]: D, [2017-11-17T08:56:08.504743 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_pot", "pot"=>"78"} (via streamed from room_1)
+2017-11-17T08:56:08.505430+00:00 app[web.1]: D, [2017-11-17T08:56:08.505361 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_pot", "pot"=>"78"} (via streamed from room_1)
+2017-11-17T08:56:08.506062+00:00 app[web.1]: D, [2017-11-17T08:56:08.505996 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"deal_board", "board"=>"Jc,5d,Ad"} (via streamed from room_1)
+2017-11-17T08:56:08.506766+00:00 app[web.1]: D, [2017-11-17T08:56:08.506690 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"deal_board", "board"=>"Jc,5d,Ad"} (via streamed from room_1)
+2017-11-17T08:56:08.507531+00:00 app[web.1]: D, [2017-11-17T08:56:08.507465 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"deal_board", "board"=>"Jc,5d,Ad"} (via streamed from room_1)
+2017-11-17T08:56:08.511833+00:00 app[web.1]: D, [2017-11-17T08:56:08.511721 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_betting", :id=>1, :betting=>"0"}
+2017-11-17T08:56:08.513547+00:00 app[web.1]: D, [2017-11-17T08:56:08.513430 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:56:08.515088+00:00 app[web.1]: D, [2017-11-17T08:56:08.514869 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_stack", :id=>1, :stack=>"164"}
+2017-11-17T08:56:08.515971+00:00 app[web.1]: D, [2017-11-17T08:56:08.515899 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:56:08.516776+00:00 app[web.1]: D, [2017-11-17T08:56:08.516214 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:56:08.519007+00:00 app[web.1]: D, [2017-11-17T08:56:08.517391 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"164"} (via streamed from room_1)
+2017-11-17T08:56:08.519486+00:00 app[web.1]: D, [2017-11-17T08:56:08.517726 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"164"} (via streamed from room_1)
+2017-11-17T08:56:08.519984+00:00 app[web.1]: D, [2017-11-17T08:56:08.518638 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"164"} (via streamed from room_1)
+2017-11-17T08:56:08.520291+00:00 app[web.1]: D, [2017-11-17T08:56:08.519569 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_betting", :id=>2, :betting=>"0"}
+2017-11-17T08:56:08.521689+00:00 app[web.1]: D, [2017-11-17T08:56:08.521587 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:56:08.522495+00:00 app[web.1]: D, [2017-11-17T08:56:08.522413 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:56:08.523271+00:00 app[web.1]: D, [2017-11-17T08:56:08.523200 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:56:08.524459+00:00 app[web.1]: D, [2017-11-17T08:56:08.524391 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_stack", :id=>2, :stack=>"158"}
+2017-11-17T08:56:08.526827+00:00 app[web.1]: D, [2017-11-17T08:56:08.526023 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"158"} (via streamed from room_1)
+2017-11-17T08:56:08.527380+00:00 app[web.1]: D, [2017-11-17T08:56:08.526436 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"158"} (via streamed from room_1)
+2017-11-17T08:56:08.527822+00:00 app[web.1]: D, [2017-11-17T08:56:08.526739 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"158"} (via streamed from room_1)
+2017-11-17T08:56:08.531412+00:00 app[web.1]: "urge_action_to_web"
+2017-11-17T08:56:08.542904+00:00 app[web.1]: D, [2017-11-17T08:56:08.542758 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_betting", :id=>1, :betting=>"0"}
+2017-11-17T08:56:08.554848+00:00 app[web.1]: D, [2017-11-17T08:56:08.554708 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:56:08.556342+00:00 app[web.1]: D, [2017-11-17T08:56:08.556251 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:56:08.557107+00:00 app[web.1]: D, [2017-11-17T08:56:08.557041 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:56:08.566445+00:00 app[web.1]: D, [2017-11-17T08:56:08.566250 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_stack", :id=>1, :stack=>"164"}
+2017-11-17T08:56:08.572161+00:00 app[web.1]: D, [2017-11-17T08:56:08.572028 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"164"} (via streamed from room_1)
+2017-11-17T08:56:08.572986+00:00 app[web.1]: D, [2017-11-17T08:56:08.572905 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"164"} (via streamed from room_1)
+2017-11-17T08:56:08.573820+00:00 app[web.1]: D, [2017-11-17T08:56:08.573669 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"164"} (via streamed from room_1)
+2017-11-17T08:56:08.579333+00:00 app[web.1]: D, [2017-11-17T08:56:08.579155 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_betting", :id=>2, :betting=>"0"}
+2017-11-17T08:56:08.584090+00:00 app[web.1]: D, [2017-11-17T08:56:08.583910 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:56:08.584924+00:00 app[web.1]: D, [2017-11-17T08:56:08.584843 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:56:08.585808+00:00 app[web.1]: D, [2017-11-17T08:56:08.585732 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:56:08.587160+00:00 app[web.1]: D, [2017-11-17T08:56:08.587023 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_stack", :id=>2, :stack=>"158"}
+2017-11-17T08:56:08.588855+00:00 app[web.1]: D, [2017-11-17T08:56:08.588762 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"158"} (via streamed from room_1)
+2017-11-17T08:56:08.589710+00:00 app[web.1]: D, [2017-11-17T08:56:08.589632 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"158"} (via streamed from room_1)
+2017-11-17T08:56:08.590508+00:00 app[web.1]: D, [2017-11-17T08:56:08.590353 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"158"} (via streamed from room_1)
+2017-11-17T08:56:08.599333+00:00 app[web.1]: D, [2017-11-17T08:56:08.599160 #4] DEBUG -- : [ActionCable] Broadcasting to user_1f23c51920937afd07c01fc452e4c5f9: {:action=>"info", :info=>"you can do 'x' or 'b'"}
+2017-11-17T08:56:08.604109+00:00 app[web.1]: D, [2017-11-17T08:56:08.603962 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"info", "info"=>"you can do 'x' or 'b'"} (via streamed from user_1f23c51920937afd07c01fc452e4c5f9)
+2017-11-17T08:56:08.605021+00:00 app[web.1]: D, [2017-11-17T08:56:08.604932 #4] DEBUG -- : [ActionCable] Broadcasting to user_1f23c51920937afd07c01fc452e4c5f9: {:action=>"urge_action", :actions=>["x", "b"], :bet_amounts=>[2, 164]}
+2017-11-17T08:56:08.611826+00:00 app[web.1]: D, [2017-11-17T08:56:08.611695 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"urge_action", "actions"=>["x", "b"], "bet_amounts"=>[2, 164]} (via streamed from user_1f23c51920937afd07c01fc452e4c5f9)
+2017-11-17T08:56:10.280280+00:00 heroku[router]: at=info method=GET path="/png/Jc.png" host=poker-app-1.herokuapp.com request_id=ce3064fd-4ad7-43f5-929a-71416cf379c1 fwd="182.251.242.13" dyno=web.1 connect=1ms service=8ms status=304 bytes=48 protocol=https
+2017-11-17T08:56:10.972810+00:00 heroku[router]: at=info method=GET path="/png/5d.png" host=poker-app-1.herokuapp.com request_id=d9ec956e-913e-4744-90bf-05e08301e67a fwd="182.251.242.13" dyno=web.1 connect=1ms service=4ms status=304 bytes=48 protocol=https
+2017-11-17T08:56:10.992240+00:00 app[web.1]: I, [2017-11-17T08:56:10.992091 #4]  INFO -- : HeadsUpRoomChannel#action({"data"=>["x", 0]})
+2017-11-17T08:56:10.992253+00:00 app[web.1]: "process_action"
+2017-11-17T08:56:11.011196+00:00 app[web.1]: treat_action
+2017-11-17T08:56:11.019165+00:00 app[web.1]: "next_player"
+2017-11-17T08:56:11.024132+00:00 app[web.1]: check_next_street
+2017-11-17T08:56:11.025885+00:00 app[web.1]: check_1
+2017-11-17T08:56:11.029878+00:00 app[web.1]: true
+2017-11-17T08:56:11.030626+00:00 app[web.1]: check_2
+2017-11-17T08:56:11.032698+00:00 app[web.1]: true
+2017-11-17T08:56:11.032703+00:00 app[web.1]: check_3
+2017-11-17T08:56:11.035658+00:00 app[web.1]: check_4
+2017-11-17T08:56:11.039335+00:00 app[web.1]: "is_game_finish?"
+2017-11-17T08:56:11.061523+00:00 app[web.1]: "urge_action_to_web"
+2017-11-17T08:56:11.068457+00:00 app[web.1]: D, [2017-11-17T08:56:11.068324 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_betting", :id=>1, :betting=>"0"}
+2017-11-17T08:56:11.072670+00:00 app[web.1]: D, [2017-11-17T08:56:11.071037 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_stack", :id=>1, :stack=>"164"}
+2017-11-17T08:56:11.073081+00:00 app[web.1]: D, [2017-11-17T08:56:11.071969 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:56:11.073885+00:00 app[web.1]: D, [2017-11-17T08:56:11.072265 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:56:11.074543+00:00 app[web.1]: D, [2017-11-17T08:56:11.074467 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"164"} (via streamed from room_1)
+2017-11-17T08:56:11.075554+00:00 app[web.1]: D, [2017-11-17T08:56:11.075441 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"164"} (via streamed from room_1)
+2017-11-17T08:56:11.076561+00:00 app[web.1]: D, [2017-11-17T08:56:11.072587 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:56:11.076187+00:00 app[web.1]: D, [2017-11-17T08:56:11.076109 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"164"} (via streamed from room_1)
+2017-11-17T08:56:11.080325+00:00 app[web.1]: D, [2017-11-17T08:56:11.080253 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:56:11.083255+00:00 app[web.1]: D, [2017-11-17T08:56:11.083198 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"158"} (via streamed from room_1)
+2017-11-17T08:56:11.077641+00:00 app[web.1]: D, [2017-11-17T08:56:11.077542 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_betting", :id=>2, :betting=>"0"}
+2017-11-17T08:56:11.079218+00:00 app[web.1]: D, [2017-11-17T08:56:11.079143 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:56:11.079736+00:00 app[web.1]: D, [2017-11-17T08:56:11.079662 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:56:11.080843+00:00 app[web.1]: D, [2017-11-17T08:56:11.080765 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_stack", :id=>2, :stack=>"158"}
+2017-11-17T08:56:11.082609+00:00 app[web.1]: D, [2017-11-17T08:56:11.082540 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"158"} (via streamed from room_1)
+2017-11-17T08:56:11.087162+00:00 app[web.1]: D, [2017-11-17T08:56:11.087050 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"158"} (via streamed from room_1)
+2017-11-17T08:56:11.087669+00:00 app[web.1]: D, [2017-11-17T08:56:11.087612 #4] DEBUG -- : [ActionCable] Broadcasting to user_0ddc4cc02a029e71643a4dc8725e4707: {:action=>"info", :info=>"you can do 'x' or 'b'"}
+2017-11-17T08:56:11.092644+00:00 app[web.1]: D, [2017-11-17T08:56:11.092544 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"info", "info"=>"you can do 'x' or 'b'"} (via streamed from user_0ddc4cc02a029e71643a4dc8725e4707)
+2017-11-17T08:56:11.093330+00:00 app[web.1]: D, [2017-11-17T08:56:11.093250 #4] DEBUG -- : [ActionCable] Broadcasting to user_0ddc4cc02a029e71643a4dc8725e4707: {:action=>"urge_action", :actions=>["x", "b"], :bet_amounts=>[2, 158]}
+2017-11-17T08:56:11.099750+00:00 app[web.1]: D, [2017-11-17T08:56:11.099624 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"urge_action", "actions"=>["x", "b"], "bet_amounts"=>[2, 158]} (via streamed from user_0ddc4cc02a029e71643a4dc8725e4707)
+2017-11-17T08:56:19.951816+00:00 app[web.1]: I, [2017-11-17T08:56:19.951700 #4]  INFO -- : HeadsUpRoomChannel#action({"data"=>["b", "30"]})
+2017-11-17T08:56:19.951901+00:00 app[web.1]: "process_action"
+2017-11-17T08:56:19.956283+00:00 app[web.1]: treat_action
+2017-11-17T08:56:19.965849+00:00 app[web.1]: "next_player"
+2017-11-17T08:56:19.967842+00:00 app[web.1]: check_next_street
+2017-11-17T08:56:19.968412+00:00 app[web.1]: check_1
+2017-11-17T08:56:19.969005+00:00 app[web.1]: true
+2017-11-17T08:56:19.969037+00:00 app[web.1]: check_2
+2017-11-17T08:56:19.970537+00:00 app[web.1]: check_3
+2017-11-17T08:56:19.972242+00:00 app[web.1]: check_4
+2017-11-17T08:56:19.973412+00:00 app[web.1]: "is_game_finish?"
+2017-11-17T08:56:19.978854+00:00 app[web.1]: "urge_action_to_web"
+2017-11-17T08:56:19.983910+00:00 app[web.1]: D, [2017-11-17T08:56:19.983794 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_betting", :id=>1, :betting=>"0"}
+2017-11-17T08:56:19.985499+00:00 app[web.1]: D, [2017-11-17T08:56:19.985431 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:56:19.986334+00:00 app[web.1]: D, [2017-11-17T08:56:19.985804 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:56:19.987071+00:00 app[web.1]: D, [2017-11-17T08:56:19.987006 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:56:19.987635+00:00 app[web.1]: D, [2017-11-17T08:56:19.987572 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_stack", :id=>1, :stack=>"164"}
+2017-11-17T08:56:19.989070+00:00 app[web.1]: D, [2017-11-17T08:56:19.989001 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"164"} (via streamed from room_1)
+2017-11-17T08:56:19.989819+00:00 app[web.1]: D, [2017-11-17T08:56:19.989756 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"164"} (via streamed from room_1)
+2017-11-17T08:56:19.990529+00:00 app[web.1]: D, [2017-11-17T08:56:19.990465 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"164"} (via streamed from room_1)
+2017-11-17T08:56:19.991100+00:00 app[web.1]: D, [2017-11-17T08:56:19.991037 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_betting", :id=>2, :betting=>"30"}
+2017-11-17T08:56:19.992621+00:00 app[web.1]: D, [2017-11-17T08:56:19.992544 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"30"} (via streamed from room_1)
+2017-11-17T08:56:19.994976+00:00 app[web.1]: D, [2017-11-17T08:56:19.992910 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_stack", :id=>2, :stack=>"158"}
+2017-11-17T08:56:19.995294+00:00 app[web.1]: D, [2017-11-17T08:56:19.993184 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"30"} (via streamed from room_1)
+2017-11-17T08:56:19.995721+00:00 app[web.1]: D, [2017-11-17T08:56:19.993498 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"30"} (via streamed from room_1)
+2017-11-17T08:56:19.997461+00:00 app[web.1]: D, [2017-11-17T08:56:19.997373 #4] DEBUG -- : [ActionCable] Broadcasting to user_1f23c51920937afd07c01fc452e4c5f9: {:action=>"info", :info=>"you can do 'f', 'c' or 'r'"}
+2017-11-17T08:56:19.998542+00:00 app[web.1]: D, [2017-11-17T08:56:19.998460 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"158"} (via streamed from room_1)
+2017-11-17T08:56:20.000023+00:00 app[web.1]: D, [2017-11-17T08:56:19.999959 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"info", "info"=>"you can do 'f', 'c' or 'r'"} (via streamed from user_1f23c51920937afd07c01fc452e4c5f9)
+2017-11-17T08:56:20.000634+00:00 app[web.1]: D, [2017-11-17T08:56:20.000578 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"158"} (via streamed from room_1)
+2017-11-17T08:56:20.001001+00:00 app[web.1]: D, [2017-11-17T08:56:19.999276 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"158"} (via streamed from room_1)
+2017-11-17T08:56:20.001490+00:00 app[web.1]: D, [2017-11-17T08:56:20.001435 #4] DEBUG -- : [ActionCable] Broadcasting to user_1f23c51920937afd07c01fc452e4c5f9: {:action=>"urge_action", :actions=>["f", "c", "r"], :raise_amounts=>[60, 164]}
+2017-11-17T08:56:20.003025+00:00 app[web.1]: D, [2017-11-17T08:56:20.002965 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"urge_action", "actions"=>["f", "c", "r"], "raise_amounts"=>[60, 164]} (via streamed from user_1f23c51920937afd07c01fc452e4c5f9)
+2017-11-17T08:56:23.702074+00:00 app[web.1]: I, [2017-11-17T08:56:23.701957 #4]  INFO -- : HeadsUpRoomChannel#action({"data"=>["c", 0]})
+2017-11-17T08:56:23.717160+00:00 app[web.1]: check_next_street
+2017-11-17T08:56:23.715087+00:00 app[web.1]: "next_player"
+2017-11-17T08:56:23.702157+00:00 app[web.1]: "process_action"
+2017-11-17T08:56:23.711088+00:00 app[web.1]: treat_action
+2017-11-17T08:56:23.718627+00:00 app[web.1]: true
+2017-11-17T08:56:23.718105+00:00 app[web.1]: check_1
+2017-11-17T08:56:23.718658+00:00 app[web.1]: check_2
+2017-11-17T08:56:23.719762+00:00 app[web.1]: true
+2017-11-17T08:56:23.719794+00:00 app[web.1]: check_3
+2017-11-17T08:56:23.721083+00:00 app[web.1]: true
+2017-11-17T08:56:23.721089+00:00 app[web.1]: check_4
+2017-11-17T08:56:23.723090+00:00 app[web.1]: go to next street
+2017-11-17T08:56:23.723092+00:00 app[web.1]: !!!!!Game!!!!!
+2017-11-17T08:56:23.723847+00:00 app[web.1]: 30
+2017-11-17T08:56:23.723851+00:00 app[web.1]: current_player
+2017-11-17T08:56:23.723852+00:00 app[web.1]: 2
+2017-11-17T08:56:23.723870+00:00 app[web.1]: nofalive
+2017-11-17T08:56:23.723873+00:00 app[web.1]: 2
+2017-11-17T08:56:23.723876+00:00 app[web.1]: current_bet_amount
+2017-11-17T08:56:23.723892+00:00 app[web.1]: 30
+2017-11-17T08:56:23.723895+00:00 app[web.1]: number
+2017-11-17T08:56:23.723897+00:00 app[web.1]: 16
+2017-11-17T08:56:23.723912+00:00 app[web.1]: facing_bet_amount
+2017-11-17T08:56:23.723915+00:00 app[web.1]: 30
+2017-11-17T08:56:23.723946+00:00 app[web.1]: side_pot_9
+2017-11-17T08:56:23.723949+00:00 app[web.1]: 0
+2017-11-17T08:56:23.723929+00:00 app[web.1]: side_pot_3
+2017-11-17T08:56:23.723981+00:00 app[web.1]: side_pot_6
+2017-11-17T08:56:23.723931+00:00 app[web.1]: 0
+2017-11-17T08:56:23.723964+00:00 app[web.1]: side_pot_4
+2017-11-17T08:56:23.723966+00:00 app[web.1]: 0
+2017-11-17T08:56:23.723984+00:00 app[web.1]: 0
+2017-11-17T08:56:23.723998+00:00 app[web.1]: prev_bet_amount
+2017-11-17T08:56:23.724001+00:00 app[web.1]: 0
+2017-11-17T08:56:23.724035+00:00 app[web.1]: side_pot_8
+2017-11-17T08:56:23.724038+00:00 app[web.1]: 0
+2017-11-17T08:56:23.724689+00:00 app[web.1]: 0
+2017-11-17T08:56:23.724053+00:00 app[web.1]: !!!!!Street!!!!!
+2017-11-17T08:56:23.724693+00:00 app[web.1]: nofstreet
+2017-11-17T08:56:23.724721+00:00 app[web.1]: 3
+2017-11-17T08:56:23.724726+00:00 app[web.1]: can_next_street
+2017-11-17T08:56:23.724741+00:00 app[web.1]: true
+2017-11-17T08:56:23.724744+00:00 app[web.1]: temp_pot
+2017-11-17T08:56:23.724761+00:00 app[web.1]: nofbet
+2017-11-17T08:56:23.724747+00:00 app[web.1]: 60
+2017-11-17T08:56:23.724763+00:00 app[web.1]: 1
+2017-11-17T08:56:23.725314+00:00 app[web.1]: !!!!!Player_1!!!!!
+2017-11-17T08:56:23.726069+00:00 app[web.1]: 0
+2017-11-17T08:56:23.726073+00:00 app[web.1]: name
+2017-11-17T08:56:23.726075+00:00 app[web.1]: 1f23c51920937afd07c01fc452e4c5f9
+2017-11-17T08:56:23.726091+00:00 app[web.1]: amount
+2017-11-17T08:56:23.726094+00:00 app[web.1]: 164
+2017-11-17T08:56:23.726108+00:00 app[web.1]: prev_nofbet
+2017-11-17T08:56:23.726111+00:00 app[web.1]: 1
+2017-11-17T08:56:23.726125+00:00 app[web.1]: betting
+2017-11-17T08:56:23.726128+00:00 app[web.1]: 30
+2017-11-17T08:56:23.726142+00:00 app[web.1]: alive
+2017-11-17T08:56:23.726144+00:00 app[web.1]: true
+2017-11-17T08:56:23.726159+00:00 app[web.1]: active
+2017-11-17T08:56:23.726161+00:00 app[web.1]: true
+2017-11-17T08:56:23.726176+00:00 app[web.1]: rights_of_side_pot
+2017-11-17T08:56:23.726178+00:00 app[web.1]: 10
+2017-11-17T08:56:23.726192+00:00 app[web.1]: hand
+2017-11-17T08:56:23.726195+00:00 app[web.1]: Qc,Ac
+2017-11-17T08:56:23.726216+00:00 app[web.1]: !!!!!Player_2!!!!!
+2017-11-17T08:56:23.726968+00:00 app[web.1]: 0
+2017-11-17T08:56:23.726972+00:00 app[web.1]: name
+2017-11-17T08:56:23.726974+00:00 app[web.1]: 0ddc4cc02a029e71643a4dc8725e4707
+2017-11-17T08:56:23.726993+00:00 app[web.1]: amount
+2017-11-17T08:56:23.726996+00:00 app[web.1]: 158
+2017-11-17T08:56:23.726997+00:00 app[web.1]: prev_nofbet
+2017-11-17T08:56:23.727014+00:00 app[web.1]: 1
+2017-11-17T08:56:23.727019+00:00 app[web.1]: 30
+2017-11-17T08:56:23.727017+00:00 app[web.1]: betting
+2017-11-17T08:56:23.727034+00:00 app[web.1]: alive
+2017-11-17T08:56:23.727037+00:00 app[web.1]: true
+2017-11-17T08:56:23.727052+00:00 app[web.1]: active
+2017-11-17T08:56:23.727054+00:00 app[web.1]: true
+2017-11-17T08:56:23.727068+00:00 app[web.1]: rights_of_side_pot
+2017-11-17T08:56:23.727071+00:00 app[web.1]: 10
+2017-11-17T08:56:23.727087+00:00 app[web.1]: hand
+2017-11-17T08:56:23.727089+00:00 app[web.1]: 7h,6h
+2017-11-17T08:56:23.731772+00:00 app[web.1]: "is_game_finish?"
+2017-11-17T08:56:23.732978+00:00 app[web.1]: "calc_pot_from_betting_status"
+2017-11-17T08:56:23.742560+00:00 app[web.1]: "postflop_setting"
+2017-11-17T08:56:23.746550+00:00 app[web.1]: D, [2017-11-17T08:56:23.746408 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"deal_board", :board=>"Jc,5d,Ad,Jh"}
+2017-11-17T08:56:23.748086+00:00 app[web.1]: D, [2017-11-17T08:56:23.748014 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_pot", :pot=>"138"}
+2017-11-17T08:56:23.755611+00:00 app[web.1]: D, [2017-11-17T08:56:23.755487 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"deal_board", "board"=>"Jc,5d,Ad,Jh"} (via streamed from room_1)
+2017-11-17T08:56:23.761542+00:00 app[web.1]: D, [2017-11-17T08:56:23.755893 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"deal_board", "board"=>"Jc,5d,Ad,Jh"} (via streamed from room_1)
+2017-11-17T08:56:23.762256+00:00 app[web.1]: D, [2017-11-17T08:56:23.756326 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"deal_board", "board"=>"Jc,5d,Ad,Jh"} (via streamed from room_1)
+2017-11-17T08:56:23.762703+00:00 app[web.1]: D, [2017-11-17T08:56:23.761412 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_pot", "pot"=>"138"} (via streamed from room_1)
+2017-11-17T08:56:23.767545+00:00 app[web.1]: D, [2017-11-17T08:56:23.767424 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_pot", "pot"=>"138"} (via streamed from room_1)
+2017-11-17T08:56:23.768328+00:00 app[web.1]: D, [2017-11-17T08:56:23.768266 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_pot", "pot"=>"138"} (via streamed from room_1)
+2017-11-17T08:56:23.775167+00:00 app[web.1]: D, [2017-11-17T08:56:23.775035 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_betting", :id=>1, :betting=>"0"}
+2017-11-17T08:56:23.787345+00:00 app[web.1]: D, [2017-11-17T08:56:23.787195 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_stack", :id=>1, :stack=>"134"}
+2017-11-17T08:56:23.790181+00:00 app[web.1]: D, [2017-11-17T08:56:23.790103 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:56:23.790863+00:00 app[web.1]: D, [2017-11-17T08:56:23.790798 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:56:23.791872+00:00 app[web.1]: D, [2017-11-17T08:56:23.791813 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"134"} (via streamed from room_1)
+2017-11-17T08:56:23.792492+00:00 app[web.1]: D, [2017-11-17T08:56:23.792437 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"134"} (via streamed from room_1)
+2017-11-17T08:56:23.793059+00:00 app[web.1]: D, [2017-11-17T08:56:23.793005 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"134"} (via streamed from room_1)
+2017-11-17T08:56:23.793642+00:00 app[web.1]: D, [2017-11-17T08:56:23.793588 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:56:23.799410+00:00 app[web.1]: D, [2017-11-17T08:56:23.799226 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_betting", :id=>2, :betting=>"0"}
+2017-11-17T08:56:23.803957+00:00 app[web.1]: D, [2017-11-17T08:56:23.803844 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:56:23.804800+00:00 app[web.1]: D, [2017-11-17T08:56:23.804734 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:56:23.805491+00:00 app[web.1]: D, [2017-11-17T08:56:23.805427 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:56:23.806595+00:00 app[web.1]: D, [2017-11-17T08:56:23.806530 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_stack", :id=>2, :stack=>"128"}
+2017-11-17T08:56:23.811999+00:00 app[web.1]: D, [2017-11-17T08:56:23.811869 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"128"} (via streamed from room_1)
+2017-11-17T08:56:23.812884+00:00 app[web.1]: D, [2017-11-17T08:56:23.812822 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"128"} (via streamed from room_1)
+2017-11-17T08:56:23.813540+00:00 app[web.1]: D, [2017-11-17T08:56:23.813484 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"128"} (via streamed from room_1)
+2017-11-17T08:56:23.823948+00:00 app[web.1]: "urge_action_to_web"
+2017-11-17T08:56:23.828399+00:00 app[web.1]: D, [2017-11-17T08:56:23.828285 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_betting", :id=>1, :betting=>"0"}
+2017-11-17T08:56:23.830065+00:00 app[web.1]: D, [2017-11-17T08:56:23.829987 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:56:23.831615+00:00 app[web.1]: D, [2017-11-17T08:56:23.830597 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:56:23.831195+00:00 app[web.1]: D, [2017-11-17T08:56:23.830313 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:56:23.832187+00:00 app[web.1]: D, [2017-11-17T08:56:23.832116 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_stack", :id=>1, :stack=>"134"}
+2017-11-17T08:56:23.833761+00:00 app[web.1]: D, [2017-11-17T08:56:23.833697 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"134"} (via streamed from room_1)
+2017-11-17T08:56:23.834365+00:00 app[web.1]: D, [2017-11-17T08:56:23.834307 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"134"} (via streamed from room_1)
+2017-11-17T08:56:23.834967+00:00 app[web.1]: D, [2017-11-17T08:56:23.834451 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_betting", :id=>2, :betting=>"0"}
+2017-11-17T08:56:23.835494+00:00 app[web.1]: D, [2017-11-17T08:56:23.835436 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"134"} (via streamed from room_1)
+2017-11-17T08:56:23.839503+00:00 app[web.1]: D, [2017-11-17T08:56:23.839433 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:56:23.840266+00:00 app[web.1]: D, [2017-11-17T08:56:23.840206 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:56:23.841012+00:00 app[web.1]: D, [2017-11-17T08:56:23.840485 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:56:23.841386+00:00 app[web.1]: D, [2017-11-17T08:56:23.840932 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_stack", :id=>2, :stack=>"128"}
+2017-11-17T08:56:23.842591+00:00 app[web.1]: D, [2017-11-17T08:56:23.842510 #4] DEBUG -- : [ActionCable] Broadcasting to user_1f23c51920937afd07c01fc452e4c5f9: {:action=>"info", :info=>"you can do 'x' or 'b'"}
+2017-11-17T08:56:23.843835+00:00 app[web.1]: D, [2017-11-17T08:56:23.843758 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"128"} (via streamed from room_1)
+2017-11-17T08:56:23.844535+00:00 app[web.1]: D, [2017-11-17T08:56:23.844460 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"128"} (via streamed from room_1)
+2017-11-17T08:56:23.845154+00:00 app[web.1]: D, [2017-11-17T08:56:23.845084 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"128"} (via streamed from room_1)
+2017-11-17T08:56:23.845873+00:00 app[web.1]: D, [2017-11-17T08:56:23.845669 #4] DEBUG -- : [ActionCable] Broadcasting to user_1f23c51920937afd07c01fc452e4c5f9: {:action=>"urge_action", :actions=>["x", "b"], :bet_amounts=>[2, 134]}
+2017-11-17T08:56:23.847090+00:00 app[web.1]: D, [2017-11-17T08:56:23.847008 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"urge_action", "actions"=>["x", "b"], "bet_amounts"=>[2, 134]} (via streamed from user_1f23c51920937afd07c01fc452e4c5f9)
+2017-11-17T08:56:23.851477+00:00 app[web.1]: D, [2017-11-17T08:56:23.851358 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"info", "info"=>"you can do 'x' or 'b'"} (via streamed from user_1f23c51920937afd07c01fc452e4c5f9)
+2017-11-17T08:56:24.068865+00:00 heroku[router]: at=info method=GET path="/png/Jh.png" host=poker-app-1.herokuapp.com request_id=781e3d3c-b8b0-46a2-aee1-f36eb47566fd fwd="153.207.179.140" dyno=web.1 connect=0ms service=10ms status=304 bytes=48 protocol=https
+2017-11-17T08:56:25.961912+00:00 heroku[router]: at=info method=GET path="/png/Jh.png" host=poker-app-1.herokuapp.com request_id=9633260e-9dcd-450d-bbd3-873bb8b996fc fwd="182.251.242.13" dyno=web.1 connect=1ms service=2ms status=304 bytes=48 protocol=https
+2017-11-17T08:55:58+00:00 app[heroku-redis]: source=REDIS sample#active-connections=4 sample#load-avg-1m=0.15 sample#load-avg-5m=0.11 sample#load-avg-15m=0.095 sample#read-iops=0 sample#write-iops=0 sample#memory-total=15664248kB sample#memory-free=12519132kB sample#memory-cached=1331148kB sample#memory-redis=346080bytes sample#hit-rate=0.99816 sample#evicted-keys=0
+2017-11-17T08:56:32.408114+00:00 app[web.1]: I, [2017-11-17T08:56:32.407952 #4]  INFO -- : HeadsUpRoomChannel#action({"data"=>["x", 0]})
+2017-11-17T08:56:32.408133+00:00 app[web.1]: "process_action"
+2017-11-17T08:56:32.412934+00:00 app[web.1]: treat_action
+2017-11-17T08:56:32.414422+00:00 app[web.1]: "next_player"
+2017-11-17T08:56:32.416599+00:00 app[web.1]: check_next_street
+2017-11-17T08:56:32.417271+00:00 app[web.1]: check_1
+2017-11-17T08:56:32.418352+00:00 app[web.1]: true
+2017-11-17T08:56:32.418381+00:00 app[web.1]: check_2
+2017-11-17T08:56:32.422659+00:00 app[web.1]: true
+2017-11-17T08:56:32.422697+00:00 app[web.1]: check_3
+2017-11-17T08:56:32.431312+00:00 app[web.1]: check_4
+2017-11-17T08:56:32.438010+00:00 app[web.1]: "is_game_finish?"
+2017-11-17T08:56:32.454236+00:00 app[web.1]: "urge_action_to_web"
+2017-11-17T08:56:32.459052+00:00 app[web.1]: D, [2017-11-17T08:56:32.458920 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_betting", :id=>1, :betting=>"0"}
+2017-11-17T08:56:32.460482+00:00 app[web.1]: D, [2017-11-17T08:56:32.460410 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_stack", :id=>1, :stack=>"134"}
+2017-11-17T08:56:32.461044+00:00 app[web.1]: D, [2017-11-17T08:56:32.460975 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:56:32.461675+00:00 app[web.1]: D, [2017-11-17T08:56:32.461608 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:56:32.462562+00:00 app[web.1]: D, [2017-11-17T08:56:32.462495 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"134"} (via streamed from room_1)
+2017-11-17T08:56:32.464227+00:00 app[web.1]: D, [2017-11-17T08:56:32.463043 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_betting", :id=>2, :betting=>"0"}
+2017-11-17T08:56:32.464506+00:00 app[web.1]: D, [2017-11-17T08:56:32.463350 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"134"} (via streamed from room_1)
+2017-11-17T08:56:32.464890+00:00 app[web.1]: D, [2017-11-17T08:56:32.463651 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"134"} (via streamed from room_1)
+2017-11-17T08:56:32.466084+00:00 app[web.1]: D, [2017-11-17T08:56:32.464148 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:56:32.467067+00:00 app[web.1]: D, [2017-11-17T08:56:32.465519 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:56:32.468582+00:00 app[web.1]: D, [2017-11-17T08:56:32.466964 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_stack", :id=>2, :stack=>"128"}
+2017-11-17T08:56:32.469965+00:00 app[web.1]: D, [2017-11-17T08:56:32.469873 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"128"} (via streamed from room_1)
+2017-11-17T08:56:32.468942+00:00 app[web.1]: D, [2017-11-17T08:56:32.467312 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:56:32.468004+00:00 app[web.1]: D, [2017-11-17T08:56:32.466796 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:56:32.470612+00:00 app[web.1]: D, [2017-11-17T08:56:32.470517 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"128"} (via streamed from room_1)
+2017-11-17T08:56:32.471712+00:00 app[web.1]: D, [2017-11-17T08:56:32.471619 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"128"} (via streamed from room_1)
+2017-11-17T08:56:32.472307+00:00 app[web.1]: D, [2017-11-17T08:56:32.471788 #4] DEBUG -- : [ActionCable] Broadcasting to user_0ddc4cc02a029e71643a4dc8725e4707: {:action=>"info", :info=>"you can do 'x' or 'b'"}
+2017-11-17T08:56:32.472927+00:00 app[web.1]: D, [2017-11-17T08:56:32.472855 #4] DEBUG -- : [ActionCable] Broadcasting to user_0ddc4cc02a029e71643a4dc8725e4707: {:action=>"urge_action", :actions=>["x", "b"], :bet_amounts=>[2, 128]}
+2017-11-17T08:56:32.473914+00:00 app[web.1]: D, [2017-11-17T08:56:32.473829 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"info", "info"=>"you can do 'x' or 'b'"} (via streamed from user_0ddc4cc02a029e71643a4dc8725e4707)
+2017-11-17T08:56:32.474878+00:00 app[web.1]: D, [2017-11-17T08:56:32.474814 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"urge_action", "actions"=>["x", "b"], "bet_amounts"=>[2, 128]} (via streamed from user_0ddc4cc02a029e71643a4dc8725e4707)
+2017-11-17T08:56:38.671622+00:00 app[web.1]: I, [2017-11-17T08:56:38.671490 #4]  INFO -- : HeadsUpRoomChannel#action({"data"=>["b", "128"]})
+2017-11-17T08:56:38.672671+00:00 app[web.1]: "process_action"
+2017-11-17T08:56:38.693259+00:00 app[web.1]: treat_action
+2017-11-17T08:56:38.744239+00:00 app[web.1]: "next_player"
+2017-11-17T08:56:38.746465+00:00 app[web.1]: check_next_street
+2017-11-17T08:56:38.748082+00:00 app[web.1]: check_1
+2017-11-17T08:56:38.749190+00:00 app[web.1]: true
+2017-11-17T08:56:38.749195+00:00 app[web.1]: check_2
+2017-11-17T08:56:38.754836+00:00 app[web.1]: check_3
+2017-11-17T08:56:38.755967+00:00 app[web.1]: check_4
+2017-11-17T08:56:38.757094+00:00 app[web.1]: "is_game_finish?"
+2017-11-17T08:56:38.765893+00:00 app[web.1]: "urge_action_to_web"
+2017-11-17T08:56:38.783300+00:00 app[web.1]: D, [2017-11-17T08:56:38.783139 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_betting", :id=>1, :betting=>"0"}
+2017-11-17T08:56:38.787744+00:00 app[web.1]: D, [2017-11-17T08:56:38.787591 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:56:38.788596+00:00 app[web.1]: D, [2017-11-17T08:56:38.788521 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:56:38.789142+00:00 app[web.1]: D, [2017-11-17T08:56:38.789065 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_stack", :id=>1, :stack=>"134"}
+2017-11-17T08:56:38.789851+00:00 app[web.1]: D, [2017-11-17T08:56:38.789758 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"0"} (via streamed from room_1)
+2017-11-17T08:56:38.793453+00:00 app[web.1]: D, [2017-11-17T08:56:38.793316 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"134"} (via streamed from room_1)
+2017-11-17T08:56:38.794341+00:00 app[web.1]: D, [2017-11-17T08:56:38.794255 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"134"} (via streamed from room_1)
+2017-11-17T08:56:38.799668+00:00 app[web.1]: D, [2017-11-17T08:56:38.794456 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_betting", :id=>2, :betting=>"128"}
+2017-11-17T08:56:38.802963+00:00 app[web.1]: D, [2017-11-17T08:56:38.798261 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"134"} (via streamed from room_1)
+2017-11-17T08:56:38.804083+00:00 app[web.1]: D, [2017-11-17T08:56:38.804012 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_stack", :id=>2, :stack=>"128"}
+2017-11-17T08:56:38.811008+00:00 app[web.1]: D, [2017-11-17T08:56:38.802131 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"128"} (via streamed from room_1)
+2017-11-17T08:56:38.812070+00:00 app[web.1]: D, [2017-11-17T08:56:38.811960 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"128"} (via streamed from room_1)
+2017-11-17T08:56:38.812930+00:00 app[web.1]: D, [2017-11-17T08:56:38.812862 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"128"} (via streamed from room_1)
+2017-11-17T08:56:38.813499+00:00 app[web.1]: D, [2017-11-17T08:56:38.813433 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"128"} (via streamed from room_1)
+2017-11-17T08:56:38.814029+00:00 app[web.1]: D, [2017-11-17T08:56:38.813963 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"128"} (via streamed from room_1)
+2017-11-17T08:56:38.814357+00:00 app[web.1]: D, [2017-11-17T08:56:38.802422 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"128"} (via streamed from room_1)
+2017-11-17T08:56:38.815445+00:00 app[web.1]: D, [2017-11-17T08:56:38.815354 #4] DEBUG -- : [ActionCable] Broadcasting to user_1f23c51920937afd07c01fc452e4c5f9: {:action=>"info", :info=>"you can do 'f', 'c' or 'r'"}
+2017-11-17T08:56:38.816476+00:00 app[web.1]: D, [2017-11-17T08:56:38.816217 #4] DEBUG -- : [ActionCable] Broadcasting to user_1f23c51920937afd07c01fc452e4c5f9: {:action=>"urge_action", :actions=>["f", "c", "r"], :raise_amounts=>[134, 134]}
+2017-11-17T08:56:38.819428+00:00 app[web.1]: D, [2017-11-17T08:56:38.819333 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"info", "info"=>"you can do 'f', 'c' or 'r'"} (via streamed from user_1f23c51920937afd07c01fc452e4c5f9)
+2017-11-17T08:56:38.822529+00:00 app[web.1]: D, [2017-11-17T08:56:38.819646 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"urge_action", "actions"=>["f", "c", "r"], "raise_amounts"=>[134, 134]} (via streamed from user_1f23c51920937afd07c01fc452e4c5f9)
+2017-11-17T08:56:50.185039+00:00 app[web.1]: I, [2017-11-17T08:56:50.184901 #4]  INFO -- : HeadsUpRoomChannel#action({"data"=>["f", 0]})
+2017-11-17T08:56:50.185055+00:00 app[web.1]: "process_action"
+2017-11-17T08:56:50.239131+00:00 app[web.1]: "next_player"
+2017-11-17T08:56:50.215144+00:00 app[web.1]: treat_action
+2017-11-17T08:56:50.241285+00:00 app[web.1]: check_next_street
+2017-11-17T08:56:50.241976+00:00 app[web.1]: check_1
+2017-11-17T08:56:50.242698+00:00 app[web.1]: check_2
+2017-11-17T08:56:50.243866+00:00 app[web.1]: true
+2017-11-17T08:56:50.243901+00:00 app[web.1]: check_3
+2017-11-17T08:56:50.245980+00:00 app[web.1]: true
+2017-11-17T08:56:50.245988+00:00 app[web.1]: check_4
+2017-11-17T08:56:50.250016+00:00 app[web.1]: true
+2017-11-17T08:56:50.271078+00:00 app[web.1]: 30
+2017-11-17T08:56:50.263065+00:00 app[web.1]: !!!!!Game!!!!!
+2017-11-17T08:56:50.271084+00:00 app[web.1]: current_player
+2017-11-17T08:56:50.271085+00:00 app[web.1]: 2
+2017-11-17T08:56:50.271088+00:00 app[web.1]: nofalive
+2017-11-17T08:56:50.271108+00:00 app[web.1]: 1
+2017-11-17T08:56:50.271112+00:00 app[web.1]: current_bet_amount
+2017-11-17T08:56:50.271128+00:00 app[web.1]: 128
+2017-11-17T08:56:50.271131+00:00 app[web.1]: number
+2017-11-17T08:56:50.271148+00:00 app[web.1]: facing_bet_amount
+2017-11-17T08:56:50.271133+00:00 app[web.1]: 16
+2017-11-17T08:56:50.271151+00:00 app[web.1]: 128
+2017-11-17T08:56:50.271165+00:00 app[web.1]: side_pot_3
+2017-11-17T08:56:50.271168+00:00 app[web.1]: 0
+2017-11-17T08:56:50.271182+00:00 app[web.1]: side_pot_9
+2017-11-17T08:56:50.271185+00:00 app[web.1]: 0
+2017-11-17T08:56:50.271199+00:00 app[web.1]: side_pot_4
+2017-11-17T08:56:50.271201+00:00 app[web.1]: 0
+2017-11-17T08:56:50.271215+00:00 app[web.1]: side_pot_6
+2017-11-17T08:56:50.271218+00:00 app[web.1]: 0
+2017-11-17T08:56:50.271310+00:00 app[web.1]: prev_bet_amount
+2017-11-17T08:56:50.271313+00:00 app[web.1]: 0
+2017-11-17T08:56:50.271314+00:00 app[web.1]: side_pot_8
+2017-11-17T08:56:50.271329+00:00 app[web.1]: 0
+2017-11-17T08:56:50.271346+00:00 app[web.1]: !!!!!Street!!!!!
+2017-11-17T08:56:50.275264+00:00 app[web.1]: 0
+2017-11-17T08:56:50.275274+00:00 app[web.1]: nofstreet
+2017-11-17T08:56:50.275276+00:00 app[web.1]: can_next_street
+2017-11-17T08:56:50.275275+00:00 app[web.1]: 4
+2017-11-17T08:56:50.275276+00:00 app[web.1]: true
+2017-11-17T08:56:50.275279+00:00 app[web.1]: temp_pot
+2017-11-17T08:56:50.275279+00:00 app[web.1]: 128
+2017-11-17T08:56:50.275282+00:00 app[web.1]: nofbet
+2017-11-17T08:56:50.275301+00:00 app[web.1]: 1
+2017-11-17T08:56:50.279191+00:00 app[web.1]: 0
+2017-11-17T08:56:50.277744+00:00 app[web.1]: !!!!!Player_1!!!!!
+2017-11-17T08:56:50.279197+00:00 app[web.1]: 1f23c51920937afd07c01fc452e4c5f9
+2017-11-17T08:56:50.279196+00:00 app[web.1]: name
+2017-11-17T08:56:50.279214+00:00 app[web.1]: amount
+2017-11-17T08:56:50.279233+00:00 app[web.1]: prev_nofbet
+2017-11-17T08:56:50.279217+00:00 app[web.1]: 134
+2017-11-17T08:56:50.279236+00:00 app[web.1]: 0
+2017-11-17T08:56:50.279238+00:00 app[web.1]: betting
+2017-11-17T08:56:50.279254+00:00 app[web.1]: 0
+2017-11-17T08:56:50.279256+00:00 app[web.1]: alive
+2017-11-17T08:56:50.279259+00:00 app[web.1]: false
+2017-11-17T08:56:50.279274+00:00 app[web.1]: active
+2017-11-17T08:56:50.279276+00:00 app[web.1]: false
+2017-11-17T08:56:50.279291+00:00 app[web.1]: rights_of_side_pot
+2017-11-17T08:56:50.279293+00:00 app[web.1]: 0
+2017-11-17T08:56:50.279307+00:00 app[web.1]: hand
+2017-11-17T08:56:50.279310+00:00 app[web.1]: Qc,Ac
+2017-11-17T08:56:50.279331+00:00 app[web.1]: !!!!!Player_2!!!!!
+2017-11-17T08:56:50.282786+00:00 app[web.1]: 0
+2017-11-17T08:56:50.282796+00:00 app[web.1]: name
+2017-11-17T08:56:50.282799+00:00 app[web.1]: 0ddc4cc02a029e71643a4dc8725e4707
+2017-11-17T08:56:50.282800+00:00 app[web.1]: amount
+2017-11-17T08:56:50.282800+00:00 app[web.1]: 128
+2017-11-17T08:56:50.282801+00:00 app[web.1]: prev_nofbet
+2017-11-17T08:56:50.282804+00:00 app[web.1]: 1
+2017-11-17T08:56:50.282804+00:00 app[web.1]: betting
+2017-11-17T08:56:50.282806+00:00 app[web.1]: 128
+2017-11-17T08:56:50.282824+00:00 app[web.1]: alive
+2017-11-17T08:56:50.282827+00:00 app[web.1]: true
+2017-11-17T08:56:50.282842+00:00 app[web.1]: active
+2017-11-17T08:56:50.282844+00:00 app[web.1]: false
+2017-11-17T08:56:50.282859+00:00 app[web.1]: rights_of_side_pot
+2017-11-17T08:56:50.282862+00:00 app[web.1]: 10
+2017-11-17T08:56:50.282876+00:00 app[web.1]: hand
+2017-11-17T08:56:50.282879+00:00 app[web.1]: 7h,6h
+2017-11-17T08:56:50.282938+00:00 app[web.1]: ALLIN appears and nothing to change. go to next street
+2017-11-17T08:56:50.284850+00:00 app[web.1]: "is_game_finish?"
+2017-11-17T08:56:50.286457+00:00 app[web.1]: only one person is alive
+2017-11-17T08:56:52.287022+00:00 app[web.1]: "end_the_game"
+2017-11-17T08:56:52.287040+00:00 app[web.1]: "calc_pot_from_betting_status"
+2017-11-17T08:56:52.323272+00:00 app[web.1]: "player_2 win by  with "
+2017-11-17T08:56:52.324479+00:00 app[web.1]: D, [2017-11-17T08:56:52.324330 #4] DEBUG -- : [ActionCable] Broadcasting to user_1f23c51920937afd07c01fc452e4c5f9: {:action=>"info", :info=>"player_2 win by  with "}
+2017-11-17T08:56:52.326202+00:00 app[web.1]: D, [2017-11-17T08:56:52.326061 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"info", "info"=>"player_2 win by  with "} (via streamed from user_1f23c51920937afd07c01fc452e4c5f9)
+2017-11-17T08:56:52.326818+00:00 app[web.1]: D, [2017-11-17T08:56:52.326224 #4] DEBUG -- : [ActionCable] Broadcasting to user_0ddc4cc02a029e71643a4dc8725e4707: {:action=>"info", :info=>"player_2 win by  with "}
+2017-11-17T08:56:52.328256+00:00 app[web.1]: D, [2017-11-17T08:56:52.328167 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"info", "info"=>"player_2 win by  with "} (via streamed from user_0ddc4cc02a029e71643a4dc8725e4707)
+2017-11-17T08:56:52.331706+00:00 app[web.1]: "player[2] win by side_pot_1($128)"
+2017-11-17T08:56:52.333661+00:00 app[web.1]: D, [2017-11-17T08:56:52.333574 #4] DEBUG -- : [ActionCable] Broadcasting to user_1f23c51920937afd07c01fc452e4c5f9: {:action=>"info", :info=>"player[2] win by side_pot_1($128)"}
+2017-11-17T08:56:52.334995+00:00 app[web.1]: D, [2017-11-17T08:56:52.334878 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"info", "info"=>"player[2] win by side_pot_1($128)"} (via streamed from user_1f23c51920937afd07c01fc452e4c5f9)
+2017-11-17T08:56:52.336146+00:00 app[web.1]: D, [2017-11-17T08:56:52.336069 #4] DEBUG -- : [ActionCable] Broadcasting to user_0ddc4cc02a029e71643a4dc8725e4707: {:action=>"info", :info=>"player[2] win by side_pot_1($128)"}
+2017-11-17T08:56:52.337793+00:00 app[web.1]: D, [2017-11-17T08:56:52.337647 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"info", "info"=>"player[2] win by side_pot_1($128)"} (via streamed from user_0ddc4cc02a029e71643a4dc8725e4707)
+2017-11-17T08:56:52.344036+00:00 app[web.1]: "1 game finished. go to next game"
+2017-11-17T08:56:52.344040+00:00 app[web.1]: "GAME END!!!!!!!!!!!!!!!!!"
+2017-11-17T08:56:52.344059+00:00 app[web.1]: "GAME START!!!!!!!!!!!!!!!!!"
+2017-11-17T08:56:52.344061+00:00 app[web.1]: "initial_game_setting"
+2017-11-17T08:56:52.362410+00:00 app[web.1]: "preflop_setting"
+2017-11-17T08:56:52.365797+00:00 app[web.1]: D, [2017-11-17T08:56:52.365693 #4] DEBUG -- : [ActionCable] Broadcasting to user_1f23c51920937afd07c01fc452e4c5f9: {:action=>"deal_hand", :cards=>"4c,8s"}
+2017-11-17T08:56:52.367113+00:00 app[web.1]: D, [2017-11-17T08:56:52.367034 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"deal_hand", "cards"=>"4c,8s"} (via streamed from user_1f23c51920937afd07c01fc452e4c5f9)
+2017-11-17T08:56:52.368084+00:00 app[web.1]: D, [2017-11-17T08:56:52.368029 #4] DEBUG -- : [ActionCable] Broadcasting to user_0ddc4cc02a029e71643a4dc8725e4707: {:action=>"deal_hand", :cards=>"4h,Ad"}
+2017-11-17T08:56:52.369289+00:00 app[web.1]: D, [2017-11-17T08:56:52.369215 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"deal_hand", "cards"=>"4h,Ad"} (via streamed from user_0ddc4cc02a029e71643a4dc8725e4707)
+2017-11-17T08:56:52.369715+00:00 app[web.1]: D, [2017-11-17T08:56:52.369641 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"deal_button", :id=>1}
+2017-11-17T08:56:52.370913+00:00 app[web.1]: D, [2017-11-17T08:56:52.370827 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_pot", :pot=>0}
+2017-11-17T08:56:52.371909+00:00 app[web.1]: D, [2017-11-17T08:56:52.371049 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"deal_button", "id"=>1} (via streamed from room_1)
+2017-11-17T08:56:52.372209+00:00 app[web.1]: D, [2017-11-17T08:56:52.371312 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"deal_button", "id"=>1} (via streamed from room_1)
+2017-11-17T08:56:52.373010+00:00 app[web.1]: D, [2017-11-17T08:56:52.371537 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"deal_button", "id"=>1} (via streamed from room_1)
+2017-11-17T08:56:52.374453+00:00 app[web.1]: D, [2017-11-17T08:56:52.373485 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_pot", "pot"=>0} (via streamed from room_1)
+2017-11-17T08:56:52.374973+00:00 app[web.1]: D, [2017-11-17T08:56:52.373698 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_pot", "pot"=>0} (via streamed from room_1)
+2017-11-17T08:56:52.375587+00:00 app[web.1]: D, [2017-11-17T08:56:52.374589 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_pot", "pot"=>0} (via streamed from room_1)
+2017-11-17T08:56:52.376654+00:00 app[web.1]: D, [2017-11-17T08:56:52.376584 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_betting", :id=>1, :betting=>"1"}
+2017-11-17T08:56:52.378013+00:00 app[web.1]: D, [2017-11-17T08:56:52.377940 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"1"} (via streamed from room_1)
+2017-11-17T08:56:52.379148+00:00 app[web.1]: D, [2017-11-17T08:56:52.378208 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"1"} (via streamed from room_1)
+2017-11-17T08:56:52.379457+00:00 app[web.1]: D, [2017-11-17T08:56:52.378337 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_stack", :id=>1, :stack=>"134"}
+2017-11-17T08:56:52.380538+00:00 app[web.1]: D, [2017-11-17T08:56:52.380472 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"134"} (via streamed from room_1)
+2017-11-17T08:56:52.380944+00:00 app[web.1]: D, [2017-11-17T08:56:52.380861 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_betting", :id=>2, :betting=>"2"}
+2017-11-17T08:56:52.381483+00:00 app[web.1]: D, [2017-11-17T08:56:52.381154 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"134"} (via streamed from room_1)
+2017-11-17T08:56:52.382576+00:00 app[web.1]: D, [2017-11-17T08:56:52.382490 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"134"} (via streamed from room_1)
+2017-11-17T08:56:52.383515+00:00 app[web.1]: D, [2017-11-17T08:56:52.379045 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"1"} (via streamed from room_1)
+2017-11-17T08:56:52.383962+00:00 app[web.1]: D, [2017-11-17T08:56:52.382765 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"2"} (via streamed from room_1)
+2017-11-17T08:56:52.384240+00:00 app[web.1]: D, [2017-11-17T08:56:52.382999 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_stack", :id=>2, :stack=>"128"}
+2017-11-17T08:56:52.384480+00:00 app[web.1]: D, [2017-11-17T08:56:52.383438 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"2"} (via streamed from room_1)
+2017-11-17T08:56:52.384744+00:00 app[web.1]: D, [2017-11-17T08:56:52.383885 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"2"} (via streamed from room_1)
+2017-11-17T08:56:52.385756+00:00 app[web.1]: D, [2017-11-17T08:56:52.385686 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"128"} (via streamed from room_1)
+2017-11-17T08:56:52.386184+00:00 app[web.1]: D, [2017-11-17T08:56:52.386118 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"128"} (via streamed from room_1)
+2017-11-17T08:56:52.386868+00:00 app[web.1]: D, [2017-11-17T08:56:52.386790 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"128"} (via streamed from room_1)
+2017-11-17T08:56:52.388738+00:00 app[web.1]: "is_table_finish?"
+2017-11-17T08:56:52.393769+00:00 app[web.1]: "urge_action_to_web"
+2017-11-17T08:56:52.397884+00:00 app[web.1]: D, [2017-11-17T08:56:52.397775 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_betting", :id=>1, :betting=>"1"}
+2017-11-17T08:56:52.399799+00:00 app[web.1]: D, [2017-11-17T08:56:52.399713 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"1"} (via streamed from room_1)
+2017-11-17T08:56:52.400492+00:00 app[web.1]: D, [2017-11-17T08:56:52.400429 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"1"} (via streamed from room_1)
+2017-11-17T08:56:52.401150+00:00 app[web.1]: D, [2017-11-17T08:56:52.401071 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"1"} (via streamed from room_1)
+2017-11-17T08:56:52.401494+00:00 app[web.1]: D, [2017-11-17T08:56:52.401429 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_stack", :id=>1, :stack=>"134"}
+2017-11-17T08:56:52.402861+00:00 app[web.1]: D, [2017-11-17T08:56:52.402793 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"134"} (via streamed from room_1)
+2017-11-17T08:56:52.404753+00:00 app[web.1]: D, [2017-11-17T08:56:52.404690 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"134"} (via streamed from room_1)
+2017-11-17T08:56:52.403390+00:00 app[web.1]: D, [2017-11-17T08:56:52.403325 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"134"} (via streamed from room_1)
+2017-11-17T08:56:52.405150+00:00 app[web.1]: D, [2017-11-17T08:56:52.405081 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_betting", :id=>2, :betting=>"2"}
+2017-11-17T08:56:52.406527+00:00 app[web.1]: D, [2017-11-17T08:56:52.406454 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"2"} (via streamed from room_1)
+2017-11-17T08:56:52.406958+00:00 app[web.1]: D, [2017-11-17T08:56:52.406885 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"2"} (via streamed from room_1)
+2017-11-17T08:56:52.407631+00:00 app[web.1]: D, [2017-11-17T08:56:52.407558 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"2"} (via streamed from room_1)
+2017-11-17T08:56:52.410565+00:00 app[web.1]: D, [2017-11-17T08:56:52.410501 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_stack", :id=>2, :stack=>"128"}
+2017-11-17T08:56:52.412101+00:00 app[web.1]: D, [2017-11-17T08:56:52.412015 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"128"} (via streamed from room_1)
+2017-11-17T08:56:52.412605+00:00 app[web.1]: D, [2017-11-17T08:56:52.412533 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"128"} (via streamed from room_1)
+2017-11-17T08:56:52.413111+00:00 app[web.1]: D, [2017-11-17T08:56:52.413049 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"128"} (via streamed from room_1)
+2017-11-17T08:56:52.414062+00:00 app[web.1]: D, [2017-11-17T08:56:52.413988 #4] DEBUG -- : [ActionCable] Broadcasting to user_1f23c51920937afd07c01fc452e4c5f9: {:action=>"info", :info=>"you can do 'f', 'c' or 'r'"}
+2017-11-17T08:56:52.414924+00:00 app[web.1]: D, [2017-11-17T08:56:52.414704 #4] DEBUG -- : [ActionCable] Broadcasting to user_1f23c51920937afd07c01fc452e4c5f9: {:action=>"urge_action", :actions=>["f", "c", "r"], :raise_amounts=>[4, 134]}
+2017-11-17T08:56:52.420343+00:00 app[web.1]: D, [2017-11-17T08:56:52.420271 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"info", "info"=>"you can do 'f', 'c' or 'r'"} (via streamed from user_1f23c51920937afd07c01fc452e4c5f9)
+2017-11-17T08:56:52.421329+00:00 app[web.1]: D, [2017-11-17T08:56:52.421257 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"urge_action", "actions"=>["f", "c", "r"], "raise_amounts"=>[4, 134]} (via streamed from user_1f23c51920937afd07c01fc452e4c5f9)
+2017-11-17T08:56:52.649104+00:00 heroku[router]: at=info method=GET path="/png/4c.png" host=poker-app-1.herokuapp.com request_id=b3f6a6b6-e5a0-4987-95fa-edfb624f2d25 fwd="153.207.179.140" dyno=web.1 connect=0ms service=5ms status=304 bytes=48 protocol=https
+2017-11-17T08:56:53.222628+00:00 heroku[router]: at=info method=GET path="/png/4h.png" host=poker-app-1.herokuapp.com request_id=6eb0f9fc-8762-4e5e-9743-72182e73ed38 fwd="182.251.242.13" dyno=web.1 connect=1ms service=4ms status=200 bytes=5245 protocol=https
+2017-11-17T08:56:53.658223+00:00 heroku[router]: at=info method=GET path="/png/Ad.png" host=poker-app-1.herokuapp.com request_id=ad8ae1f5-5ca9-4ed0-ad0a-3361e6793e51 fwd="182.251.242.13" dyno=web.1 connect=1ms service=11ms status=304 bytes=48 protocol=https
+2017-11-17T08:56:57.529843+00:00 app[web.1]: I, [2017-11-17T08:56:57.529720 #4]  INFO -- : HeadsUpRoomChannel#action({"data"=>["f", 0]})
+2017-11-17T08:56:57.529869+00:00 app[web.1]: "process_action"
+2017-11-17T08:56:57.533335+00:00 app[web.1]: treat_action
+2017-11-17T08:56:57.537669+00:00 app[web.1]: "next_player"
+2017-11-17T08:56:57.539172+00:00 app[web.1]: check_next_street
+2017-11-17T08:56:57.539705+00:00 app[web.1]: check_1
+2017-11-17T08:56:57.540263+00:00 app[web.1]: true
+2017-11-17T08:56:57.540264+00:00 app[web.1]: check_2
+2017-11-17T08:56:57.541474+00:00 app[web.1]: true
+2017-11-17T08:56:57.543476+00:00 app[web.1]: "is_game_finish?"
+2017-11-17T08:56:57.542451+00:00 app[web.1]: check_4
+2017-11-17T08:56:57.541475+00:00 app[web.1]: check_3
+2017-11-17T08:56:57.544002+00:00 app[web.1]: only one person is alive
+2017-11-17T08:56:59.547060+00:00 app[web.1]: "end_the_game"
+2017-11-17T08:56:59.547127+00:00 app[web.1]: "calc_pot_from_betting_status"
+2017-11-17T08:56:59.559151+00:00 app[web.1]: "player_2 win by  with "
+2017-11-17T08:56:59.560334+00:00 app[web.1]: D, [2017-11-17T08:56:59.560240 #4] DEBUG -- : [ActionCable] Broadcasting to user_1f23c51920937afd07c01fc452e4c5f9: {:action=>"info", :info=>"player_2 win by  with "}
+2017-11-17T08:56:59.562034+00:00 app[web.1]: D, [2017-11-17T08:56:59.561961 #4] DEBUG -- : [ActionCable] Broadcasting to user_0ddc4cc02a029e71643a4dc8725e4707: {:action=>"info", :info=>"player_2 win by  with "}
+2017-11-17T08:56:59.562799+00:00 app[web.1]: D, [2017-11-17T08:56:59.562391 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"info", "info"=>"player_2 win by  with "} (via streamed from user_1f23c51920937afd07c01fc452e4c5f9)
+2017-11-17T08:56:59.567938+00:00 app[web.1]: D, [2017-11-17T08:56:59.567775 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"info", "info"=>"player_2 win by  with "} (via streamed from user_0ddc4cc02a029e71643a4dc8725e4707)
+2017-11-17T08:56:59.591165+00:00 app[web.1]: "player[2] win by side_pot_1($3)"
+2017-11-17T08:56:59.600761+00:00 app[web.1]: D, [2017-11-17T08:56:59.600650 #4] DEBUG -- : [ActionCable] Broadcasting to user_0ddc4cc02a029e71643a4dc8725e4707: {:action=>"info", :info=>"player[2] win by side_pot_1($3)"}
+2017-11-17T08:56:59.595784+00:00 app[web.1]: D, [2017-11-17T08:56:59.595662 #4] DEBUG -- : [ActionCable] Broadcasting to user_1f23c51920937afd07c01fc452e4c5f9: {:action=>"info", :info=>"player[2] win by side_pot_1($3)"}
+2017-11-17T08:56:59.602427+00:00 app[web.1]: D, [2017-11-17T08:56:59.602333 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"info", "info"=>"player[2] win by side_pot_1($3)"} (via streamed from user_0ddc4cc02a029e71643a4dc8725e4707)
+2017-11-17T08:56:59.603319+00:00 app[web.1]: D, [2017-11-17T08:56:59.603227 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"info", "info"=>"player[2] win by side_pot_1($3)"} (via streamed from user_1f23c51920937afd07c01fc452e4c5f9)
+2017-11-17T08:56:59.612026+00:00 app[web.1]: "1 game finished. go to next game"
+2017-11-17T08:56:59.612058+00:00 app[web.1]: "GAME END!!!!!!!!!!!!!!!!!"
+2017-11-17T08:56:59.612077+00:00 app[web.1]: "GAME START!!!!!!!!!!!!!!!!!"
+2017-11-17T08:56:59.612096+00:00 app[web.1]: "initial_game_setting"
+2017-11-17T08:56:59.628599+00:00 app[web.1]: "preflop_setting"
+2017-11-17T08:56:59.640745+00:00 app[web.1]: D, [2017-11-17T08:56:59.640600 #4] DEBUG -- : [ActionCable] Broadcasting to user_1f23c51920937afd07c01fc452e4c5f9: {:action=>"deal_hand", :cards=>"7h,Ah"}
+2017-11-17T08:56:59.642366+00:00 app[web.1]: D, [2017-11-17T08:56:59.642188 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"deal_hand", "cards"=>"7h,Ah"} (via streamed from user_1f23c51920937afd07c01fc452e4c5f9)
+2017-11-17T08:56:59.644888+00:00 app[web.1]: D, [2017-11-17T08:56:59.644780 #4] DEBUG -- : [ActionCable] Broadcasting to user_0ddc4cc02a029e71643a4dc8725e4707: {:action=>"deal_hand", :cards=>"8c,3c"}
+2017-11-17T08:56:59.646959+00:00 app[web.1]: D, [2017-11-17T08:56:59.646846 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"deal_hand", "cards"=>"8c,3c"} (via streamed from user_0ddc4cc02a029e71643a4dc8725e4707)
+2017-11-17T08:56:59.651287+00:00 app[web.1]: D, [2017-11-17T08:56:59.651144 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"deal_button", :id=>2}
+2017-11-17T08:56:59.655848+00:00 app[web.1]: D, [2017-11-17T08:56:59.655719 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"deal_button", "id"=>2} (via streamed from room_1)
+2017-11-17T08:56:59.657413+00:00 app[web.1]: D, [2017-11-17T08:56:59.657337 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"deal_button", "id"=>2} (via streamed from room_1)
+2017-11-17T08:56:59.656587+00:00 app[web.1]: D, [2017-11-17T08:56:59.656516 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"deal_button", "id"=>2} (via streamed from room_1)
+2017-11-17T08:56:59.662034+00:00 app[web.1]: D, [2017-11-17T08:56:59.661936 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_pot", "pot"=>0} (via streamed from room_1)
+2017-11-17T08:56:59.663032+00:00 app[web.1]: D, [2017-11-17T08:56:59.661704 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_pot", "pot"=>0} (via streamed from room_1)
+2017-11-17T08:56:59.657922+00:00 app[web.1]: D, [2017-11-17T08:56:59.657855 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_pot", :pot=>0}
+2017-11-17T08:56:59.662614+00:00 app[web.1]: D, [2017-11-17T08:56:59.662540 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_pot", "pot"=>0} (via streamed from room_1)
+2017-11-17T08:56:59.671166+00:00 app[web.1]: D, [2017-11-17T08:56:59.671045 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_betting", :id=>1, :betting=>"2"}
+2017-11-17T08:56:59.676006+00:00 app[web.1]: D, [2017-11-17T08:56:59.675872 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"2"} (via streamed from room_1)
+2017-11-17T08:56:59.676671+00:00 app[web.1]: D, [2017-11-17T08:56:59.676599 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"2"} (via streamed from room_1)
+2017-11-17T08:56:59.677466+00:00 app[web.1]: D, [2017-11-17T08:56:59.677384 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"2"} (via streamed from room_1)
+2017-11-17T08:56:59.679243+00:00 app[web.1]: D, [2017-11-17T08:56:59.679172 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_stack", :id=>1, :stack=>"133"}
+2017-11-17T08:56:59.681944+00:00 app[web.1]: D, [2017-11-17T08:56:59.681838 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"133"} (via streamed from room_1)
+2017-11-17T08:56:59.682466+00:00 app[web.1]: D, [2017-11-17T08:56:59.682401 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"133"} (via streamed from room_1)
+2017-11-17T08:56:59.683299+00:00 app[web.1]: D, [2017-11-17T08:56:59.683228 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"133"} (via streamed from room_1)
+2017-11-17T08:56:59.687218+00:00 app[web.1]: D, [2017-11-17T08:56:59.687110 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_betting", :id=>2, :betting=>"1"}
+2017-11-17T08:56:59.691941+00:00 app[web.1]: D, [2017-11-17T08:56:59.691812 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"1"} (via streamed from room_1)
+2017-11-17T08:56:59.692660+00:00 app[web.1]: D, [2017-11-17T08:56:59.692590 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"1"} (via streamed from room_1)
+2017-11-17T08:56:59.693225+00:00 app[web.1]: D, [2017-11-17T08:56:59.693159 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"1"} (via streamed from room_1)
+2017-11-17T08:56:59.696107+00:00 app[web.1]: D, [2017-11-17T08:56:59.695807 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_stack", :id=>2, :stack=>"129"}
+2017-11-17T08:56:59.711715+00:00 app[web.1]: D, [2017-11-17T08:56:59.711571 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"129"} (via streamed from room_1)
+2017-11-17T08:56:59.712470+00:00 app[web.1]: D, [2017-11-17T08:56:59.712400 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"129"} (via streamed from room_1)
+2017-11-17T08:56:59.713032+00:00 app[web.1]: D, [2017-11-17T08:56:59.712961 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"129"} (via streamed from room_1)
+2017-11-17T08:56:59.731350+00:00 app[web.1]: "is_table_finish?"
+2017-11-17T08:56:59.764048+00:00 app[web.1]: "urge_action_to_web"
+2017-11-17T08:56:59.780988+00:00 app[web.1]: D, [2017-11-17T08:56:59.780836 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_betting", :id=>1, :betting=>"2"}
+2017-11-17T08:56:59.782250+00:00 app[web.1]: D, [2017-11-17T08:56:59.782185 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_stack", :id=>1, :stack=>"133"}
+2017-11-17T08:56:59.785115+00:00 app[web.1]: D, [2017-11-17T08:56:59.783818 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"2"} (via streamed from room_1)
+2017-11-17T08:56:59.785885+00:00 app[web.1]: D, [2017-11-17T08:56:59.785803 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"133"} (via streamed from room_1)
+2017-11-17T08:56:59.787199+00:00 app[web.1]: D, [2017-11-17T08:56:59.785026 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"2"} (via streamed from room_1)
+2017-11-17T08:56:59.788105+00:00 app[web.1]: D, [2017-11-17T08:56:59.786899 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"133"} (via streamed from room_1)
+2017-11-17T08:56:59.789300+00:00 app[web.1]: D, [2017-11-17T08:56:59.789212 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>1, "betting"=>"2"} (via streamed from room_1)
+2017-11-17T08:56:59.790878+00:00 app[web.1]: D, [2017-11-17T08:56:59.790797 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>1, "stack"=>"133"} (via streamed from room_1)
+2017-11-17T08:56:59.795220+00:00 app[web.1]: D, [2017-11-17T08:56:59.795080 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_betting", :id=>2, :betting=>"1"}
+2017-11-17T08:56:59.840149+00:00 heroku[router]: at=info method=GET path="/png/7h.png" host=poker-app-1.herokuapp.com request_id=2dcfa114-6c73-424e-a4ae-334ee708c669 fwd="153.207.179.140" dyno=web.1 connect=0ms service=4ms status=200 bytes=6339 protocol=https
+2017-11-17T08:56:59.800551+00:00 app[web.1]: D, [2017-11-17T08:56:59.800439 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"1"} (via streamed from room_1)
+2017-11-17T08:56:59.805058+00:00 app[web.1]: D, [2017-11-17T08:56:59.804989 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"1"} (via streamed from room_1)
+2017-11-17T08:56:59.804010+00:00 app[web.1]: D, [2017-11-17T08:56:59.803903 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_betting", "id"=>2, "betting"=>"1"} (via streamed from room_1)
+2017-11-17T08:56:59.805540+00:00 app[web.1]: D, [2017-11-17T08:56:59.805472 #4] DEBUG -- : [ActionCable] Broadcasting to room_1: {:action=>"show_stack", :id=>2, :stack=>"129"}
+2017-11-17T08:56:59.810302+00:00 app[web.1]: D, [2017-11-17T08:56:59.810179 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"129"} (via streamed from room_1)
+2017-11-17T08:56:59.809575+00:00 app[web.1]: D, [2017-11-17T08:56:59.809458 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"129"} (via streamed from room_1)
+2017-11-17T08:56:59.815067+00:00 app[web.1]: D, [2017-11-17T08:56:59.814881 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"show_stack", "id"=>2, "stack"=>"129"} (via streamed from room_1)
+2017-11-17T08:56:59.830083+00:00 app[web.1]: D, [2017-11-17T08:56:59.829961 #4] DEBUG -- : [ActionCable] Broadcasting to user_0ddc4cc02a029e71643a4dc8725e4707: {:action=>"info", :info=>"you can do 'f', 'c' or 'r'"}
+2017-11-17T08:56:59.832834+00:00 app[web.1]: D, [2017-11-17T08:56:59.832671 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"info", "info"=>"you can do 'f', 'c' or 'r'"} (via streamed from user_0ddc4cc02a029e71643a4dc8725e4707)
+2017-11-17T08:56:59.833423+00:00 app[web.1]: D, [2017-11-17T08:56:59.833353 #4] DEBUG -- : [ActionCable] Broadcasting to user_0ddc4cc02a029e71643a4dc8725e4707: {:action=>"urge_action", :actions=>["f", "c", "r"], :raise_amounts=>[4, 129]}
+2017-11-17T08:56:59.839543+00:00 app[web.1]: D, [2017-11-17T08:56:59.839450 #4] DEBUG -- : HeadsUpRoomChannel transmitting {"action"=>"urge_action", "actions"=>["f", "c", "r"], "raise_amounts"=>[4, 129]} (via streamed from user_0ddc4cc02a029e71643a4dc8725e4707)
+2017-11-17T08:57:00.943644+00:00 heroku[router]: at=info method=GET path="/png/8c.png" host=poker-app-1.herokuapp.com request_id=adff6f42-4b80-40cd-8f72-793bbb327fd5 fwd="182.251.242.13" dyno=web.1 connect=1ms service=2ms status=304 bytes=48 protocol=https
+2017-11-17T08:57:01.343997+00:00 heroku[router]: at=info method=GET path="/png/3c.png" host=poker-app-1.herokuapp.com request_id=21904e62-f91c-4b8d-b84f-54bb1ab2c162 fwd="182.251.242.13" dyno=web.1 connect=1ms service=2ms status=304 bytes=48 protocol=https
+2017-11-17T08:57:03+00:00 app[heroku-redis]: source=REDIS sample#active-connections=4 sample#load-avg-1m=0.175 sample#load-avg-5m=0.12 sample#load-avg-15m=0.095 sample#read-iops=0 sample#write-iops=0 sample#memory-total=15664248kB sample#memory-free=12519036kB sample#memory-cached=1331152kB sample#memory-redis=346072bytes sample#hit-rate=0.99818 sample#evicted-keys=0
+2017-11-17T08:58:16+00:00 app[heroku-redis]: source=REDIS sample#active-connections=4 sample#load-avg-1m=0.095 sample#load-avg-5m=0.11 sample#load-avg-15m=0.095 sample#read-iops=0 sample#write-iops=0 sample#memory-total=15664248kB sample#memory-free=12519252kB sample#memory-cached=1331160kB sample#memory-redis=346072bytes sample#hit-rate=0.99818 sample#evicted-keys=0
+2017-11-17T08:59:22+00:00 app[heroku-redis]: source=REDIS sample#active-connections=4 sample#load-avg-1m=0.035 sample#load-avg-5m=0.09 sample#load-avg-15m=0.085 sample#read-iops=0 sample#write-iops=0 sample#memory-total=15664248kB sample#memory-free=12518852kB sample#memory-cached=1331160kB sample#memory-redis=346072bytes sample#hit-rate=0.99818 sample#evicted-keys=0
+2017-11-17T09:00:33+00:00 app[heroku-redis]: source=REDIS sample#active-connections=4 sample#load-avg-1m=0.105 sample#load-avg-5m=0.105 sample#load-avg-15m=0.09 sample#read-iops=0 sample#write-iops=0 sample#memory-total=15664248kB sample#memory-free=12518712kB sample#memory-cached=1331164kB sample#memory-redis=346072bytes sample#hit-rate=0.99818 sample#evicted-keys=0

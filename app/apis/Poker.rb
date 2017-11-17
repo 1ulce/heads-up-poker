@@ -735,7 +735,7 @@ class Poker
       nof_alive = redis.hget(:game, :nofalive).to_i
       nof_active = redis.hget(:game, :nofactive).to_i
       nofside_pot = redis.hget(:game, :nofside_pot).to_i
-      if nof_alive == nof_active
+      if nof_alive == nof_active || nof_alive == 1 #全員AIしてない/AI入って、皆fold
         pot = redis.hget(:game, "side_pot_#{nofside_pot}".to_sym).to_i + redis.hget(:street, :temp_pot).to_i
         redis.hset(:game, "side_pot_#{nofside_pot}".to_sym, pot)
         redis.hset(:street, :temp_pot, 0)
@@ -835,6 +835,7 @@ class Poker
         redis.hset(player(current_player), :alive, false)
         nofalive = redis.hget(:game, :nofalive).to_i - 1
         redis.hset(:game, :nofalive, nofalive)
+        ActionCable.server.broadcast "room_1", {action: "fold", id: current_player}
       when 1
         # status["player_#{player}".to_sym][:betting] はそのまま
       when 2
@@ -947,7 +948,9 @@ class Poker
         array_hands = []
         redis.hget(:game, :nofpeople).to_i.times do |n|
           if redis.hget(player(n+1), :alive) == "true"
-            array_hands << redis.hget(player(n+1), :hand).split(",")
+            hand = redis.hget(player(n+1), :hand)
+            array_hands << hand.split(",")
+            ActionCable.server.broadcast "room_1", {action: "showdown_opp_hand", cards: hand, id: n+1}
           else
             array_hands << []
           end
