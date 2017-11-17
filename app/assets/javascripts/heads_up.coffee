@@ -54,6 +54,7 @@ $(document).on 'turbolinks:load', ->
     ranges = $('.actions .hidden').text().split("~")
     amount = 0
     until parseInt(ranges[0], 10) <= amount <= parseInt(ranges[1], 10)
+      return if amount == null
       amount = prompt("額を入力してください(#{ranges[0]}~#{ranges[1]})")
     App.heads_up_room.action("r", amount)
     $('.actions').html("")
