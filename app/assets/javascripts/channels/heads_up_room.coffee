@@ -82,7 +82,7 @@ App.heads_up_room = App.cable.subscriptions.create "HeadsUpRoomChannel",
 
   actions['deal_hand'] = (data) ->
     result = data.cards.split(",")
-    $('#me .hand').html("<card>#{result[0]}</card><card>#{result[1]}</card>")
+    $('#me .hand').html("#{hand_to_img(result[0])}#{hand_to_img(result[1])}")
 
   actions['deal_button'] = (data) ->
     $(".button").html("")
@@ -90,7 +90,10 @@ App.heads_up_room = App.cable.subscriptions.create "HeadsUpRoomChannel",
     $(".player_#{data.id} .button").html("dealer button")
 
   actions['deal_board'] = (data) ->
-    $(".board").html("board: #{data.board}")
+    cards = data.board.split(",")
+    $(".board").html("board: ")
+    for card in cards
+      $(".board").append("#{hand_to_img(card)}")
 
   actions['set_id'] = (data) ->
     for user,idx in data.players
@@ -139,4 +142,7 @@ App.heads_up_room = App.cable.subscriptions.create "HeadsUpRoomChannel",
         $(".result").html("you lose..")
       else
         $(".result").html("result???")
+
+  hand_to_img = (string) ->
+    return "<card><img src='/png/#{string}.png'></card>"
 
