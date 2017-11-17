@@ -42,7 +42,7 @@ $(document).on 'turbolinks:load', ->
 
   $(document).off 'click', 'button.bet'
   $(document).on 'click', 'button.bet', ->
-    ranges = $('.hidden').text().split("~")
+    ranges = $('.actions .hidden').text().split("~")
     amount = 0
     until parseInt(ranges[0], 10) <= amount <= parseInt(ranges[1], 10)
       amount = prompt("額を入力してください(#{ranges[0]}~#{ranges[1]})")
@@ -51,7 +51,7 @@ $(document).on 'turbolinks:load', ->
 
   $(document).off 'click', 'button.raise'
   $(document).on 'click', 'button.raise', ->
-    ranges = $('.hidden').text().split("~")
+    ranges = $('.actions .hidden').text().split("~")
     amount = 0
     until parseInt(ranges[0], 10) <= amount <= parseInt(ranges[1], 10)
       amount = prompt("額を入力してください(#{ranges[0]}~#{ranges[1]})")
