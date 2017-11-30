@@ -801,7 +801,7 @@ class Poker
             end
           else #4人オールインならば、4人目
             redis.hset(player(array[0]), :rights_of_side_pot, nofside_pot) # n人目の権利を現在で確定
-            side_pot = redis.hget(:street, :temp_pot) # 残りpot(ヤバイか？)
+            side_pot = redis.hget(:street, :temp_pot).to_i + redis.hget(:game, "side_pot_#{nofside_pot}".to_sym).to_i # 残りpot
             redis.hset(:street, :temp_pot, 0)
             redis.hset(:game, "side_pot_#{nofside_pot}".to_sym, side_pot) # サイドポット金額確定
             (idx+1).times do |n|
@@ -850,8 +850,10 @@ class Poker
         redis.hset(:game, :prev_bet_amount, redis.hget(:game, :current_bet_amount))
         redis.hset(:game, :current_bet_amount, result[1])
         redis.hset(:game, :facing_bet_amount, result[1])
-        nofbet = redis.hget(:street, :nofbet).to_i + 1
-        redis.hset(:street, :nofbet, nofbet)
+        unless result[2] == redis.hget(:street, :nofbet).to_i
+          nofbet = redis.hget(:street, :nofbet).to_i + 1
+          redis.hset(:street, :nofbet, nofbet)
+        end
         redis.hset(player(current_player), :betting, result[1])
 
         nofactive = redis.hget(:game, :nofactive).to_i
