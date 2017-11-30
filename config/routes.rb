@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'three_players/show'
+
   get 'heads_up/show'
 
   root to: 'home#show'
