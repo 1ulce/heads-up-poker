@@ -76,7 +76,10 @@ App.heads_up_room = App.cable.subscriptions.create "HeadsUpRoomChannel",
 
   received: (data) ->
     actions[data.action](data, this)
-    
+  
+  load_page: ->
+    @perform 'load_page'
+
   entered: ->
     @perform 'entered'
     $('#seat_button').html("")
@@ -84,19 +87,6 @@ App.heads_up_room = App.cable.subscriptions.create "HeadsUpRoomChannel",
   put_message: (msg) ->
     alert "hell"
     @perform('put_message', { message: msg })
-
-  stop_stream: () ->
-    @perform 'stop_stream'
-
-  start: () ->
-    alert 'game start'
-    @perform 'start2'
-
-  ready: () ->
-    @perform 'ready'
-
-  load_page: ->
-    @perform 'load_page'
 
   clear_table: ->
     @perform 'clear_table'
@@ -108,8 +98,11 @@ App.heads_up_room = App.cable.subscriptions.create "HeadsUpRoomChannel",
     $(".actions").html("")
     $('#ready').html("")
 
-  # clear_people: ->
-  #   @perform 'clear_people'
+  stop_stream: () ->
+    @perform 'stop_stream'
+
+  ready: () ->
+    @perform 'ready'
 
   action: (name, amount=0) ->
     @perform 'action', data: [name, amount]

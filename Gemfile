@@ -59,4 +59,4 @@ gem 'slim-rails'
 gem 'jquery-rails'
 gem 'random_bell'
 gem 'pry-byebug'
-
+gem 'redis-objects'
