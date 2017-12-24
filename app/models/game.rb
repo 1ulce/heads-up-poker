@@ -1,24 +1,40 @@
-class Game
-  #after_create_commit { UserBroadcastJob.perform_later self }
-  TRUMP = ["As","2s","3s","4s","5s","6s","7s","8s","9s","Ts","Js","Qs","Ks","Ah","2h","3h","4h","5h","6h","7h","8h","9h","Th","Jh","Qh","Kh","Ad","2d","3d","4d","5d","6d","7d","8d","9d","Td","Jd","Qd","Kd","Ac","2c","3c","4c","5c","6c","7c","8c","9c","Tc","Jc","Qc","Kc"]
+class Game < ApplicationRecord
+  include Redis::Objects
+  has_many :users
+  belongs_to :table, optional: true
+  value :cards
+  value :street_num
+  value :board
+  set :alives
+  set :actives
+  value :current_side_pot
+  value :side_pot_1
+  value :side_pot_2
+  value :side_pot_3
+  value :side_pot_4
+  value :side_pot_5
+  value :side_pot_6
+  value :side_pot_7
+  value :side_pot_8
+  value :side_pot_9
+  value :current_player
+  value :can_next_street
+  value :prev_bet_amount
+  value :button
+  value :minimum_bet_amount
 
+  #after_create_commit { UserBroadcastJob.perform_later self }
   def redis
     @redis ||= Redis.current
   end
 
-  def table
-    @table ||= Table.new
-  end
-
-  def card
-    @card ||= Card.new
-  end
+  # def table
+  #   @table ||= self.table
+  # end
 
   def push_info(string)
-    p string
-    redis.llen("playing_users").times do |n| 
-      user = redis.lindex("playing_users", n)
-      ActionCable.server.broadcast "user_#{user}", {action: "info", info: string}
+    table.playing_users.each do |u_name|
+      ActionCable.server.broadcast "user_#{u_name}", {action: "info", info: string}
     end
   end
   def get_active_players
@@ -118,7 +134,7 @@ class Game
     p "process_action"
     current_player = redis.hget(:game, :current_player).to_i
     nofbet = redis.hget(:street, :nofbet).to_i
-    street_stack = redis.hget(table.player(current_player), :amount).to_i
+    street_stack = redis.hget(table.player(self.current_player.to_i), :amount).to_i
     facing_bet_amount = redis.hget(:game, :facing_bet_amount).to_i
     minimum_bet_amount = redis.hget(:game, :minimum_bet_amount).to_i
     current_bet_amount = redis.hget(:game, :current_bet_amount).to_i
@@ -160,9 +176,8 @@ class Game
     end
   end
   def initial_game_setting
-    p "initial_game_setting"
-    deck = TRUMP
-    deck.shuffle!
+    p "initial_game_setting_start"
+    deck = Card.get_shuffled_card
     cards = {
       player_1: [deck[0],deck[1]],
       player_2: [deck[2],deck[3]],
@@ -183,34 +198,26 @@ class Game
       rit_turn: [deck[28]],
       rit_river: [deck[29]],
     }
-    redis.hset(:game, :cards, cards.to_json)
-    redis.hset(:street, :nofstreet, 1)
-    redis.hset(:game, :board, "")
-    redis.hset(:game, :nofalive, redis.hget(:game, :nofpeople))
-    redis.hset(:game, :nofactive, redis.hget(:game, :nofpeople))
-    redis.hset(:game, :nofside_pot, 1)
-    redis.hset(:game, :side_pot_1, 0)
-    redis.hset(:game, :side_pot_2, 0)
-    redis.hset(:game, :side_pot_3, 0)
-    redis.hset(:game, :side_pot_4, 0)
-    redis.hset(:game, :side_pot_5, 0)
-    redis.hset(:game, :side_pot_6, 0)
-    redis.hset(:game, :side_pot_7, 0)
-    redis.hset(:game, :side_pot_8, 0)
-    redis.hset(:game, :side_pot_9, 0)
-    redis.hset(:game, :current_player, nil)
-    redis.hget(:game, :nofpeople).to_i.times do |n|
-      redis.hset(table.player(n+1), :prev_nofbet, nil)
-      redis.hset(table.player(n+1), :betting, 0)
-      if redis.hget(table.player(n+1), :amount).to_i >= 0
-        redis.hset(table.player(n+1), :alive, true)
-        redis.hset(table.player(n+1), :active, true)
-      else
-        redis.hset(table.player(n+1), :alive, false)
-        redis.hset(table.player(n+1), :active, false)
+    self.cards = cards.to_json
+    self.street_num = 1
+    self.board = ""
+    self.alives.clear
+    self.actives.clear
+    @users = table.playing_users.map do |u|
+      user = User.where(user_id: u).first
+      user.prev_bet_num = nil
+      user.betting = 0
+      user.rights_of_side_pot = 10
+      if user.amount.to_i >= 0
+        self.alives <<  u
+        self.actives << u
       end
-      redis.hset(table.player(n+1), :rights_of_side_pot, 10)
+      user
     end
+    self.current_side_pot = 1
+    self.side_pot_1 = self.side_pot_2 = self.side_pot_3 = self.side_pot_4 = self.side_pot_5 = self.side_pot_6 = self.side_pot_7 = self.side_pot_8 = self.side_pot_9 = 0
+    self.current_player = nil
+    p "initial_game_setting_end"
   end
   def is_finish
     p "is_game_finish?"
@@ -226,63 +233,62 @@ class Game
   end
   def preflop_setting
     p "preflop_setting"
-    redis.hset(:street, :can_next_street, false)
-    redis.hset(:game, :prev_bet_amount, 0)
+    self.can_next_street = false
+    self.prev_bet_amount = 0
     ####### pre flop 開始準備
-    cards = JSON.parse(redis.hget(:game, :cards))
-    if redis.hget(:street, :nofstreet).to_i == 1
-      redis.hget(:game, :nofpeople).to_i.times do |n|
-        card = cards["player_#{n+1}"].join(",")
-        redis.hset(table.player(n+1), :hand, card)
-        ActionCable.server.broadcast "user_#{table.get_player_name(n+1)}", {action: "deal_hand", cards: card}
-      end
-      ####### sbとbbの支払い
-      #!!!ここでのAIに関して処理していない& 1Big等
-      button_num = redis.hget(:game, :button).to_i
-      ActionCable.server.broadcast "room_1", {action: "deal_button", id: button_num}
-      ActionCable.server.broadcast "room_1", {action: "show_pot", pot: 0}
-      unless redis.hget(:game, :nofpeople).to_i == 2
-        if redis.hget(:game, :nofpeople).to_i < button_num + 1
-          redis.hset(:player_1, :betting, 1)
-          redis.hset(:player_2, :betting, 2)
-        elsif redis.hget(:game, :nofpeople).to_i < button_num + 2
-          redis.hset(table.player(button_num+1), :betting, 1)
-          redis.hset(:player_1, :betting, 2)
-        else
-          redis.hset(table.player(button_num+1), :betting, 1)
-          redis.hset(table.player(button_num+2), :betting, 2)
-        end
-        
-        current_player = button_num
-
-        3.times do 
-          if redis.hget(:game, :nofpeople).to_i == current_player
-            current_player = 1
-          else
-            current_player += 1
-          end
-        end
+    cards = JSON.parse(self.cards)
+    @users.each do |user|
+      card = cards["player_#{user.seat.seat_num}"].join(",")
+      user.hand = card
+      user.stream({action: "deal_hand", cards: card})
+    end
+    ######################################ここまでリファクタリング済み
+    ####### sbとbbの支払い
+    #!!!ここでのAIに関して処理していない& 1Big等
+    button_num = redis.hget(:game, :button).to_i
+    ActionCable.server.broadcast "room_1", {action: "deal_button", id: button_num}
+    ActionCable.server.broadcast "room_1", {action: "show_pot", pot: 0}
+    unless redis.hget(:game, :nofpeople).to_i == 2
+      if redis.hget(:game, :nofpeople).to_i < button_num + 1
+        redis.hset(:player_1, :betting, 1)
+        redis.hset(:player_2, :betting, 2)
+      elsif redis.hget(:game, :nofpeople).to_i < button_num + 2
+        redis.hset(table.player(button_num+1), :betting, 1)
+        redis.hset(:player_1, :betting, 2)
       else
-        if button_num == 1
-          redis.hset(table.player(1), :betting, 1)
-          redis.hset(table.player(2), :betting, 2)
+        redis.hset(table.player(button_num+1), :betting, 1)
+        redis.hset(table.player(button_num+2), :betting, 2)
+      end
+      
+      current_player = button_num
+
+      3.times do 
+        if redis.hget(:game, :nofpeople).to_i == current_player
           current_player = 1
         else
-          redis.hset(table.player(2), :betting, 1)
-          redis.hset(table.player(1), :betting, 2)
-          current_player = 2
+          current_player += 1
         end
       end
-      redis.hget(:game, :nofpeople).to_i.times do |n|
-        ActionCable.server.broadcast "room_1", {action: "show_betting", id: n+1, betting: redis.hget(table.player(n+1),:betting)}
-        ActionCable.server.broadcast "room_1", {action: "show_stack", id: n+1, stack: redis.hget(table.player(n+1),:amount)}
+    else
+      if button_num == 1
+        redis.hset(table.player(1), :betting, 1)
+        redis.hset(table.player(2), :betting, 2)
+        current_player = 1
+      else
+        redis.hset(table.player(2), :betting, 1)
+        redis.hset(table.player(1), :betting, 2)
+        current_player = 2
       end
-      redis.hset(:game ,:current_player, current_player)
-      redis.hset(:street ,:temp_pot, 3)
-      redis.hset(:street, :nofbet, 1)
-      redis.hset(:game, :current_bet_amount, 2)
-      redis.hset(:game, :facing_bet_amount, 2)
     end
+    redis.hget(:game, :nofpeople).to_i.times do |n|
+      ActionCable.server.broadcast "room_1", {action: "show_betting", id: n+1, betting: redis.hget(table.player(n+1),:betting)}
+      ActionCable.server.broadcast "room_1", {action: "show_stack", id: n+1, stack: redis.hget(table.player(n+1),:amount)}
+    end
+    redis.hset(:game ,:current_player, current_player)
+    redis.hset(:street ,:temp_pot, 3)
+    redis.hset(:street, :nofbet, 1)
+    redis.hset(:game, :current_bet_amount, 2)
+    redis.hset(:game, :facing_bet_amount, 2)
   end
   def postflop_setting
     p "postflop_setting"

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'heads_up/show'
+  get 'heads_up/:room_id', to: "heads_up#show"
 
   root to: 'home#show'
 

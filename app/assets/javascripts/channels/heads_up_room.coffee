@@ -8,6 +8,8 @@ $(document).on 'turbolinks:load', ->
 $(document).on 'turbolinks:load', -> 
   $(document).off 'click', 'button.seat'
   $(document).on 'click', 'button.seat', ->
+    if location.href == "http://localhost:3000/heads_up/1"
+      App.heads_up_room.connect_to_table(1)
     App.heads_up_room.entered()
 
   $(document).off 'click', 'button.ready'
@@ -79,6 +81,9 @@ App.heads_up_room = App.cable.subscriptions.create "HeadsUpRoomChannel",
   
   load_page: ->
     @perform 'load_page'
+
+  connect_to_table: (table_id) ->
+    @perform('connect_to_table', table_id: table_id)
 
   entered: ->
     @perform 'entered'
@@ -235,4 +240,3 @@ App.heads_up_room = App.cable.subscriptions.create "HeadsUpRoomChannel",
       if counter > int
         clearTimeout(timebankId)
     foo()
-

@@ -1,6 +1,16 @@
-class Table
+class Table < ApplicationRecord
   #after_create_commit { UserBroadcastJob.perform_later self }
   # attr_accessor :title, :price
+  include Redis::Objects
+  set :seating_users
+  set :ready_users
+  set :playing_users
+  counter :played_count
+
+  has_many :games
+  has_many :users
+  has_many :seats
+
 
   def redis
     @redis ||= Redis.current
@@ -12,6 +22,15 @@ class Table
       user = redis.lindex("playing_users", n)
       ActionCable.server.broadcast "user_#{user}", {action: "info", info: string}
     end
+  end
+
+  def max
+    2
+  end
+
+  def stream(data, to = "room_#{self.id}")
+    raise if self.id != 1
+    ActionCable.server.broadcast to, data
   end
   def name
   end
@@ -49,16 +68,20 @@ class Table
   def get_player_name(int)
     redis.hget(player(int), :name)
   end
-  def initial_table_setting(nofplayers = nil, *user_names)
+  def initial_table_setting(nofplayers = nil, user_names)
     p "initial_table_setting"
-    redis.hset(:game, :number, 1)
+    self.played_count.increment
     nofplayers = gets.chomp.to_i if nofplayers == nil
-    redis.hmset(:game, :nofpeople, nofplayers, :button, 1, :minimum_bet_amount, 2, :nofalive, nofplayers)
-    nofplayers.times do |n|
-      # puts "how much player_#{n+1} has?"
-      # amount = gets.chomp.to_i
+    game = self.games.create
+    game.button = 1
+    game.minimum_bet_amount = 2
+    user_names.each_with_index do |u_name, idx|
       amount = 50
-      redis.hmset(player(n+1), :name, user_names[n], :amount, amount)
+      seat = self.seats.find_or_create_by(seat_num: idx+1)
+      user = User.where(user_id: u_name).first
+      user.amount = amount
+      user.seat = seat
+      user.save
     end
   end
   def is_table_finish
