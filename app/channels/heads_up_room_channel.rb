@@ -77,7 +77,9 @@ class HeadsUpRoomChannel < ApplicationCable::Channel
   end
 
   def clear_table
-    $redis.flushdb #どこまで？redis-objectは消える？
+    # $redis.flushdb #どこまで？redis-objectは消える？
+    table.playing_users.clear
+    table.seating_users.clear
     table.stream({action: "info", info: "someone table cleared"})
     table.stream({action: "clear_table"})
 

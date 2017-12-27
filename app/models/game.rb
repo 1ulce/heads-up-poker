@@ -298,8 +298,8 @@ class Game < ApplicationRecord
     self.bet_num = self.prev_bet_amount = self.current_bet_amount = self.facing_bet_amount = 0
     users.each_with_index do |user,idx|
       user.prev_bet_num = -1
-      table.stream({action: "show_betting", id: idx+1, betting: user.betting})
-      table.stream({action: "show_stack", id: idx+1, stack: user.amount})
+      table.stream({action: "show_betting", id: idx+1, betting: user.betting.to_i})
+      table.stream({action: "show_stack", id: idx+1, stack: user.amount.to_i})
     end
     p "postflop_setting end"
   end
@@ -329,16 +329,15 @@ class Game < ApplicationRecord
       allin_men = allin_men.sort {|(k1, v1), (k2, v2)| v1 <=> v2 }
       #それ毎にサイドポットを作成する
       allin_men.each.with_index do |array, idx|
-        current_side_pot = self.current_side_pot.to_i
         unless allin_men.size - (idx+1) <= 0 #4人オールインならば、3人目まで
           if allin_men[idx][1] == allin_men[idx+1][1] # n人目とn+1人目のオールイン額が一緒なら
             # n+1人目の権利を現在で確定
-            Seat.where(table_id: table.id, seat_num: allin_men[idx+1][0]).first.user.rights_of_side_pot = self.current_side_pot
+            Seat.where(table_id: table.id, seat_num: allin_men[idx+1][0]).first.user.rights_of_side_pot = self.current_side_pot.to_i
             # n人目の権利を現在で確定
-            Seat.where(table_id: table.id, seat_num: array[0]).first.user.rights_of_side_pot = self.current_side_pot
+            Seat.where(table_id: table.id, seat_num: array[0]).first.user.rights_of_side_pot = self.current_side_pot.to_i
           else # n人目とn+1人目のオールイン額が一緒でないなら
             # n人目の権利を現在で確定
-            Seat.where(table_id: table.id, seat_num: array[0]).first.user.rights_of_side_pot = self.current_side_pot
+            Seat.where(table_id: table.id, seat_num: array[0]).first.user.rights_of_side_pot = self.current_side_pot.to_i
             side_pot = 0 # サイドポットの金額計算
             allin_amount = 0
             users.each do |user|
@@ -368,7 +367,7 @@ class Game < ApplicationRecord
           end
         else #4人オールインならば、4人目
           # n人目の権利を現在で確定
-          Seat.where(table_id: table.id, seat_num: array[0]).first.user.rights_of_side_pot = self.current_side_pot
+          Seat.where(table_id: table.id, seat_num: array[0]).first.user.rights_of_side_pot = self.current_side_pot.to_i
           side_pot = self.temp_pot.to_i + eval("self.side_pot_" + self.current_side_pot).to_i # 残りpot
           eval("self.side_pot_" + self.current_side_pot + "= #{side_pot}") # サイドポット金額確定
           self.temp_pot = 0
@@ -500,7 +499,7 @@ class Game < ApplicationRecord
     end
     
     9.times do |n|
-      if eval("self.side_pot_" + self.current_side_pot).to_i > 0
+      if eval("self.side_pot_#{n+1}").to_i > 0
         rights_players = []
         give = false
         gifted_player = []
@@ -529,8 +528,8 @@ class Game < ApplicationRecord
         end
 
         if give == true
-          pot = eval("self.side_pot_" + self.current_side_pot).to_i / gifted_player.size
-          remain = eval("self.side_pot_" + self.current_side_pot).to_i % gifted_player.size
+          pot = eval("self.side_pot_#{n+1}").to_i / gifted_player.size
+          remain = eval("self.side_pot_#{n+1}").to_i % gifted_player.size
           button = self.button.to_i
           position = gifted_player.map {|pr| pr + button}
           bad_position = position.sort[0] - button

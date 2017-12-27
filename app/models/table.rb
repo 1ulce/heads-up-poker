@@ -94,7 +94,7 @@ class Table < ApplicationRecord
     @users = self.playing_users.map do |u|
       user = User.where(user_id: u).first
       stack << user.amount.to_i
-      u
+      user
     end
     p "is_table_finish end"
     stack.include?(0) ? true : false
