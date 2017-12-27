@@ -77,13 +77,14 @@ class HeadsUpRoomChannel < ApplicationCable::Channel
   end
 
   def clear_table
-    redis.flushdb
-    ActionCable.server.broadcast "room_1", {action: "info", info: "someone table cleared"}
-    ActionCable.server.broadcast "room_1", {action: "clear_table"}
-    unless redis.llen("seating_users") >= 2
-      ActionCable.server.broadcast "room_1", {action: "show_seating_button"}
+    $redis.flushdb #どこまで？redis-objectは消える？
+    table.stream({action: "info", info: "someone table cleared"})
+    table.stream({action: "clear_table"})
+
+    unless table.seating_users.size >= 2
+      table.stream({action: "show_seating_button"})
     end
-    ActionCable.server.broadcast 'room_1', { action: "render_users_count", count: redis.llen("seating_users")}
+    table.stream({ action: "render_users_count", count: table.seating_users.size})
   end
 
   def stop_stream
@@ -116,9 +117,6 @@ class HeadsUpRoomChannel < ApplicationCable::Channel
   end
 
   private 
-    def redis
-      @redis ||= Redis.current
-    end
     def current_user
       @current_user ||= User.find_or_create_by(user_id: user_id)
     end
@@ -126,6 +124,6 @@ class HeadsUpRoomChannel < ApplicationCable::Channel
       @table ||= current_user.table
     end
     def game
-      @game ||= table.games.last ? table.games.last : table.games.build
+      @game ||= table.games.last
     end
 end

@@ -1,16 +1,14 @@
 class Card
   #after_create_commit { UserBroadcastJob.perform_later self }
   class << self
-    def redis
-      @redis ||= Redis.current
-    end
-    def push_info(string)
-      p string
-      redis.llen("playing_users").times do |n| 
-        user = redis.lindex("playing_users", n)
-        ActionCable.server.broadcast "user_#{user}", {action: "info", info: string}
-      end
-    end
+
+    # def push_info(string)
+    #   p string
+    #   redis.llen("playing_users").times do |n| 
+    #     user = redis.lindex("playing_users", n)
+    #     ActionCable.server.broadcast "user_#{user}", {action: "info", info: string}
+    #   end
+    # end
     def get_shuffled_card
       deck = ["As","2s","3s","4s","5s","6s","7s","8s","9s","Ts","Js","Qs","Ks","Ah","2h","3h","4h","5h","6h","7h","8h","9h","Th","Jh","Qh","Kh","Ad","2d","3d","4d","5d","6d","7d","8d","9d","Td","Jd","Qd","Kd","Ac","2c","3c","4c","5c","6c","7c","8c","9c","Tc","Jc","Qc","Kc"]
       deck.shuffle!
@@ -242,13 +240,13 @@ class Card
 
       array_hands.each_with_index do |hand, idx|
         if hand == []
-          push_info("player_#{idx+1} is folded")
+          # push_info("player_#{idx+1} is folded")
           @bucket_0 << [0, "folded", [], idx+1]
         else
           player_hand = hand
           player_hand.concat(board)
           result = get_handRank(player_hand) #[7, "fullhouse", [9, 14]]
-          push_info("player_#{idx+1} has #{result[1]}")
+          # push_info("player_#{idx+1} has #{result[1]}")
           result << idx+1
           eval("@bucket_#{result[0]} << result")
         end

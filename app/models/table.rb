@@ -12,15 +12,14 @@ class Table < ApplicationRecord
   has_many :seats
 
 
-  def redis
-    @redis ||= Redis.current
-  end
+  # def redis
+  #   @redis ||= Redis.current
+  # end
 
   def push_info(string)
     p string
-    redis.llen("playing_users").times do |n| 
-      user = redis.lindex("playing_users", n)
-      ActionCable.server.broadcast "user_#{user}", {action: "info", info: string}
+    @users.each do |user|
+      user.stream({action: "info", info: string})
     end
   end
 
@@ -32,42 +31,44 @@ class Table < ApplicationRecord
     raise if self.id != 1
     ActionCable.server.broadcast to, data
   end
-  def name
-  end
-  def game_type 
+  # def name
+  # end
+  # def game_type 
      
-  end
-  def sit
+  # end
+  # def sit
     
-  end
-  def watch
+  # end
+  # def watch
     
-  end
-  def status
-  end
-  def get_sitting_users
+  # end
+  # def status
+  # end
+  # def get_sitting_users
     
-  end
-  def get_sitting_user()
+  # end
+  # def get_sitting_user()
     
-  end
-  def player(int)
-    "player_#{int}".to_sym
-  end
+  # end
+  # def player(int)
+  #   "player_#{int}".to_sym
+  # end
 
-  def get_player_num(player_name)
-    9.times do |n|
-      u_name = redis.hget("player_#{n+1}".to_sym, :name)
-      if player_name == u_name
-        return n+1
-      end
-      n + 1
-    end
-    raise
-  end
-  def get_player_name(int)
-    redis.hget(player(int), :name)
-  end
+  # def get_player_num(player_name)
+  #   9.times do |n|
+  #     u_name = redis.hget("player_#{n+1}".to_sym, :name)
+  #     if player_name == u_name
+  #       return n+1
+  #     end
+  #     n + 1
+  #   end
+  #   raise
+  # end
+
+  # def get_player_name(int)
+  #   redis.hget(player(int), :name)
+  # end
+
   def initial_table_setting(nofplayers = nil, user_names)
     p "initial_table_setting"
     self.played_count.increment
@@ -79,34 +80,38 @@ class Table < ApplicationRecord
       amount = 50
       seat = self.seats.find_or_create_by(seat_num: idx+1)
       user = User.where(user_id: u_name).first
+      User.where(seat_id: seat.id).update_all(seat_id: nil)
+      user.game = game
       user.amount = amount
       user.seat = seat
       user.save
     end
   end
+
   def is_table_finish
-    p "is_table_finish?"
+    p "is_table_finish start"
     stack = []
-    redis.hget(:game, :nofpeople).to_i.times do |n|
-      stack << redis.hget(player(n+1), :amount).to_i
+    @users = self.playing_users.map do |u|
+      user = User.where(user_id: u).first
+      stack << user.amount.to_i
+      u
     end
+    p "is_table_finish end"
     stack.include?(0) ? true : false
   end
+
   def table_finish
     results = []
-    2.times do |n|
-      if redis.hget(self.player(n+1), :amount).to_i == 0
-        results << "lose"
-      else
-        results << "win"
-      end
+    @users.each do |user|
+      user.amount.to_i == 0 ? results << "lose" : results << "win"
     end
-    2.times do |n| 
-      user = redis.lpop("playing_users")
-      ActionCable.server.broadcast "user_#{user}", {action: "show_result", result: results}
+    @users.each do |user|
+      user.stream({action: "show_result", result: results})
     end
-    2.times {|n| redis.lpop("seating_users")}
+    self.playing_users.clear
+    self.seating_users.clear
   end
+
   def next_table_setting
     p "決着がついたっぽい"
   end

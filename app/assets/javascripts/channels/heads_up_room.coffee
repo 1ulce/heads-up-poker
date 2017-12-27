@@ -8,9 +8,13 @@ $(document).on 'turbolinks:load', ->
 $(document).on 'turbolinks:load', -> 
   $(document).off 'click', 'button.seat'
   $(document).on 'click', 'button.seat', ->
-    if location.href == "http://localhost:3000/heads_up/1"
+    promise = new Promise (resolve) ->
       App.heads_up_room.connect_to_table(1)
-    App.heads_up_room.entered()
+      setTimeout () ->
+        resolve console.log('here')
+      , 1000
+    promise.then () ->
+      App.heads_up_room.entered()
 
   $(document).off 'click', 'button.ready'
   $(document).on 'click', 'button.ready', ->
