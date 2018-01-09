@@ -2,10 +2,10 @@ actions = {}
 timeoutId = null
 timebankId = null
 
-$(document).on 'turbolinks:load', -> 
+$(document).on 'turbolinks:load', ->
   App.heads_up_room.load_page()
 
-$(document).on 'turbolinks:load', -> 
+$(document).on 'turbolinks:load', ->
   promise = new Promise (resolve) ->
     App.heads_up_room.connect_to_table(1)
     setTimeout () ->
@@ -82,7 +82,7 @@ App.heads_up_room = App.cable.subscriptions.create "HeadsUpRoomChannel",
 
   received: (data) ->
     actions[data.action](data, this)
-  
+
   load_page: ->
     @perform 'load_page'
 
@@ -174,10 +174,10 @@ App.heads_up_room = App.cable.subscriptions.create "HeadsUpRoomChannel",
         when "f" then $('.actions').append('<button class="fold"> fold </button>')
         when "c" then $('.actions').append('<button class="call"> call </button>')
         when "x" then $('.actions').append('<button class="check"> check </button>')
-        when "b" 
+        when "b"
           $('.actions').append('<button class="bet"> bet </button>')
           $('.actions').append("<div class='hidden'>#{data.bet_amounts[0]}~#{data.bet_amounts[1]}</div>")
-        when "r" 
+        when "r"
           $('.actions').append('<button class="raise"> raise </button>')
           $('.actions').append("<div class='hidden'>#{data.raise_amounts[0]}~#{data.raise_amounts[1]}</div>")
         when "a" then $('.actions').append('<button class="allin"> allin </button>')

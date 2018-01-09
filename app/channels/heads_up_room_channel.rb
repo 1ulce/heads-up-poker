@@ -12,14 +12,17 @@ class HeadsUpRoomChannel < ApplicationCable::Channel
   end
 
   def load_page
-    unless table.seating_users >= 2
-      current_user.stream({action: "show_seating_button"})
-    end
+    # unless table.seating_users >= 2
+    #   current_user.stream({action: "show_seating_button"})
+    # end
   end
 
   def connect_to_table(data)
-    p data
-    current_user.update(table_id: data["table_id"]) 
+     p data
+     current_user.update(table_id: data["table_id"])
+     unless table.seating_users >= 2
+       current_user.stream({action: "show_seating_button"})
+     end
   end
 
   def entered
@@ -34,7 +37,7 @@ class HeadsUpRoomChannel < ApplicationCable::Channel
             if uu == u
               rendered_user = ApplicationController.renderer.render(partial: 'users/user', locals: { id: uu, name: "me" })
               ActionCable.server.broadcast "user_#{u}", { action: "join_me", users: rendered_user }
-            else 
+            else
               rendered_user = ApplicationController.renderer.render(partial: 'users/user', locals: { id: uu, name: "rival" })
               ActionCable.server.broadcast "user_#{u}", { action: "join_rival", users: rendered_user }
             end
@@ -57,7 +60,7 @@ class HeadsUpRoomChannel < ApplicationCable::Channel
             if uu == u
               rendered_user = ApplicationController.renderer.render(partial: 'users/user', locals: { id: uu, name: "me" })
               ActionCable.server.broadcast "user_#{u}", { action: "join_me", users: rendered_user }
-            else 
+            else
               rendered_user = ApplicationController.renderer.render(partial: 'users/user', locals: { id: uu, name: "opp" })
               ActionCable.server.broadcast "user_#{u}", { action: "join_rival", users: rendered_user }
             end
@@ -118,7 +121,7 @@ class HeadsUpRoomChannel < ApplicationCable::Channel
     game.action
   end
 
-  private 
+  private
     def current_user
       @current_user ||= User.find_or_create_by(user_id: user_id)
     end
