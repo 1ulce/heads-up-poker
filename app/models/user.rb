@@ -5,6 +5,7 @@ class User < ApplicationRecord
   belongs_to :table, optional: true
   belongs_to :game, optional: true
   belongs_to :seat, optional: true
+  validates_uniqueness_of :user_id
 
   value :hand
   value :prev_bet_num

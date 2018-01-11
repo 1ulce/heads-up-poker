@@ -70,9 +70,8 @@ class Table < ApplicationRecord
   # end
 
   def initial_table_setting(nofplayers = nil, user_names)
-    p "initial_table_setting"
+    p "initial_table_setting start"
     self.played_count.increment
-    nofplayers = gets.chomp.to_i if nofplayers == nil
     game = self.games.create
     game.button = 1
     game.minimum_bet_amount = 2
@@ -86,6 +85,7 @@ class Table < ApplicationRecord
       user.seat = seat
       user.save
     end
+    p "initial_table_setting end"
   end
 
   def is_table_finish

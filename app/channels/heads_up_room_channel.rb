@@ -18,6 +18,32 @@ class HeadsUpRoomChannel < ApplicationCable::Channel
     end
   end
 
+  def check_im_on_play()
+    if table.playing_users.include?(user_id)
+      table.stream({ action: "info", info: "user is coming back!"})
+      current_user.stream({action: "clear_seat_button"})
+      table.playing_users.each do |uu|
+        name = (uu == user_id ? "me" : "rival")
+        rendered_user = ApplicationController.renderer.render(partial: 'users/user', locals: { id: uu, name: name })
+        current_user.stream({ action: "join_#{name}", users: rendered_user })
+      end
+      current_user.stream({action: "set_id", players: table.playing_users.to_a})
+      current_user.stream({action: "deal_hand", cards: current_user.hand.value})
+      current_user.stream({action: "deal_button", id: game.button.to_i})
+      current_user.stream({action: "deal_board", board: game.board.value})
+      current_user.stream({action: "show_pot", pot: game.side_pot_1.to_i})
+      game.users.each do |user|
+        current_user.stream({action: "show_betting", id: user.seat.seat_num, betting: user.betting.to_i})
+        current_user.stream({action: "show_stack", id: user.seat.seat_num, stack: user.amount.to_i})
+      end
+      if game.alives.include?(user_id) && game.actives.include?(user_id) && game.current_player.to_i == current_user.seat.seat_num
+        game.urge_action_to_web(nil, game.bet_num.to_i, game.current_bet_amount.to_i, current_user.amount.to_i, current_user.prev_bet_num.to_i)
+      end
+    else
+      current_user.stream({ action: "info", info: "im not playing"})
+    end
+  end
+
   def entered
     user_list = table.seating_users
     if user_list.size < 2
