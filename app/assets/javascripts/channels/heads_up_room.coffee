@@ -3,11 +3,8 @@ timeoutId = null
 timebankId = null
 
 $(document).on 'turbolinks:load', ->
-  App.heads_up_room.load_page()
-
-$(document).on 'turbolinks:load', ->
   promise = new Promise (resolve) ->
-    App.heads_up_room.connect_to_table(1)
+    App.heads_up_room.connect_to_table(location.pathname.replace(/[^0-9^]/g,""))
     setTimeout () ->
       resolve console.log('here')
     , 1000

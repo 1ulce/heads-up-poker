@@ -11,18 +11,11 @@ class HeadsUpRoomChannel < ApplicationCable::Channel
     # Any cleanup needed when channel is unsubscribed
   end
 
-  def load_page
-    # unless table.seating_users >= 2
-    #   current_user.stream({action: "show_seating_button"})
-    # end
-  end
-
   def connect_to_table(data)
-     p data
-     current_user.update(table_id: data["table_id"])
-     unless table.seating_users >= 2
-       current_user.stream({action: "show_seating_button"})
-     end
+    current_user.update(table_id: data["table_id"])
+    unless table.seating_users.size >= 2
+      current_user.stream({action: "show_seating_button"})
+    end
   end
 
   def entered
