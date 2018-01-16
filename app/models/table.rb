@@ -76,7 +76,7 @@ class Table < ApplicationRecord
     game.button = 1
     game.minimum_bet_amount = 2
     user_names.each_with_index do |u_name, idx|
-      amount = 50
+      amount = 150
       seat = self.seats.find_or_create_by(seat_num: idx+1)
       user = User.where(user_id: u_name).first
       User.where(seat_id: seat.id).update_all(seat_id: nil)
