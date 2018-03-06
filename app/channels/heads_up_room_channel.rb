@@ -3,7 +3,6 @@ class HeadsUpRoomChannel < ApplicationCable::Channel
   def subscribed
     # stream_from "some_channel"
     #stream_from "heads_up_room_channel"
-    stream_from "room_1"
     stream_from "user_#{user_id}"
   end
 
@@ -12,13 +11,20 @@ class HeadsUpRoomChannel < ApplicationCable::Channel
   end
 
   def connect_to_table(data)
+    @table = Table.find(data["table_id"])
     current_user.update(table_id: data["table_id"])
+    stream_from "room_#{data["table_id"]}"
     unless table.seating_users.size >= 2
       current_user.stream({action: "show_seating_button"})
+      current_user.stream({ action: "info", info: "table has seat. wanna play?"})
+    else
+      current_user.stream({action: "show_watch_button"})
+      current_user.stream({ action: "info", info: "table is full. wanna watch?"})
     end
+    check_im_on_play
   end
 
-  def check_im_on_play()
+  def check_im_on_play
     if table.playing_users.include?(user_id)
       table.stream({ action: "info", info: "user is coming back!"})
       current_user.stream({action: "clear_seat_button"})
@@ -42,6 +48,11 @@ class HeadsUpRoomChannel < ApplicationCable::Channel
     else
       current_user.stream({ action: "info", info: "im not playing"})
     end
+  end
+
+  def start_watching
+    # not yet
+    # table.watching_users << current_user.user_id
   end
 
   def entered
@@ -108,7 +119,7 @@ class HeadsUpRoomChannel < ApplicationCable::Channel
     unless table.seating_users.size >= 2
       table.stream({action: "show_seating_button"})
     end
-    table.stream({ action: "render_users_count", count: table.seating_users.size})
+    # table.stream({ action: "render_users_count", count: table.seating_users.size})
   end
 
   def stop_stream

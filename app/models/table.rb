@@ -5,6 +5,7 @@ class Table < ApplicationRecord
   set :seating_users
   set :ready_users
   set :playing_users
+  set :watching_users
   counter :played_count
 
   has_many :games
@@ -28,7 +29,6 @@ class Table < ApplicationRecord
   end
 
   def stream(data, to = "room_#{self.id}")
-    raise if self.id != 1
     ActionCable.server.broadcast to, data
   end
   # def name
@@ -71,6 +71,7 @@ class Table < ApplicationRecord
 
   def initial_table_setting(nofplayers = nil, user_names)
     p "initial_table_setting start"
+    raise if user_names.count != 2
     self.played_count.increment
     game = self.games.create
     game.button = 1
@@ -79,11 +80,8 @@ class Table < ApplicationRecord
       amount = 150
       seat = self.seats.find_or_create_by(seat_num: idx+1)
       user = User.where(user_id: u_name).first
-      User.where(seat_id: seat.id).update_all(seat_id: nil)
-      user.game = game
-      user.amount = amount
-      user.seat = seat
-      user.save
+      # User.where(seat_id: seat.id).update_all(seat_id: nil)
+      user.update(game_id: game.id, amount: amount, seat_id: seat.id)
     end
     p "initial_table_setting end"
   end

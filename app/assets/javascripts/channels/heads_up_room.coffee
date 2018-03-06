@@ -5,15 +5,22 @@ timebankId = null
 $(document).on 'turbolinks:load', ->
   if location.pathname.match(/heads_up/)
     promise = new Promise (resolve) ->
-      App.heads_up_room.connect_to_table(location.pathname.replace(/[^0-9^]/g,""))
       setTimeout () ->
-        resolve console.log('here')
+        App.heads_up_room.connect_to_table(location.pathname.replace(/[^0-9^]/g,""))
       , 1000
+      setTimeout () ->
+        resolve console.log("here")
+      , 1000
+
     promise.then () ->
-      App.heads_up_room.check_im_on_play()
+
       $(document).off 'click', 'button.seat'
       $(document).on 'click', 'button.seat', ->
           App.heads_up_room.entered()
+
+      $(document).off 'click', 'button.watch'
+      $(document).on 'click', 'button.watch', ->
+          App.heads_up_room.start_watching()
 
       $(document).off 'click', 'button.ready'
       $(document).on 'click', 'button.ready', ->
@@ -91,6 +98,9 @@ App.heads_up_room = App.cable.subscriptions.create "HeadsUpRoomChannel",
   check_im_on_play: ->
     @perform 'check_im_on_play'
 
+  start_watching: ->
+    @perform 'start_watching'
+
   entered: ->
     @perform 'entered'
     $('#seat_button').html("")
@@ -135,9 +145,11 @@ App.heads_up_room = App.cable.subscriptions.create "HeadsUpRoomChannel",
 
   actions['show_seating_button'] = ->
     $('#seat_button').html('<button class="seat"> 着席 </button>')
+  actions['show_watch_button'] = ->
+    $('#seat_button').html('<button class="watch"> 観戦 </button>')
 
-  actions['render_users_count'] = (data)->
-    $('#heads_up_users_count').html("user: #{data.count}/2")
+  # actions['render_users_count'] = (data)->
+  #   $('#heads_up_users_count').html("user: #{data.count}/2")
 
   actions['join_me'] = (data)->
     $('#users #me').html(data.users)
