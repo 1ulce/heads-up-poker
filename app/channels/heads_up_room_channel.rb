@@ -11,7 +11,7 @@ class HeadsUpRoomChannel < ApplicationCable::Channel
   end
 
   def connect_to_table(data)
-    @table = Table.find(data["table_id"])
+    @table = Table.find_or_create_by(id: data["table_id"])
     current_user.update(table_id: data["table_id"])
     stream_from "room_#{data["table_id"]}"
     unless table.seating_users.size >= 2
