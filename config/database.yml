@@ -1,10 +1,9 @@
 default: &default
   adapter: postgresql
-  encoding: unicode
   pool: 5
   # 以下の3つを追加
-  username: poker
-  password: 62435a4674a10ee8ff3f5ea5
+  #username: poker
+  #password: 62435a4674a10ee8ff3f5ea5
   # RailsサーバとPostgreSQLサーバが同じ場合
   # host: localhost
 development:
